@@ -51,7 +51,7 @@ Feature: As an administrator (admin), I should be able to access the Visitor Pur
     # Api kullanicisi "api/visitorsPurposeId" path parametrelerini olusturur
     * The api user prepares a GET request that does not contain data
     # Api kullanicisi data icermeyen bir get request hazırlar
-    * The api user sends a GET request and saves the returned response.
+    * The api user sends a GET body and saves the returned response.
     # Api kullanicisi GET request gonderir ve donen responsei kaydeder
     * The api user verifies that the status code is 203.
     # Api kullanicisi status codeun 203 oldugunu dogrular
@@ -67,7 +67,7 @@ Feature: As an administrator (admin), I should be able to access the Visitor Pur
     # Api kullanicisi "api/visitorsPurposeId" path parametrelerini olusturur
     * The api user prepares a GET request containing the <id> information to send to the api visitorsPurposeid endpoint.
     # Api kullanicisi api visitorsPurposeId endpointine gondermek icin <id> bilgisini iceren bir get request hazirlar
-    * The api user sends a GET request, saves the returned response, and verifies that the status code is '403' with the reason phrase Forbidden.
+    * The api user sends a GET body, saves the returned response, and verifies that the status code is '403' with the reason phrase Forbidden.
     # Api kullanicisi GET request gonderir, donen responsei kaydeder, status codeun '403' ve reason phrase bilgisinin Forbidden oldugunu dogrular
 
     Examples:

@@ -1,6 +1,7 @@
 Feature: As an administrator (admin), I should be able to update the visitor purpose information registered in the
   system via API connection.
 
+
   Scenario Outline: A PATCH request to the "/api/visitorsPurposeUpdate" endpoint with valid authorization and correct
   data (id, visitors_purpose, description) should return a 200 status code, a response body message of "Success," and
   the "updateId" in the response should match the "id" in the request body. The update should be confirmed via a GET
@@ -20,8 +21,8 @@ Feature: As an administrator (admin), I should be able to update the visitor pur
     # Api kullanıcısı Response body icindeki updateId bilgisinin patch request body icindeki id bilgisi ile ayni oldugunu dogrular
 
     Examples:
-      | id  | visitors_purpose | description            |
-      | 756 | purpose update   | purpose update details |
+      | id  | visitors_purpose | description     |
+      | 766 | purpose update   | purpose details |
 
 
   Scenario Outline: When a PATCH body (id, visitors_purpose, description) containing valid authorization information

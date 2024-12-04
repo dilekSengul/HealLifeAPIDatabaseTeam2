@@ -19,7 +19,7 @@ Feature: As an administrator (admin) I should be able to access the Visitor Purp
       | dataindex | visitors_purpose              | description         | created_at          |
       | 0         | Gulten updated some documents | Gulten will be back | 2023-05-18 20:57:12 |
 
-@US
+
   Scenario: Invalid Token When a GET request is sent to the /api/visitorsPurposeList endpoint with invalid authorization
   information, it should be verified that the status code returned is 403 and the message in the response body is
   "You do not have authorization or token error.".
