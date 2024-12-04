@@ -1,15 +1,15 @@
-Feature: As an administrator (admin), I should be able to update the visitor purpose information registered in the
+Feature: As an administrator (admin), I should be able to update the expense head information registered in the
   system via API connection.
 
 
-  Scenario Outline: A PATCH request to the "/api/visitorsPurposeUpdate" endpoint with valid authorization and correct
-  data (id, visitors_purpose, description) should return a 200 status code, a response body message of "Success," and
+  Scenario Outline: A PATCH request to the "api/updateExpenseHead" endpoint with valid authorization and correct
+  data (id, exp_category, description) should return a 200 status code, a response body message of "Success," and
   the "updateId" in the response should match the "id" in the request body. The update should be confirmed via a GET
-  request to the "/api/visitorsPurposeId" endpoint using the "updateId" from the response.
+  request to the "api/getExpenseHeadById" endpoint using the "updateId" from the response.
 
-    * The api user sets "api/visitorsPurposeUpdate" path parameters.
+    * The api user sets "api/updateExpenseHead" path parameters.
     # Api kullanicisi "api/visitorsPurposeUpdate" path parametrelerini olusturur
-    * The api user prepares a PATCH request containing <id>, "<visitors_purpose>" and "<description>" information to send to the api visitorsPurposeUpdate endpoint.
+    Given The api user prepares a PATCH request containing "<id>", "<exp_category>" and "<description>" information to send to the api expenseHeadUpdate endpoint.
     # Api kullanicisi api visitorsPurposeUpdate endpointine gondermek icin "<visitors_purpose>" ve "<description>" bilgilerini iceren bir patch request hazirlar
     * The api user sends a PATCH request and saves the returned response.
     # Api kullanicisi PATCH request gonderir ve donen responsei kaydeder
@@ -21,8 +21,8 @@ Feature: As an administrator (admin), I should be able to update the visitor pur
     # Api kullanıcısı Response body icindeki updateId bilgisinin patch request body icindeki id bilgisi ile ayni oldugunu dogrular
 
     Examples:
-      | id  | visitors_purpose | description     |
-      | 766 | purpose update   | purpose details |
+      | id  | exp_category | description     |
+      | 766 | test category   | test details |
 
 
   Scenario Outline: When a PATCH body (id, visitors_purpose, description) containing valid authorization information
