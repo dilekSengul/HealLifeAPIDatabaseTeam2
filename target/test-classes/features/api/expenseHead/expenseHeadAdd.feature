@@ -52,7 +52,7 @@ Feature: As an administrator (admin) I want to be able to create a new visitor p
     # Api kullanicisi response bodydeki message bilgisinin "You do not have authorization or token error" oldugunu dogrular
 
     Examples:
-      | exp_category | description        |
+      | exp_category    | description      |
       | test category   | test description |
 
 

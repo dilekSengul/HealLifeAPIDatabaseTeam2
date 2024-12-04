@@ -19,8 +19,8 @@ Feature: As an administrator (admin), I should be able to access the expense hea
     # Api kullanicisi response bodydeki data "<id>", "<exp_category>", "<description>", <is_active>, <is_deleted> ve "<created_at>" içeriklerini doğrular.
 
     Examples:
-      | id  | exp_category  | description      | is_active     | is_deleted   | created_at          |
-      | 585 | test category | test description | null          | null         | 2024-12-04 02:34:42 |
+      | id  | exp_category  | description      | is_active     | is_deleted   | created_at           |
+      | 585 | test category | test description | null          | null         | 2024-12-04 02:34:42  |
 
 
   Scenario Outline: When a GET body containing valid authorization information and invalid data (id) is sent to the
@@ -29,7 +29,7 @@ Feature: As an administrator (admin), I should be able to access the expense hea
 
     * The api user sets "api/getExpenseHeadById" path parameters.
     # Api kullanicisi "api/getExpenseHeadById" path parametrelerini olusturur
-    * The api user prepares a GET request containing the "<id>" information to send to the api getExpenseHeadById endpoint.
+    * The api user prepares a GET request containing the <id> information to send to the api getExpenseHeadById endpoint.
     # Api kullanicisi api getExpenseHeadById endpointine gondermek icin <id> bilgisini iceren bir get request hazirlar
     * The api user sends a GET body and saves the returned response.
     # Api kullanicisi GET body gonderir ve donen responsei kaydeder
@@ -65,7 +65,7 @@ Feature: As an administrator (admin), I should be able to access the expense hea
 
     * The api user sets "api/getExpenseHeadById" path parameters.
     # Api kullanicisi "api/getExpenseHeadById" path parametrelerini olusturur
-    * The api user prepares a GET request containing the "<id>" information to send to the api getExpenseHeadById endpoint.
+    * The api user prepares a GET request containing the <id> information to send to the api getExpenseHeadById endpoint.
     # Api kullanicisi api getExpenseHeadById endpointine gondermek icin <id> bilgisini iceren bir get request hazirlar
     * The api user sends a GET body, saves the returned response, and verifies that the status code is '403' with the reason phrase Forbidden.
     # Api kullanicisi GET request gonderir, donen responsei kaydeder, status codeun '403' ve reason phrase bilgisinin Forbidden oldugunu dogrular
