@@ -8,7 +8,7 @@ Feature: As an administrator (admin), I want to be able to create a new announce
 
     Given The api user sets "api/addNotice" path parameters.
     # Api kullanicisi "api/addNotice" path parametrelerini olusturur
-    When The api user prepares a POST request containing "<type>" ,"<title>", "<description>" and "<slug>" information to send to the api addNotice endpoint.
+    When The api user prepares a POST request containing "<type>", "<title>", "<description>" and "<slug>" information to send to the api addNotice endpoint.
     # Api kullanicisi api visitorsPurposeAdd endpointine gondermek icin "<type>" ,"<title>, "<description>"ve "< slug>" bilgilerini iceren bir post request hazirlar
     Then The api user sends a POST request and saves the returned response.
     # Api kullanicisi POST request gonderir ve donen responsei kaydeder
@@ -49,7 +49,7 @@ Feature: As an administrator (admin), I want to be able to create a new announce
 
     Given The api user sets "api/addNotice" path parameters.
     # Api kullanicisi "api/addNotice" path parametrelerini olusturur
-    When The api user prepares a POST request containing "<type>" ,"<title>", "<description>" and "<slug>" information to send to the api addNotice endpoint.
+    When The api user prepares a POST request containing "<type>", "<title>", "<description>" and "<slug>" information to send to the api addNotice endpoint.
     # Api kullanicisi api api/addNotice endpointine gondermek icin "<type>" ,"<title>, "<description>"ve "< slug>" bilgilerini iceren bir post request hazirlar
     Then The api user sends a POST request and saves the returned response.
     # Api kullanicisi POST request gonderir ve donen responsei kaydeder
@@ -80,4 +80,4 @@ Feature: As an administrator (admin), I want to be able to create a new announce
 
     Examples:
       | id  |
-      | 398 |
+      | 403 |

@@ -22,7 +22,7 @@ Feature: As an administrator (admin), I should be able to access announcements v
 
     Examples:
       |   dataindex  | type   | slug         |url   |title              |date      |
-      | 0            | notice |noticedeneme  |      |notice deneme 12345|2024-12-04|
+      | 0            | notice |noticedeneme  |      |notice deneme 12345|2024-12-05|
 
 
 
