@@ -40,8 +40,8 @@ Feature: As an administrator (admin), I should be able to access the expense hea
     # Api kullanicisi response bodydeki message bilgisinin "No id or wrong id." oldugunu dogrular
 
     Examples:
-      | id     |
-      | 284669 |
+      | id      |
+      | 284669  |
 
 
   Scenario: When a GET request that does not contain valid authorization information and data (id) is sent to the
