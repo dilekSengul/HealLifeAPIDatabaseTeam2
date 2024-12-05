@@ -10,16 +10,14 @@ import io.restassured.http.ContentType;
 import org.hamcrest.Matchers;
 import org.json.JSONObject;
 import org.junit.Assert;
-
-import pojos.Pojo;
-import utilities.API_Utilities.API_Methods;
-import utilities.API_Utilities.TestData;
+import utilities.api.API_Methods;
+import utilities.api.TestData;
 
 import static hooks.HooksAPI.spec;
 import static io.restassured.RestAssured.given;
-import static utilities.API_Utilities.API_Methods.fullPath;
+import static utilities.api.API_Methods.fullPath;
 
-public class API_Stepdefinitions extends BaseTest {
+public class apiStepdefinitions extends BaseTest {
 
     TestData testData = new TestData();
     String exceptionMesaj = null;
@@ -75,6 +73,7 @@ public class API_Stepdefinitions extends BaseTest {
 
         System.out.println("exceptionMesaj : " + exceptionMesaj);
         Assert.assertEquals(configLoader.getApiConfig("unauthorizedExceptionMessage"), exceptionMesaj);
+
     }
 
     @Given("The api user prepares a GET request containing the {int} information to send to the api visitorsPurposeid endpoint.")
@@ -95,7 +94,7 @@ public class API_Stepdefinitions extends BaseTest {
 
         response.prettyPrint();
     }
-
+/*
     @Given("The api user verifies that the data in the response body includes {string}, {string}, {string} and {string}.")
     public void the_api_user_verifies_that_the_data_in_the_response_body_includes_and(String id, String visitors_purpose, String description, String created_at) {
         response.then()
@@ -106,7 +105,7 @@ public class API_Stepdefinitions extends BaseTest {
                         "lists.created_at", Matchers.equalTo(created_at));
 
     }
-
+*/
     @Given("The api user prepares a GET request that does not contain data")
     public void the_api_user_prepares_a_get_request_that_does_not_contain_data() {
     }
@@ -135,6 +134,7 @@ public class API_Stepdefinitions extends BaseTest {
 
         System.out.println("Post Body : " + map);
     }
+
 
     @Given("The api user sends a POST request and saves the returned response.")
     public void the_api_user_sends_a_post_request_and_saves_the_returned_response() {
@@ -190,82 +190,168 @@ public class API_Stepdefinitions extends BaseTest {
     }
     @When("The api user prepares a GET request containing the {int} information to send to the api getNoticeById endpoint.")
     public void the_api_user_prepares_a_get_request_containing_the_information_to_send_to_the_api_get_notice_by_ıd_endpoint(Integer id) {
-        requestBody.put("id", id);
 
-        System.out.println("Get Body : " + requestBody);
-    }
+        //expenseHead-Onur\\
 
-    @Then("The API user verifies the contents of the response body, including {string}, {string},{string}, {string}, {string}, and {string}.")
-    public void the_apı_user_verifies_the_contents_of_the_response_body_including_and(String id, String type, String slug, String url, String title, String date) {
-        response.then()
-                .assertThat().body("lists.id", Matchers.equalTo(id))
-                .body("lists.type", Matchers.equalTo(type))
-                .body("lists.slug", Matchers.equalTo(slug))
-                .body("lists.url", Matchers.nullValue())
-                .body("lists.title", Matchers.equalTo(title))
-                .body("lists.date", Matchers.equalTo(date));
-    }
+        @Given("The api user prepares a POST request containing {string} and {string} information to send to the api addExpenseHead endpoint.")
+        public void the_api_user_prepares_a_post_request_containing_and_information_to_send_to_the_api_addExpenseHead_endpoint
+        (String exp_category, String description){
+            map.put("exp_category", exp_category);
+            map.put("description", description);
 
-    @Given("The api user prepares a POST request containing {string} ,{string}, {string} and {string} information to send to the api addNotice endpoint.")
-    public void the_api_user_prepares_a_post_request_containing_and_information_to_send_to_the_api_add_notice_endpoint(String type, String title, String description, String slug) {
+            System.out.println("Post Body : " + map);
+        }
+
+        @Given("The api user prepares a GET request containing the {int} information to send to the api getExpenseHeadById endpoint.")
+        public void the_api_user_prepares_a_get_request_containing_the_information_to_send_to_the_api_getExpenseHeadById_endpoint
+        ( int id){
+>>>>>>>main:
+            src / test / java / stepdefinitions / apiStepdefinitions.java
+            requestBody.put("id", id);
+
+            System.out.println("Get Body : " + requestBody);
+        }
+
+
+
+        @Then("The API user verifies the contents of the response body, including {string}, {string},{string}, {string}, {string}, and {string}.")
+        public void the_apı_user_verifies_the_contents_of_the_response_body_including_and (String id, String
+        type, String slug, String url, String title, String date){
+            response.then()
+                    .assertThat().body("lists.id", Matchers.equalTo(id))
+                    .body("lists.type", Matchers.equalTo(type))
+                    .body("lists.slug", Matchers.equalTo(slug))
+                    .body("lists.url", Matchers.nullValue())
+                    .body("lists.title", Matchers.equalTo(title))
+                    .body("lists.date", Matchers.equalTo(date));
+        }
+
+        @Given("The api user prepares a POST request containing {string} ,{string}, {string} and {string} information to send to the api addNotice endpoint.")
+        public void the_api_user_prepares_a_post_request_containing_and_information_to_send_to_the_api_add_notice_endpoint
+        (String type, String title, String description, String slug){
        /* Pojo pojoRequest = new Pojo(type, title, description, slug);
         Gson gson = new Gson();
         String jsonBody = gson.toJson(pojoRequest);
         System.out.println("post body : " +jsonBody );*/
-        map.put("type", type);
-        map.put("title",title);
-        map.put("description", description);
-        map.put("slug",slug);
-        System.out.println("Post Body : " + map);
+            map.put("type", type);
+            map.put("title", title);
+            map.put("description", description);
+            map.put("slug", slug);
+            System.out.println("Post Body : " + map);
 
 
-    }
-    @Given("The api user prepares a PATCH request containing {int}, {string} ,{string}, {string} and {string} information to send to the api addNotice endpoint.")
-    public void the_api_user_prepares_a_patch_request_containing_and_information_to_send_to_the_api_add_notice_endpoint(int id, String type, String title, String description, String slug) {
-       map=testData.noticeUpdateRequestBody(id,type,title,description,slug);
+        }
+        @Given("The api user prepares a PATCH request containing {int}, {string} ,{string}, {string} and {string} information to send to the api addNotice endpoint.")
+        public void the_api_user_prepares_a_patch_request_containing_and_information_to_send_to_the_api_add_notice_endpoint
+        ( int id, String type, String title, String description, String slug){
+            map = testData.noticeUpdateRequestBody(id, type, title, description, slug);
 
-        System.out.println("Patch Body : " + map);
-    }
-    @When("The api user prepares a PATCH request that does not contain an id but includes  {string} ,{string}, {string} and {string} information to send to the api addNotice endpoint.")
-    public void  the_api_user_prepares_a_patch_request_that_does_not_contain_an_id_but_includes_and_information_to_send_to_the_api_update_notice_endpoint(String type, String title, String description, String slug) {
+            System.out.println("Patch Body : " + map);
+        }
+        @When("The api user prepares a PATCH request that does not contain an id but includes  {string} ,{string}, {string} and {string} information to send to the api addNotice endpoint.")
+        public void the_api_user_prepares_a_patch_request_that_does_not_contain_an_id_but_includes_and_information_to_send_to_the_api_update_notice_endpoint
+        (String type, String title, String description, String slug){
 
-        requestBody.put("type",type);
-        requestBody.put("title",title);
-        requestBody.put("description",description);
-        requestBody.put("slug",slug);
-        System.out.println("req body : " + requestBody);
+            requestBody.put("type", type);
+            requestBody.put("title", title);
+            requestBody.put("description", description);
+            requestBody.put("slug", slug);
+            System.out.println("req body : " + requestBody);
 
-    }
-    @When("The api user prepares a PATCH request that does not contain data")
-    public void the_api_user_prepares_a_patch_request_that_does_not_contain_data() {
-        requestBody=new JSONObject();
-    }
+        }
+        @When("The api user prepares a PATCH request that does not contain data")
+        public void the_api_user_prepares_a_patch_request_that_does_not_contain_data () {
+            requestBody = new JSONObject();
+        }
 
 
-    @Then("The api user sends a PATCH request and saves the returned response as a Json Object.")
-    public void theApiUserSendsAPATCHRequestAndSavesTheReturnedResponseAsAJsonObject() {
-        response = given()
-                .spec(spec)
-                .contentType(ContentType.JSON)
-                .when()
-                .body(requestBody.toString())
-                .patch(fullPath);
-
-        response.prettyPrint();
-    }
-    @Then("The api user sends a PATCH request, saves the returned response, and verifies that the status code is '403' with the reason phrase Forbidden.")
-    public void the_api_user_sends_a_patch_request_saves_the_returned_response_and_verifies_that_the_status_code_is_with_the_reason_phrase_forbidden() {
-        try {
+        @Then("The api user sends a PATCH request and saves the returned response as a Json Object.")
+        public void theApiUserSendsAPATCHRequestAndSavesTheReturnedResponseAsAJsonObject () {
             response = given()
                     .spec(spec)
                     .contentType(ContentType.JSON)
                     .when()
-                    .body(map)
+                    .body(requestBody.toString())
                     .patch(fullPath);
-        } catch (Exception e) {
-            exceptionMesaj=e.getMessage();
+
+            response.prettyPrint();
         }
-        System.out.println("exceptionMesaj : " + exceptionMesaj);
-        Assert.assertEquals(configLoader.getApiConfig("unauthorizedExceptionMessage"),exceptionMesaj);
+        @Then("The api user sends a PATCH request, saves the returned response, and verifies that the status code is '403' with the reason phrase Forbidden.")
+        public void the_api_user_sends_a_patch_request_saves_the_returned_response_and_verifies_that_the_status_code_is_with_the_reason_phrase_forbidden
+        () {
+            try {
+                response = given()
+                        .spec(spec)
+                        .contentType(ContentType.JSON)
+                        .when()
+                        .body(map)
+                        .patch(fullPath);
+            } catch (Exception e) {
+                exceptionMesaj = e.getMessage();
+            }
+            System.out.println("exceptionMesaj : " + exceptionMesaj);
+            Assert.assertEquals(configLoader.getApiConfig("unauthorizedExceptionMessage"), exceptionMesaj);
+=======
+/*
+    @Given("The api user verifies that the data in the response body includes {string}, {string}, {string}, {string}, {string} and {string}.")
+    public void the_api_user_verifies_that_the_data_in_the_response_body_includes_and(String id, String exp_category, String description, String is_active, String is_deleted, String created_at) {
+        response.then()
+                .assertThat()
+                .body("lists.id", Matchers.equalTo(id),
+                        "lists.visitors_purpose", Matchers.equalTo(exp_category),
+                        "lists.description", Matchers.equalTo(description),
+                        "lists.is_active", Matchers.equalTo(is_active),
+                        "lists.is_deleted", Matchers.equalTo(is_deleted),
+                        "lists.created_at", Matchers.equalTo(created_at));
+
     }
-}
+*/
+
+            @Given("The api user verifies the information in the response body for the entry with the specified {string} index, including {string}, {string}, {string}, {string} and {string}.")
+            public void theApiUserVerifiesTheInformationInTheResponseBodyForTheEntryWithTheSpecifiedIdIndexIncludingAnd
+            (String id, String exp_category, String description, String is_active, String is_deleted, String created_at)
+            {
+                repJP = response.jsonPath();
+
+                Assert.assertEquals(exp_category, repJP.getString("lists[" + id + "].exp_category"));
+                Assert.assertEquals(description, repJP.getString("lists[" + id + "].description"));
+                Assert.assertEquals(is_active, repJP.getString("lists[" + id + "].is_active"));
+                Assert.assertEquals(is_deleted, repJP.getString("lists[" + id + "].is_deleted"));
+                Assert.assertEquals(created_at, repJP.getString("lists[" + id + "].created_at"));
+            }
+
+
+            @Given("The api user prepares a PATCH request containing {int}, {string} and {string} information to send to the api expenseHeadUpdate endpoint.")
+            public void theApiUserPreparesAPATCHRequestContainingAndInformationToSendToTheApiExpenseHeadUpdateEndpoint (
+            int id, String exp_category, String description){
+                map = testData.visitorsPurposeUpdateRequestBody(id, exp_category, description);
+
+                System.out.println("Patch Body : " + map);
+            }
+
+            @Given("The api user prepares a PATCH request that does not contain an id but includes {string} and {string} information to send to the api updateExpenseHead endpoint.")
+            public void theApiUserPreparesAPATCHRequestThatDoesNotContainAnIdButIncludesAndInformationToSendToTheApiUpdateExpenseHeadEndpoint (String arg0, String arg1){
+
+
+            }
+            //GET REQUEST WITH INVALID TOKEN BY ONUR
+            @Given("The api user sends a GET request, saves the returned response, and verifies that the status code is {int} with the {string} phrase {string}")
+            public void theApiUserSendsAGETRequestSavesTheReturnedResponseAndVerifiesThatTheStatusCodeIsWithThePhrase (int code, String key, String value){
+
+
+                response = given()
+                        .spec(spec)
+                        .when()
+                        .get(fullPath);
+
+                response.prettyPrint();
+
+                response.then()
+                        .assertThat()
+                        .statusCode(code)
+                        .body(key, Matchers.equalTo(value));
+>>>>>>>main:
+                src / test / java / stepdefinitions / apiStepdefinitions.java
+            }
+        }
+    }}
