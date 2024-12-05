@@ -1,6 +1,7 @@
 Feature: As an administrator (admin), I should be able to access the expense head information of the user
   whose id is given through the API connection.
-@US25
+@ONUR
+  @US25
   Scenario Outline: When sending a GET body with valid authorization information and correct data (id) to the
   /api/getExpenseHeadById endpoint, it should be verified that the status code returned is 200 and the message
   information in the response body is “Success”.
@@ -19,8 +20,8 @@ Feature: As an administrator (admin), I should be able to access the expense hea
     # Api kullanicisi response bodydeki data "<id>", "<exp_category>", "<description>", <is_active>, <is_deleted> ve "<created_at>" içeriklerini doğrular.
 
     Examples:
-      | id  | exp_category  | description      | is_active     | is_deleted   | created_at           |
-      | 585 | test category | test description | null          | null         | 2024-12-04 02:34:42  |
+      | id   | id  | exp_category  | description      | is_active     | is_deleted   | created_at           |
+      | 585  | 585 | test category | test description | null          | null         | 2024-12-04 02:34:42  |
 
 
   Scenario Outline: When a GET body containing valid authorization information and invalid data (id) is sent to the
@@ -67,7 +68,7 @@ Feature: As an administrator (admin), I should be able to access the expense hea
     # Api kullanicisi "api/getExpenseHeadById" path parametrelerini olusturur
     * The api user prepares a GET request containing the <id> information to send to the api getExpenseHeadById endpoint.
     # Api kullanicisi api getExpenseHeadById endpointine gondermek icin <id> bilgisini iceren bir get request hazirlar
-    * The api user sends a GET body, saves the returned response, and verifies that the status code is '403' with the reason phrase Forbidden.
+    * The api user sends a GET request, saves the returned response, and verifies that the status code is 403 with the "message" phrase "You do not have authorization or token error"
     # Api kullanicisi GET request gonderir, donen responsei kaydeder, status codeun '403' ve reason phrase bilgisinin Forbidden oldugunu dogrular
 
     Examples:

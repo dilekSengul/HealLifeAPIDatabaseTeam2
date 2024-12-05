@@ -227,4 +227,20 @@ public class API_Stepdefinitions extends BaseTest {
     public void theApiUserPreparesAPATCHRequestThatDoesNotContainAnIdButIncludesAndInformationToSendToTheApiUpdateExpenseHeadEndpoint(String arg0, String arg1) {
 
     }
+            //GET REQUEST WITH INVALID TOKEN BY ONUR
+    @Given("The api user sends a GET request, saves the returned response, and verifies that the status code is {int} with the {string} phrase {string}")
+    public void theApiUserSendsAGETRequestSavesTheReturnedResponseAndVerifiesThatTheStatusCodeIsWithThePhrase(int code, String key, String value) {
+
+        response = given()
+                .spec(spec)
+                .when()
+                .get(fullPath);
+
+        response.prettyPrint();
+
+        response.then()
+                .assertThat()
+                .statusCode(code)
+                .body(key, Matchers.equalTo(value));
+    }
 }
