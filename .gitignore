@@ -1,5 +1,7 @@
 target/
 test-output/
+target/test-classes
+target/test-classes/hooks/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
