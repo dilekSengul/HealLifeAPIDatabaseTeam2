@@ -20,8 +20,8 @@ Feature: As an administrator (admin), I should be able to access the expense hea
     # Api kullanicisi response bodydeki data "<id>", "<exp_category>", "<description>", <is_active>, <is_deleted> ve "<created_at>" içeriklerini doğrular.
 
     Examples:
-      | id   | id  | exp_category  | description      | is_active     | is_deleted   | created_at           |
-      | 585  | 585 | test category | test description | null          | null         | 2024-12-04 02:34:42  |
+      | id  | id  | exp_category  | description      | is_active     | is_deleted   | created_at           |
+      | 585 | 585 | test category | test description | null          | null         | 2024-12-04 02:34:42  |
 
 
   Scenario Outline: When a GET body containing valid authorization information and invalid data (id) is sent to the
