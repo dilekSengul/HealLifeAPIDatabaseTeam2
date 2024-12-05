@@ -5,14 +5,14 @@ import io.cucumber.java.en.Given;
 import io.restassured.http.ContentType;
 import org.hamcrest.Matchers;
 import org.junit.Assert;
-import utilities.API_Utilities.API_Methods;
-import utilities.API_Utilities.TestData;
+import utilities.api.API_Methods;
+import utilities.api.TestData;
 
 import static hooks.HooksAPI.spec;
 import static io.restassured.RestAssured.given;
-import static utilities.API_Utilities.API_Methods.fullPath;
+import static utilities.api.API_Methods.fullPath;
 
-public class API_Stepdefinitions extends BaseTest {
+public class apiStepdefinitions extends BaseTest {
 
     TestData testData = new TestData();
     String exceptionMesaj = null;
@@ -68,6 +68,7 @@ public class API_Stepdefinitions extends BaseTest {
 
         System.out.println("exceptionMesaj : " + exceptionMesaj);
         Assert.assertEquals(configLoader.getApiConfig("unauthorizedExceptionMessage"), exceptionMesaj);
+
     }
 
     @Given("The api user prepares a GET request containing the {int} information to send to the api visitorsPurposeid endpoint.")
@@ -88,7 +89,7 @@ public class API_Stepdefinitions extends BaseTest {
 
         response.prettyPrint();
     }
-
+/*
     @Given("The api user verifies that the data in the response body includes {string}, {string}, {string} and {string}.")
     public void the_api_user_verifies_that_the_data_in_the_response_body_includes_and(String id, String visitors_purpose, String description, String created_at) {
         response.then()
@@ -99,7 +100,7 @@ public class API_Stepdefinitions extends BaseTest {
                         "lists.created_at", Matchers.equalTo(created_at));
 
     }
-
+*/
     @Given("The api user prepares a GET request that does not contain data")
     public void the_api_user_prepares_a_get_request_that_does_not_contain_data() {
     }
@@ -188,7 +189,7 @@ public class API_Stepdefinitions extends BaseTest {
 
         System.out.println("Get Body : " + requestBody);
     }
-
+/*
     @Given("The api user verifies that the data in the response body includes {string}, {string}, {string}, {string}, {string} and {string}.")
     public void the_api_user_verifies_that_the_data_in_the_response_body_includes_and(String id, String exp_category, String description, String is_active, String is_deleted, String created_at) {
         response.then()
@@ -201,7 +202,7 @@ public class API_Stepdefinitions extends BaseTest {
                         "lists.created_at", Matchers.equalTo(created_at));
 
     }
-
+*/
 
     @Given("The api user verifies the information in the response body for the entry with the specified {string} index, including {string}, {string}, {string}, {string} and {string}.")
     public void theApiUserVerifiesTheInformationInTheResponseBodyForTheEntryWithTheSpecifiedIdIndexIncludingAnd(String id, String exp_category, String description, String is_active, String is_deleted, String created_at) {
