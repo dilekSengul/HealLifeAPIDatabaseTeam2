@@ -68,6 +68,7 @@ public class API_Stepdefinitions extends BaseTest {
 
         System.out.println("exceptionMesaj : " + exceptionMesaj);
         Assert.assertEquals(configLoader.getApiConfig("unauthorizedExceptionMessage"), exceptionMesaj);
+
     }
 
     @Given("The api user prepares a GET request containing the {int} information to send to the api visitorsPurposeid endpoint.")
