@@ -2,7 +2,6 @@ package stepdefinitions;
 
 import base.BaseTest;
 import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Then;
 import io.restassured.http.ContentType;
 import org.hamcrest.Matchers;
 import org.junit.Assert;
