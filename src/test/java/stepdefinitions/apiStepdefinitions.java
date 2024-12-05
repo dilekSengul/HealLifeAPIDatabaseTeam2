@@ -89,7 +89,7 @@ public class apiStepdefinitions extends BaseTest {
 
         response.prettyPrint();
     }
-/*
+
     @Given("The api user verifies that the data in the response body includes {string}, {string}, {string} and {string}.")
     public void the_api_user_verifies_that_the_data_in_the_response_body_includes_and(String id, String visitors_purpose, String description, String created_at) {
         response.then()
@@ -100,7 +100,7 @@ public class apiStepdefinitions extends BaseTest {
                         "lists.created_at", Matchers.equalTo(created_at));
 
     }
-*/
+
     @Given("The api user prepares a GET request that does not contain data")
     public void the_api_user_prepares_a_get_request_that_does_not_contain_data() {
     }
@@ -189,20 +189,20 @@ public class apiStepdefinitions extends BaseTest {
 
         System.out.println("Get Body : " + requestBody);
     }
-/*
+
     @Given("The api user verifies that the data in the response body includes {string}, {string}, {string}, {string}, {string} and {string}.")
     public void the_api_user_verifies_that_the_data_in_the_response_body_includes_and(String id, String exp_category, String description, String is_active, String is_deleted, String created_at) {
         response.then()
                 .assertThat()
                 .body("lists.id", Matchers.equalTo(id),
-                        "lists.visitors_purpose", Matchers.equalTo(exp_category),
+                        "details.exp_category", Matchers.equalTo(exp_category),
                         "lists.description", Matchers.equalTo(description),
                         "lists.is_active", Matchers.equalTo(is_active),
                         "lists.is_deleted", Matchers.equalTo(is_deleted),
                         "lists.created_at", Matchers.equalTo(created_at));
 
     }
-*/
+
 
     @Given("The api user verifies the information in the response body for the entry with the specified {string} index, including {string}, {string}, {string}, {string} and {string}.")
     public void theApiUserVerifiesTheInformationInTheResponseBodyForTheEntryWithTheSpecifiedIdIndexIncludingAnd(String id, String exp_category, String description, String is_active, String is_deleted, String created_at) {
