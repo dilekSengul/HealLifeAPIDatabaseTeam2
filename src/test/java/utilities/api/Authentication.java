@@ -1,4 +1,4 @@
-package utilities.API_Utilities;
+package utilities.api;
 
 import base.BaseTest;
 import io.restassured.builder.RequestSpecBuilder;

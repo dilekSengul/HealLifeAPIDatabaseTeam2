@@ -1,13 +1,14 @@
 package stepdefinitions;
 
 import base.BaseTest;
+import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.hamcrest.Matchers;
 import org.junit.Assert;
-import utilities.API_Utilities.TestData;
+import utilities.api.TestData;
 
-public class API_Stepdefinitons_damla extends BaseTest {
+public class apiStepdefinitonsDamla extends BaseTest {
 
     TestData testData = new TestData();
     String exceptionMesaj = null;
@@ -30,7 +31,8 @@ public class API_Stepdefinitons_damla extends BaseTest {
         System.out.println("Get Body : "+ requestBody);
 
     }
-    @When("The api user verifies that the data in the response body includes {string}, {string}, {string}, {string}, {string} and {string}.")
+
+    @Then("The api user verifies that the notice data in the response body includes {string}, {string}, {string}, {string}, {string} and {string}.")
     public void the_api_user_verifies_that_the_data_in_the_response_body_includes_and(String id, String type, String slug, String url, String title, String date) {
       response.then()
               .assertThat()

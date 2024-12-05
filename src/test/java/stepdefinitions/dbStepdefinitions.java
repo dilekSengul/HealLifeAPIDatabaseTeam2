@@ -1,6 +1,6 @@
 package stepdefinitions;
 
-public class DB_Stepdefinitions {
+public class dbStepdefinitions {
 
     //
 }

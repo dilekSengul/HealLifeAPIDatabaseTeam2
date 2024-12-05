@@ -6,7 +6,7 @@ Scenario Outline: When a GET request is sent to the /api/getNotice endpoint with
   Then The api user sends a GET request and saves the returned response.
   Then The api user verifies that the status code is 200.
   Then The api user verifies that the "message" information in the response body is "Success".
-  And  The api user verifies the information in the response body for the entry with the specified <dataindex> index, including "<type>", "<slug>", "<url>", "<title>" and "<date>".
+  Given The api user verifies the information in the response body for the entry with the specified <dataindex> index, including "<type>", "<slug>", "<url>", "<title>" and "<date>".
 
   Examples:
     | dataindex | type   | slug           | url          |title               | date      |
