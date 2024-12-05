@@ -5,12 +5,12 @@ import io.cucumber.java.en.Given;
 import io.restassured.http.ContentType;
 import org.hamcrest.Matchers;
 import org.junit.Assert;
-import utilities.API_Utilities.API_Methods;
-import utilities.API_Utilities.TestData;
+import utilities.api.API_Methods;
+import utilities.api.TestData;
 
 import static hooks.HooksAPI.spec;
 import static io.restassured.RestAssured.given;
-import static utilities.API_Utilities.API_Methods.fullPath;
+import static utilities.api.API_Methods.fullPath;
 
 public class API_Stepdefinitions extends BaseTest {
 
@@ -193,12 +193,12 @@ public class API_Stepdefinitions extends BaseTest {
     public void the_api_user_verifies_that_the_data_in_the_response_body_includes_and(String id, String exp_category, String description, String is_active, String is_deleted, String created_at) {
         response.then()
                 .assertThat()
-                .body("lists.id", Matchers.equalTo(id),
-                        "lists.visitors_purpose", Matchers.equalTo(exp_category),
-                        "lists.description", Matchers.equalTo(description),
-                        "lists.is_active", Matchers.equalTo(is_active),
-                        "lists.is_deleted", Matchers.equalTo(is_deleted),
-                        "lists.created_at", Matchers.equalTo(created_at));
+                .body("details.id", Matchers.equalTo(id),
+                        "details.exp_category", Matchers.equalTo(exp_category),
+                        "details.description", Matchers.equalTo(description),
+                        "details.is_active", Matchers.equalTo(is_active),
+                        "details.is_deleted", Matchers.equalTo(is_deleted),
+                        "details.created_at", Matchers.equalTo(created_at));
 
     }
 
