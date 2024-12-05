@@ -50,6 +50,7 @@ public class API_Stepdefinitons_damla extends BaseTest {
         map.put("slug",slug);
 
         System.out.println("Post body : "+ map);
+
     }
 
 }
