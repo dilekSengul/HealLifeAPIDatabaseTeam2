@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<testsuite errors="0" failures="0" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="1" time="6.996">
-    <testcase classname="As an administrator (admin), I want to be able to create a new announcement record via API connection" name="It must be verified via the API that the announcement  record that you want to update via the API" time="6.306">
+<testsuite errors="0" failures="0" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="2" time="5.877">
+    <testcase classname="As an administrator (admin), I should be able to access the relevant announcement data by entering id through the API connection." name="Invalid Token When sending a GET body with invalid authorization information to the /api/getNoticeById" time="3.448">
         <system-out><![CDATA[Given The api user sets "api/getNoticeById" path parameters.................passed
-When The api user prepares a GET request containing the 397 information to send to the api getNoticeById endpoint..passed
+When The api user prepares a GET request containing the 341 information to send to the api getNoticeById endpoint..passed
+Then The api user sends a GET body, saves the returned response, and verifies that the status code is '403' with the reason phrase Forbidden..passed
+]]></system-out>
+    </testcase>
+    <testcase classname="As an administrator (admin), I want to be able to create a new announcement record via API connection." name="The creation of the new announcement record to be created through the API must be verified through the API." time="1.88">
+        <system-out><![CDATA[Given The api user sets "api/getNoticeById" path parameters.................passed
+When The api user prepares a GET request containing the 393 information to send to the api getNoticeById endpoint..passed
 Then The api user sends a GET body and saves the returned response..........passed
-* The api user verifies that the "lists.title" information in the response body is "mama"..passed
+Then The api user verifies that the status code is 200......................passed
+And The api user verifies that the "message" information in the response body is "Success"..passed
 ]]></system-out>
     </testcase>
 </testsuite>
