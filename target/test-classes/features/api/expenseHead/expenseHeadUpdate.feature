@@ -9,8 +9,8 @@ Feature: As an administrator (admin), I should be able to update the expense hea
 
     * The api user sets "api/updateExpenseHead" path parameters.
     # Api kullanicisi "api/updateExpenseHead" path parametrelerini olusturur
-    * The api user prepares a PATCH request containing <id>, "<exp_category>" and "<description>" information to send to the api updateExpenseHead endpoint.
-    # Api kullanicisi api updateExpenseHead endpointine gondermek icin "<exp_category>" ve "<description>" bilgilerini iceren bir patch request hazirlar
+    Given The api user prepares a PATCH request containing <id>, "<exp_category>" and "<description>" information to send to the api expenseHeadUpdate endpoint.
+    # Api kullanicisi api updateExpenseHead endpointine gondermek icin "<visitors_purpose>" ve "<description>" bilgilerini iceren bir patch request hazirlar
     * The api user sends a PATCH request and saves the returned response.
     # Api kullanicisi PATCH request gonderir ve donen responsei kaydeder
     * The api user verifies that the status code is 200.
@@ -21,8 +21,8 @@ Feature: As an administrator (admin), I should be able to update the expense hea
     # Api kullanıcısı Response body icindeki updateId bilgisinin patch request body icindeki id bilgisi ile ayni oldugunu dogrular
 
     Examples:
-      | id  | exp_category  | description  |
-      | 585 | test category | test details |
+      | id  | exp_category | description     |
+      | 585 | test category   | test details |
 
 
   Scenario Outline: When a PATCH body (id, exp_category, description) containing valid authorization information
@@ -32,7 +32,7 @@ Feature: As an administrator (admin), I should be able to update the expense hea
 
     * The api user sets "api/updateExpenseHead" path parameters.
     # Api kullanicisi "api/updateExpenseHead" path parametrelerini olusturur
-    * The api user prepares a PATCH request containing <id>, "<exp_category>" and "<description>" information to send to the api updateExpenseHead endpoint.
+    * The api user prepares a PATCH request containing <id>, "<exp_category>" and "<description>" information to send to the api visitorsPurposeUpdate endpoint.
     # Api kullanicisi api updateExpenseHead endpointine gondermek icin "<visitors_purpose>" ve "<description>" bilgilerini iceren bir patch request hazirlar
     * The api user sends a PATCH request and saves the returned response.
     # Api kullanicisi PATCH request gonderir ve donen responsei kaydeder
@@ -63,7 +63,7 @@ Feature: As an administrator (admin), I should be able to update the expense hea
     # Api kullanicisi response bodydeki message bilgisinin "Wrong information or missing information. Please check your input data and id number." oldugunu dogrular
 
     Examples:
-      | exp_category | description          |
+      | exp_category | description            |
       | test update   | test update details |
 
 
@@ -88,30 +88,30 @@ Feature: As an administrator (admin), I should be able to update the expense hea
   to the /api/visitorsPurposeUpdate endpoint, it should be verified that the status code returned is 403 and the message
   in the response body is "You do not have authorization or token error".
 
-    * The api user sets "api/updateExpenseHead" path parameters.
-    # Api kullanicisi "api/updateExpenseHead" path parametrelerini olusturur
-    * The api user prepares a PATCH request containing <id>, "<exp_category>" and "<description>" information to send to the api updateExpenseHead endpoint.
-    # Api kullanicisi api updateExpenseHead endpointine gondermek icin "<exp_category>" ve "<description>" bilgilerini iceren bir patch request hazirlar
-    Given The api user sends a PATCH request, saves the returned response, and verifies that the status code is 403 with the "message" phrase "You do not have authorization or token error"
+    * The api user sets "api/visitorsPurposeUpdate" path parameters.
+    # Api kullanicisi "api/visitorsPurposeUpdate" path parametrelerini olusturur
+    * The api user prepares a PATCH request containing <id>, "<visitors_purpose>" and "<description>" information to send to the api visitorsPurposeUpdate endpoint.
+    # Api kullanicisi api visitorsPurposeUpdate endpointine gondermek icin "<visitors_purpose>" ve "<description>" bilgilerini iceren bir patch request hazirlar
+    * The api user sends a PATCH request, saves the returned response, and verifies that the status code is '403' with the reason phrase Forbidden.
     # Api kullanicisi PATCH request gonderir, donen responsei kaydeder, status codeun '403' ve reason phrase bilgisinin Forbidden oldugunu dogrular
 
     Examples:
-      | id  | exp_category     | description            |
-      | 585 | purpose update   | purpose update details |
+      | id  | visitors_purpose | description            |
+      | 756 | purpose update   | purpose update details |
 
 
-  Scenario Outline: It must be verified via the API that the expense head record that you want to update via the API
+  Scenario Outline: It must be verified via the API that the visitor purpose record that you want to update via the API
   has been updated.
 
-    * The api user sets "api/getExpenseHeadById" path parameters.
-    # Api kullanicisi "api/getExpenseHeadById" path parametrelerini olusturur
-    * The api user prepares a GET request containing the <id> information to send to the api getExpenseHeadById endpoint.
-    # Api kullanicisi api getExpenseHeadById endpointine gondermek icin <id> bilgisini iceren bir get request hazirlar
+    * The api user sets "api/visitorsPurposeId" path parameters.
+    # Api kullanicisi "api/visitorsPurposeId" path parametrelerini olusturur
+    * The api user prepares a GET request containing the <id> information to send to the api visitorsPurposeid endpoint.
+    # Api kullanicisi api visitorsPurposeId endpointine gondermek icin <id> bilgisini iceren bir get request hazirlar
     * The api user sends a GET body and saves the returned response.
     # Api kullanicisi GET body gonderir ve donen responsei kaydeder
-    * The api user verifies that the "details.exp_category" information in the response body is "test category".
+    * The api user verifies that the "lists.visitors_purpose" information in the response body is "purpose update".
     # Api kullanicisi response bodydeki lists.visitors_purpose bilgisinin "purpose update" oldugunu dogrular
 
     Examples:
       | id  |
-      | 585 |
+      | 756 |

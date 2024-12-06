@@ -3,8 +3,11 @@
 /workspace.xml
 target/
 test-output/
+<<<<<<< HEAD
+=======
 target/test-classes/
 target/test-classes/hooks/
+>>>>>>> main
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/

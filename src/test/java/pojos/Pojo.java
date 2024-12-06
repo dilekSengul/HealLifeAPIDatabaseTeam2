@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 //@AllArgsConstructor
 public class Pojo {
 
+
     /*
             "type": "deneme",
             "title": " hi",

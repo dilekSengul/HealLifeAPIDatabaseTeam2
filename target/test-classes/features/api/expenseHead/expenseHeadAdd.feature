@@ -1,8 +1,5 @@
 Feature: As an administrator (admin) I want to be able to create a new visitor purpose record via API connection.
-
-@ONUR
-  @US26
-
+@US26
   Scenario Outline: A POST request to the "api/addExpenseHead" endpoint with valid authorization and correct data
   should return a 200 status code, a response body with the message "Success," and the creation of the new expense
   head record should be verified via a GET request to the "api/getExpenseHeadById" endpoint using the "addId"
@@ -44,9 +41,9 @@ Feature: As an administrator (admin) I want to be able to create a new visitor p
   response body'deki message bilgisinin "You do not have authorization or token error" oldugu dogrulanmali.
 
     * The api user sets "api/addExpenseHead" path parameters.
-    # Api kullanicisi "api/addExpenseHead" path parametrelerini olusturur
-    * The api user prepares a POST request containing "<exp_category>" and "<description>" information to send to the api addExpenseHead endpoint.
-    # Api kullanicisi api addExpenseHead endpointine gondermek icin "<exp_category>" ve "<description>" bilgilerini iceren bir post request hazirlar
+    # Api kullanicisi "api/visitorsPurposeAdd" path parametrelerini olusturur
+    * The api user prepares a POST request containing "<exp_category>" and "<description>" information to send to the api visitorsPurposeAdd endpoint.
+    # Api kullanicisi api visitorsPurposeAdd endpointine gondermek icin "<exp_category>" ve "<description>" bilgilerini iceren bir post request hazirlar
     * The api user sends a POST request and saves the returned response.
     # Api kullanicisi POST request gonderir ve donen responsei kaydeder
     * The api user verifies that the status code is 403.
