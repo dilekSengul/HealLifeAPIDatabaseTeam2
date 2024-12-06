@@ -1,20 +1,15 @@
 package stepdefinitions;
 
 import base.BaseTest;
-import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import io.restassured.http.ContentType;
 import org.hamcrest.Matchers;
-import org.json.JSONObject;
 import org.junit.Assert;
 import utilities.api.TestData;
 
-import static hooks.HooksAPI.spec;
 import static io.restassured.RestAssured.given;
-import static utilities.api.API_Methods.fullPath;
 
-public class apiStepdefinitonsDamla extends BaseTest {
+public class apiStepdefinitonsNotice extends BaseTest {
 
     TestData testData = new TestData();
     String exceptionMesaj = null;
