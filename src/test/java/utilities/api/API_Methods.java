@@ -1,4 +1,4 @@
-package utilities.API_Utilities;
+package utilities.api;
 
 import base.BaseTest;
 import io.restassured.http.ContentType;
@@ -10,7 +10,8 @@ import static hooks.HooksAPI.spec;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 
-public class API_Methods extends BaseTest {
+public class
+API_Methods extends BaseTest {
     public static String fullPath;
 
     public static void pathParam(String rawPaths) { // /api/opdList

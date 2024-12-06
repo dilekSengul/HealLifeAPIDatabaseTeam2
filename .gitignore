@@ -1,9 +1,6 @@
-# Default ignored files
-/shelf/
-/workspace.xml
 target/
 test-output/
-target/test-classes/
+target/test-classes
 target/test-classes/hooks/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
