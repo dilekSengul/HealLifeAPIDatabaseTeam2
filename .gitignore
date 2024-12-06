@@ -1,6 +1,3 @@
-# Default ignored files
-/shelf/
-/workspace.xml
 target/
 test-output/
 !.mvn/wrapper/maven-wrapper.jar

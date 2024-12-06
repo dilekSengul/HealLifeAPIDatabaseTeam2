@@ -2,6 +2,7 @@ package stepdefinitions;
 
 import base.BaseTest;
 import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
 import io.restassured.http.ContentType;
 import org.hamcrest.Matchers;
 import org.junit.Assert;
@@ -129,6 +130,7 @@ public class API_Stepdefinitions extends BaseTest {
         System.out.println("Post Body : " + map);
     }
 
+
     @Given("The api user sends a POST request and saves the returned response.")
     public void the_api_user_sends_a_post_request_and_saves_the_returned_response() {
         response = given()
@@ -170,4 +172,66 @@ public class API_Stepdefinitions extends BaseTest {
 
        Assert.assertEquals(map.get("id"), repJP.getInt("updateId"));
     }
+
+    //expenseHead-Onur\\
+
+    @Given("The api user prepares a POST request containing {string} and {string} information to send to the api addExpenseHead endpoint.")
+    public void the_api_user_prepares_a_post_request_containing_and_information_to_send_to_the_api_addExpenseHead_endpoint(String exp_category, String description) {
+        map.put("exp_category", exp_category);
+        map.put("description", description);
+
+        System.out.println("Post Body : " + map);
+    }
+
+    @Given("The api user prepares a GET request containing the {int} information to send to the api getExpenseHeadById endpoint.")
+    public void the_api_user_prepares_a_get_request_containing_the_information_to_send_to_the_api_getExpenseHeadById_endpoint(int id) {
+        requestBody.put("id", id);
+
+        System.out.println("Get Body : " + requestBody);
+    }
+
+    @Given("The api user verifies that the data in the response body includes {string}, {string}, {string}, {string}, {string} and {string}.")
+    public void the_api_user_verifies_that_the_data_in_the_response_body_includes_and(String id, String exp_category, String description, String is_active, String is_deleted, String created_at) {
+        response.then()
+                .assertThat()
+                .body("lists.id", Matchers.equalTo(id),
+                        "lists.visitors_purpose", Matchers.equalTo(exp_category),
+                        "lists.description", Matchers.equalTo(description),
+                        "lists.is_active", Matchers.equalTo(is_active),
+                        "lists.is_deleted", Matchers.equalTo(is_deleted),
+                        "lists.created_at", Matchers.equalTo(created_at));
+
+    }
+
+
+    @Given("The api user verifies the information in the response body for the entry with the specified {string} index, including {string}, {string}, {string}, {string} and {string}.")
+    public void theApiUserVerifiesTheInformationInTheResponseBodyForTheEntryWithTheSpecifiedIdIndexIncludingAnd(String id, String exp_category, String description, String is_active, String is_deleted, String created_at) {
+        repJP = response.jsonPath();
+
+        Assert.assertEquals(exp_category, repJP.getString("lists[" + id + "].exp_category"));
+        Assert.assertEquals(description, repJP.getString("lists[" + id + "].description"));
+        Assert.assertEquals(is_active, repJP.getString("lists[" + id + "].is_active"));
+        Assert.assertEquals(is_deleted, repJP.getString("lists[" + id + "].is_deleted"));
+        Assert.assertEquals(created_at, repJP.getString("lists[" + id + "].created_at"));
+    }
+
+
+    @Given("The api user prepares a PATCH request containing {int}, {string} and {string} information to send to the api expenseHeadUpdate endpoint.")
+    public void theApiUserPreparesAPATCHRequestContainingAndInformationToSendToTheApiExpenseHeadUpdateEndpoint(int id, String exp_category, String description) {
+        map = testData.visitorsPurposeUpdateRequestBody(id, exp_category, description);
+
+        System.out.println("Patch Body : " + map);
+    }
+
+    @Given("The api user prepares a PATCH request that does not contain an id but includes {string} and {string} information to send to the api updateExpenseHead endpoint.")
+    public void theApiUserPreparesAPATCHRequestThatDoesNotContainAnIdButIncludesAndInformationToSendToTheApiUpdateExpenseHeadEndpoint(String arg0, String arg1) {
+
+    }
+
+    @Given("The api user verifies the information in the response body for the entry with the specified created_at index, including {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string}.")
+    public void the_api_user_verifies_the_information_in_the_response_body_for_the_entry_with_the_specified_created_at_index_including(String string, String string2, String string3, String string4, String string5, String string6, String string7, String string8, String string9, String string10, String string11, String string12, String string13, String string14, String string15, String string16) {
+
+    }
+
+
 }
