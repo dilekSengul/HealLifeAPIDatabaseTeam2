@@ -10,7 +10,7 @@ import static hooks.HooksAPI.spec;
 import static io.restassured.RestAssured.given;
 import static utilities.api.API_Methods.fullPath;
 
-public class apiStepDefinitionsArzu extends BaseTest {
+public class apiStepDefinitions_Arzu extends BaseTest {
 
     @Given("Api user sets {string} path parameters.")
     public void api_user_sets_path_parameters(String pathParameter) {
