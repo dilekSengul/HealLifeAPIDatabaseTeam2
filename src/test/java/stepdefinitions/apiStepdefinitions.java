@@ -359,6 +359,15 @@ public class apiStepdefinitions extends BaseTest {
         Assert.assertEquals(configLoader.getApiConfig("unauthorizedExceptionMessage"),exceptionMesaj);
     }
 
+    @Given("The api user prepares a PATCH request that does not contain an id but includes {string} and {string} information to send to the api visitorsPurposeUpdate endpoint.")
+    public void the_api_user_prepares_a_patch_request_that_does_not_contain_an_id_but_includes_and_information_to_send_to_the_api_visitors_purpose_update_endpoint(String visitors_purpose, String description) {
+
+        requestBody.put("visitors_purpose",visitors_purpose);
+        requestBody.put("description",description);
+        System.out.println("req body : " + requestBody);
+
+
+    }
 
 
 }
