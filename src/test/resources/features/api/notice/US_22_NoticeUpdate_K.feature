@@ -96,7 +96,7 @@ Feature: As an administrator (admin), I want to be able to create a new announce
       | id  |  type     | title  |description  |slug|
       | 398 | deneme    | hallo  | canim     |hallo  |
 
-  @kubra
+
   Scenario Outline: It must be verified via the API that the announcement  record that you want to update via the API
   has been updated.
     Given The api user sets "api/getNoticeById" path parameters.
