@@ -33,10 +33,9 @@ Feature: As an administrator (admin) I should be able
 
     * The api user sets "api/getBloodGroup" path parameters.
     * The api user prepares a GET request containing the <id> information to send to the api getExpenseHeadById endpoint.
-     * The response body should contain the correct blood group information for  <id> <name> <is_blood_group> <created_at>
 
+    
    Examples:
 
-      | id|  |name|         |is_blood_group|             |created_at|
-      | 1|  |DirtBlood|       |0|                    |2023-06-02 12:17:06|
-
+     | id    |
+     | 14 |

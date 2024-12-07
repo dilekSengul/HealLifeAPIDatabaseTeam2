@@ -7,17 +7,21 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.restassured.http.ContentType;
+import io.restassured.response.Response;
 import org.hamcrest.Matchers;
 import org.json.JSONObject;
 import org.junit.Assert;
 import utilities.api.API_Methods;
 import utilities.api.TestData;
 
+import javax.lang.model.element.Name;
+import java.sql.Time;
 import java.util.Map;
 
 import static com.google.common.base.Predicates.equalTo;
 import static hooks.HooksAPI.spec;
 import static io.restassured.RestAssured.given;
+import static io.restassured.RestAssured.sessionId;
 import static org.junit.Assert.assertEquals;
 import static utilities.api.API_Methods.fullPath;
 
@@ -386,8 +390,14 @@ public class apiStepdefinitions extends BaseTest {
 
     }
 
+    @Given("The api user prepares a GET request containing \\{int}, \\{string} ,\\{int},\\{int} information to send to the api updateExpenseHead endpoint.")
+    public void the_api_user_prepares_a_get_request_containing_information_to_send_to_the_api_update_expense_head_endpoint() {
 
-}
+
+
+        }
+
+    }
 
 
 

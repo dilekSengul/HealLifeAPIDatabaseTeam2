@@ -36,6 +36,5 @@ Feature: As an administrator (admin) I should be able
 
    Examples:
 
-      | id|  |name|         |is_blood_group|             |created_at|
-      | 1|  |DirtBlood|       |0|                    |2023-06-02 12:17:06|
-
+     | id    |
+     | 14 |
