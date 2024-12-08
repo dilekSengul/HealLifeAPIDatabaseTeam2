@@ -1,0 +1,13 @@
+api:
+  base_url: "https://www.heallifehospital.com"
+  adminEmail : "dilan.admin@heallifehospital.com"
+  adminPassword : "o6*d@fko3PXL1"
+  unauthorizedExceptionMessage: "status code: 403, reason phrase: Forbidden"
+  invalidToken: "invalid"
+
+database:
+  host: "localhost"
+  port: 3306
+  URL:
+  USERNAME:
+  PASSWORD:
