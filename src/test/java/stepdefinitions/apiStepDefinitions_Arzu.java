@@ -106,5 +106,10 @@ public class apiStepDefinitions_Arzu extends BaseTest {
                         "lists.email", Matchers.equalTo(email));
     }
 
+    @Given("Api user prepares a GET request that does not contain data.")
+    public void api_user_prepares_a_get_request_that_does_not_contain_data() {
+
+    }
+
 
 }

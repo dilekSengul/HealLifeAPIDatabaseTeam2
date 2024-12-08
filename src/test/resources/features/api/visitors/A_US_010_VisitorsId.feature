@@ -32,7 +32,7 @@ Feature: As an administrator (admin), I should be able to access the
       | id    |
       | 11222 |
 
-
+@US
   Scenario: When a GET request that does not contain valid authorization information and data (id) is sent to the
   /api/visitorsId endpoint, the status code returned is
   203 and the message information in the response body is
