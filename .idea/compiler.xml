@@ -8,6 +8,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="healLifeHospitalBackend" />
+        <module name="HealLifeAPIDatabaseTeam2" />
       </profile>
     </annotationProcessing>
   </component>
