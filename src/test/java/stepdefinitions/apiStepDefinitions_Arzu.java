@@ -111,5 +111,21 @@ public class apiStepDefinitions_Arzu extends BaseTest {
 
     }
 
+    @Given("Api user sends a GET request body, saves the returned response, and verifies that the status code is '403' with the reason phrase Forbidden.")
+    public void the_api_user_sends_a_get_request_body_saves_the_returned_response_and_verifies_that_the_status_code_is_with_the_phrase() {
+        response = given()
+                .spec(spec)
+                .when()
+                .get(fullPath);
+
+        response.prettyPrint();
+
+        response.then()
+                .assertThat()
+                .statusCode(403)
+                .body(Matchers.containsString("You do not have authorization or token error"));
+
+    }
+
 
 }
