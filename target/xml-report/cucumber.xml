@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<<<<<<< HEAD
-<testsuite errors="0" failures="1" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="2" time="3.728">
-    <testcase classname="As an administrator (admin), I should be able to access the relevant announcement data by entering id through the API connection." name="Invalid Token When sending a GET body with invalid authorization information to the /api/getNoticeById" time="1.93">
-=======
-<testsuite errors="0" failures="1" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="2" time="3.347">
-    <testcase classname="As an administrator (admin), I should be able to access the relevant announcement data by entering id through the API connection." name="Invalid Token When sending a GET body with invalid authorization information to the /api/getNoticeById" time="1.7">
->>>>>>> main
+<testsuite errors="0" failures="1" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="5" time="12.736">
+    <testcase classname="As an administrator (admin), I should be able to access the relevant announcement data by entering id through the API connection." name="Invalid Token When sending a GET body with invalid authorization information to the /api/getNoticeById" time="1.972">
         <failure message="expected:&lt;status code: 403, reason phrase: Forbidden&gt; but was:&lt;null&gt;" type="java.lang.AssertionError"><![CDATA[Given The api user sets "api/getNoticeById" path parameters.................passed
 When The api user prepares a GET request containing the 341 information to send to the api getNoticeById endpoint..passed
 Then The api user sends a GET body, saves the returned response, and verifies that the status code is '403' with the reason phrase Forbidden..failed
@@ -16,24 +11,38 @@ java.lang.AssertionError: expected:<status code: 403, reason phrase: Forbidden> 
 	at org.junit.Assert.failNotEquals(Assert.java:835)
 	at org.junit.Assert.assertEquals(Assert.java:120)
 	at org.junit.Assert.assertEquals(Assert.java:146)
-<<<<<<< HEAD
-	at stepdefinitions.apiStepdefinitions.the_api_user_sends_a_get_body_saves_the_returned_response_and_verifies_that_the_status_code_is_with_the_reason_phrase_forbidden(apiStepdefinitions.java:122)
+	at stepdefinitions.apiStepdefinitions.the_api_user_sends_a_get_body_saves_the_returned_response_and_verifies_that_the_status_code_is_with_the_reason_phrase_forbidden(apiStepdefinitions.java:126)
 	at ✽.The api user sends a GET body, saves the returned response, and verifies that the status code is '403' with the reason phrase Forbidden.(file:///C:/Users/USer/IdeaProjects/HealLifeAPIDatabaseTeam2/src/test/resources/features/api/notice/us20getNoticeByIdDamla.feature:48)
 ]]></failure>
     </testcase>
-    <testcase classname="As an administrator (admin), I want to be able to create a new announcement record via API connection." name="The creation of the new announcement record to be created through the API must be verified through the API." time="1.6">
-=======
-	at stepdefinitions.apiStepdefinitions.the_api_user_sends_a_get_body_saves_the_returned_response_and_verifies_that_the_status_code_is_with_the_reason_phrase_forbidden(apiStepdefinitions.java:126)
-	at ✽.The api user sends a GET body, saves the returned response, and verifies that the status code is '403' with the reason phrase Forbidden.(file:///C:/Users/vardal/IdeaProjects/HealLifeAPIDatabaseTeam2/src/test/resources/features/api/notice/us20getNoticeByIdDamla.feature:48)
-]]></failure>
-    </testcase>
-    <testcase classname="As an administrator (admin), I want to be able to create a new announcement record via API connection." name="The creation of the new announcement record to be created through the API must be verified through the API." time="1.466">
->>>>>>> main
+    <testcase classname="As an administrator (admin), I want to be able to create a new announcement record via API connection." name="The creation of the new announcement record to be created through the API must be verified through the API." time="5.273">
         <system-out><![CDATA[Given The api user sets "api/getNoticeById" path parameters.................passed
 When The api user prepares a GET request containing the 393 information to send to the api getNoticeById endpoint..passed
 Then The api user sends a GET body and saves the returned response..........passed
 Then The api user verifies that the status code is 200......................passed
 And The api user verifies that the "message" information in the response body is "Success"..passed
+]]></system-out>
+    </testcase>
+    <testcase classname="As an administrator (admin) I should be able to access the Visitor List via API connection." name="Invalid Token when a GET request is sent to the /api/visitorsList endpoint with invalid authorization information," time="0.935">
+        <system-out><![CDATA[* Api user sets "api/visitorsList" path parameters..........................passed
+* The api user sends a GET request, then saves the returned response, and verifies that the status code is '403' with the reason phrase Forbidden..passed
+]]></system-out>
+    </testcase>
+    <testcase classname="As an administrator (admin), I should be able to access the" name="When sending a GET body with valid authorization information and correct data (id) to the" time="2.222">
+        <system-out><![CDATA[* Api user sets "api/visitorsId" path parameters............................passed
+* Api user prepares a GET request containing 1137 info to send to api visitorsId endpoint..passed
+* Api user sends a GET body and saves response..............................passed
+* Api user verifies Status Code 200.........................................passed
+* Api user verifies "message" information in the response body is "Success"..passed
+* Api user verifies the data in response body includes "1137", "Online", "Hello", "RoSlads", "emilyjonesg89@gmail.com"..passed
+]]></system-out>
+    </testcase>
+    <testcase classname="As an administrator (admin), I should be able to access the" name="When a GET body containing valid authorization information and invalid data (id) is sent to the" time="2.124">
+        <system-out><![CDATA[* Api user sets "api/visitorsId" path parameters............................passed
+* Api user prepares a GET request containing 11222 info to send to api visitorsId endpoint..passed
+* Api user sends a GET body and saves response..............................passed
+* Api user verifies Status Code 203.........................................passed
+* Api user verifies "message" information in the response body is "No id or wrong id."..passed
 ]]></system-out>
     </testcase>
 </testsuite>
