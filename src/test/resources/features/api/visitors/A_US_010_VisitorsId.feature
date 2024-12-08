@@ -33,3 +33,29 @@ Feature: As an administrator (admin), I should be able to access the
       | 11222 |
 
 
+  Scenario: When a GET request that does not contain valid authorization information and data (id) is sent to the
+  /api/visitorsId endpoint, the status code returned is
+  203 and the message information in the response body is
+  "No id or wrong id." It should be verified that it is.
+
+    * Api user sets "api/visitorsId" path parameters.
+    * Api user prepares a GET request that does not contain data.
+    * Api user sends a GET body and saves response.
+    * Api user verifies Status Code 203.
+    * Api user verifies "message" information in the response body is "No id or wrong id.".
+
+
+  Scenario Outline:  Invalid Token When sending a GET body with invalid authorization information to the
+  /api/visitorsPurposeId endpoint, it should be verified that the status code returned is
+  403 and the message in the response body is
+  "You do not have authorization or token error".
+
+    * Api user sets "api/visitorsId" path parameters.
+    * Api user prepares a GET request containing <id> info to send to api visitorsId endpoint.
+    * The api user sends a GET request, saves the returned response, and verifies that the status code is 403 with the "message" phrase "You do not have authorization or token error"
+
+    Examples:
+      | id   |
+      | 1137 |
+
+
