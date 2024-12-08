@@ -10,7 +10,6 @@ Feature: As an administrator (admin) I should be able to access the Visitor Purp
     Then The api user verifies that the "message" information in the response body is "Success".
     And The api user verifies the information in the response body for the entry with the specified <dataindex> index, including "<visitors_purpose>", "<description>" and "<created_at>".
 
-
     Examples:
       | dataindex | visitors_purpose              | description             | created_at          |
       | 2         | purpose update                | purpose update details | 2023-05-22 13:56:15 |

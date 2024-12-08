@@ -15,7 +15,6 @@ Feature: As an administrator I want to be able to create a new visitor purpose r
       | visitors_purpose | description        |
       | deneme purpose   | deneme description |
 
-
   Scenario: When a POST request that does not contain valid authorization information and data is sent to the
   /api/visitorsPurposeAdd endpoint, the status code returned is 203 and the message information in the response
   body is "No information or missing information. Please check your input data." It should be verified that it is.

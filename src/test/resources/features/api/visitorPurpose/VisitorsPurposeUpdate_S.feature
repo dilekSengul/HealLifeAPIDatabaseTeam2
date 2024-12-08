@@ -75,7 +75,6 @@ Feature: As an administrator, I should be able to update the visitor purpose inf
       | id  | visitors_purpose | description            |
       | 792 | purpose update   | serpil kaydı |
 
-
   Scenario Outline: It must be verified via the API that the visitor purpose record that you want to update via the API
   has been updated.
 

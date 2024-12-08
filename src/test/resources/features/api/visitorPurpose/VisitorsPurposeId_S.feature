@@ -38,7 +38,6 @@ Feature: As an administrator I should be able to access the Visitor Purpose info
       | id     |
       | 30000 |
 
-
   Scenario: When a GET request that does not contain valid authorization information and data (id) is sent to the
   /api/visitorsPurposeId endpoint, the status code returned is 203 and the message information in the response body is
   "No id or wrong id." It should be verified that it is.
