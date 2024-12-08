@@ -5,7 +5,7 @@ Bu proje, **HealLife Hospital** web sitesinin backend QA testlerini gerçekleşt
 ---
 
 ## 🏆 Amaç  
-Projenin amacı, HealLife Hospital platformunun güvenilir, hızlı ve doğru bir şekilde çalışmasını sağlamak için API'leri ve database operasyonlarını test etmektir. Test süreci, modern QA araçları ve teknolojileri kullanılarak gerçekleştirilmiştir.  
+Projenin amacı, HealLife Hospital platformunun güvenilir, hızlı ve doğru bir şekilde çalışmasını sağlamak için API'ları ve database operasyonlarını test etmektir. Test süreci, modern QA araçları ve teknolojileri kullanılarak gerçekleştirilmiştir.  
 
 ---
 
@@ -36,29 +36,27 @@ Projeye katkıda bulunmak için şu adımları izleyin:
 1. Repository'yi fork edin.
 2. Yeni bir branch oluşturun:
 
-   `git checkout -b feature/your-feature-name`
+   `git checkout -b isminiz`
 4. Geliştirmelerinizi yapın ve commit edin:
 
-    `git commit -m "Add feature: your feature name`
+    `git commit -m "isminiz/yorum"`
 5. Branch'i repository'nize push edin:
 
-  `git push origin feature/your-feature-name`
+  `git push origin isminiz`
 5. Pull Request (PR) oluşturun ve açıklama ekleyin.
 
 ## 📋 Özellikler ve API Dokümantasyonu
 
   ### API Testleri:  
   
-  - Visitor Management (visitors,visitorsBook,visitorPurpose): Ziyaretçi kayıtları ve geliş amaçları.
+  - Visitor Management (visitors, visitorsBook, visitorPurpose): Ziyaretçi kayıtları ve geliş amaçları.
   - Blood Group Operations(bloodGroup): Kan grubu bilgileri.
-  - **Notice Management(notice): Duyuruların görüntülenmesi, eklenmesi, güncellenmesi ve silinmesi.  
+  - Notice Management(notice): Duyuruların görüntülenmesi, eklenmesi, güncellenmesi ve silinmesi.  
   - Expense Categories(expenseHead): Harcama başlıklarının yönetimi ve ilgili işlemler.  
   - Findings and Categories(finding, findingCategory): Tıbbi bulguların ve kategorilerinin .  
-  - **Staff and Patient Records**: Personel ve hasta listelerinin görüntülenmesi.  
 
   Her API uç noktası, aşağıdaki kriterlere göre test edilmiştir:  
-  - Yanıt kodu doğrulama (200, 201, 400, 404 vb.)  
-  - Yanıt sürelerinin ölçülmesi.  
+  - Yanıt kodu doğrulama (200, 201, 400, 404 vb.)    
   - Gönderilen ve alınan veri yapılarına uygunluk.  
   - CRUD işlemleri (Create, Read, Update, Delete) doğrulama.  
 
@@ -68,7 +66,6 @@ _Not: Test senaryoları için Postman koleksiyonu ileride paylaşılabilir._
   ### Database Testleri:
   
   - Hasta, doktor ve personel bilgilerinin doğru bir şekilde saklanması ve güncellenmesi.
-  - Database sorgularının performans testi.
   - CRUD işlemlerinin (Create, Read, Update, Delete) doğrulaması.
     
 _*Daha detaylı dokümantasyon ve kullanım örnekleri ilerleyen aşamalarda eklenecektir._
