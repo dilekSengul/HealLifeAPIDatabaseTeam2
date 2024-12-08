@@ -7,7 +7,7 @@ Feature: As an administrator (admin) I should be able to delete the visitor pusp
 
     * The api user sets "api/visitorsPurposeDelete" path parameters.
     * The api user prepares a DELETE request to send to the api visitorsPurposeDelete add endpoint.
-    * The api user sends a DELETE request and saves the returned response.
+    Given The api user sends a DELETE request and saves the returned response.
     * The api user verifies that the status code is 200.
     * The api user verifies that the "message" information in the response body is "Success".
     * The api user verifies that the Deletedid information is the same as the id information in the request body
@@ -18,7 +18,7 @@ Feature: As an administrator (admin) I should be able to delete the visitor pusp
 
     * The api user sets "api/visitorsPurposeDelete" path parameters.
     * The api user prepares a DELETE request to send to the api visitorsPurposeDelete add endpoint.
-    * The api user sends a DELETE request and saves the returned response.
+    Given The api user sends a DELETE request and saves the returned response.
     * The api user verifies that the status code is 203.
     * The api user verifies that the "message" information in the response body is "No id or wrong id. Please check your id number.".
 
@@ -29,20 +29,19 @@ Feature: As an administrator (admin) I should be able to delete the visitor pusp
 
     * The api user sets "api/visitorsPurposeDelete" path parameters.
     * The api user prepares a DELETE request that does not contain data
-    * The api user sends a DELETE request and saves the returned response.
+    Given The api user sends a DELETE request and saves the returned response..
     * The api user verifies that the status code is 203.
     * The api user verifies that the "message" information in the response body is "No id or wrong id. Please check your id number.".
 
 
     #BURADA HATA VERIYOR
-  @hurrem
   Scenario: Invalid Token When a DELETE body is sent to the /api/visitorsPurposeDelete endpoint with invalid authorization information,
   it should be verified that the status code returned is 403 and the message in the response body is
   "You do not have authorization or token error".
 
     * The api user sets "api/visitorsPurposeDelete" path parameters.
     * The api user prepares a DELETE request that does not contain data
-    * The api user sends a DELETE request, saves the returned response, and verifies that the status code is '403' with the reason phrase Forbidden.
+    Given The api user sends a DELETE request, saves the returned response, and verifies that the status code is '403' with the reason phrase Forbidden..
 
 
   Scenario Outline: It must be verified via the API that the visitor purpose record that is requested to be deleted via
