@@ -15,7 +15,6 @@ Feature: As an administrator (admin) I should be able to access the Expense Head
     * The api user verifies the information in the response body for the entry with the specified "<id>" index, including "<exp_category>", "<description>", "<is_active>", "<is_deleted>" and "<created_at>".
     # Api kullanıcısı response body icindeki <id> indexe sahip olanin "<exp_category>", "<description>", "<is_active>", "<is_deleted>" ve "<created_at>" bilgilerini doğrular.
 
-
   Examples:
     | id  | exp_category  | description        | is_active     | is_deleted   | created_at           |
     | 0 | Building rent   |                   | yes           | no           | 2021-10-25 13:50:41   |
