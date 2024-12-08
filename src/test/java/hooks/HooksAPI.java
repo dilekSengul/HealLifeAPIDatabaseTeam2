@@ -6,7 +6,7 @@ import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.specification.RequestSpecification;
-import utilities.API_Utilities.Authentication;
+import utilities.api.Authentication;
 
 public class HooksAPI extends BaseTest {
     public static RequestSpecification spec;
