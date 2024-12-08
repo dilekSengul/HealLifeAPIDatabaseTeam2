@@ -20,8 +20,8 @@ import java.util.Map;
 
 import static com.google.common.base.Predicates.equalTo;
 import static hooks.HooksAPI.spec;
-import static io.restassured.RestAssured.given;
-import static io.restassured.RestAssured.sessionId;
+import static io.restassured.RestAssured.*;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.assertEquals;
 import static utilities.api.API_Methods.fullPath;
 
@@ -378,26 +378,23 @@ public class apiStepdefinitions extends BaseTest {
     }
 
 
-    @And("The  api user <İD> invalid authorization")
-    public void theApiUserİDInvalidAuthorization() {
-        response = given()
-                .spec(spec)
-                .when()
-                .get(fullPath);
-
-        response.prettyPrint();
-
-
-    }
-
     @Given("The api user prepares a GET request containing \\{int}, \\{string} ,\\{int},\\{int} information to send to the api updateExpenseHead endpoint.")
     public void the_api_user_prepares_a_get_request_containing_information_to_send_to_the_api_update_expense_head_endpoint() {
 
 
+    }
 
-        }
+
+    @Given("The  api user {int} invalid authorization")
+    public void the_api_user_invalid_authorization(Integer int1) {
+        ;
+
+        String invalidToken = "invalidToken";
+
 
     }
+
+}
 
 
 

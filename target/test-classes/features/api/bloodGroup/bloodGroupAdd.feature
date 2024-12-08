@@ -34,7 +34,6 @@ Feature: As an administrator (admin) I should be able
     * The api user sets "api/getBloodGroup" path parameters.
     * The api user prepares a GET request containing the <id> information to send to the api getExpenseHeadById endpoint.
 
-    
    Examples:
 
      | id    |
