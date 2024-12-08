@@ -1,6 +1,7 @@
 Feature: As an administrator (admin), I should be able to update the expense head information registered in the
   system via API connection.
 
+
   @US27
   Scenario Outline: A PATCH request to the "api/updateExpenseHead" endpoint with valid authorization and correct
   data (id, exp_category, description) should return a 200 status code, a response body message of "Success," and

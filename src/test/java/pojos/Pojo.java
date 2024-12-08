@@ -11,7 +11,6 @@ import java.sql.Time;
 //@AllArgsConstructor
 public class Pojo {
 
-
     /*
             "type": "deneme",
             "title": " hi",

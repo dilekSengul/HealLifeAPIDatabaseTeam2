@@ -6,7 +6,6 @@ import java.util.HashMap;
 
 public class TestData extends BaseTest {
 
-
     public HashMap visitorsPurposeUpdateRequestBody(int id, String visitors_purpose, String description) {
 
         HashMap<String, Object> requestBody = new HashMap<>();
