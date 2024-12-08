@@ -16,6 +16,7 @@ import java.util.Map;
 
 import static hooks.HooksAPI.spec;
 import static io.restassured.RestAssured.given;
+import static org.junit.Assert.assertEquals;
 import static utilities.api.API_Methods.fullPath;
 
 public class apiStepdefinitions extends BaseTest {
@@ -56,9 +57,9 @@ public class apiStepdefinitions extends BaseTest {
     public void the_api_user_verifies_the_information_in_the_response_body_for_the_entry_with_the_specified_index_including_and(int dataIndex, String visitors_purpose, String description, String created_at) {
         repJP = response.jsonPath();
 
-        Assert.assertEquals(visitors_purpose, repJP.getString("lists[" + dataIndex + "].visitors_purpose"));
-        Assert.assertEquals(description, repJP.getString("lists[" + dataIndex + "].description"));
-        Assert.assertEquals(created_at, repJP.getString("lists[" + dataIndex + "].created_at"));
+        assertEquals(visitors_purpose, repJP.getString("lists[" + dataIndex + "].visitors_purpose"));
+        assertEquals(description, repJP.getString("lists[" + dataIndex + "].description"));
+        assertEquals(created_at, repJP.getString("lists[" + dataIndex + "].created_at"));
     }
 
     @Given("The api user sends a GET request, saves the returned response, and verifies that the status code is '403' with the reason phrase Forbidden.")
@@ -73,7 +74,7 @@ public class apiStepdefinitions extends BaseTest {
         }
 
         System.out.println("exceptionMesaj : " + exceptionMesaj);
-        Assert.assertEquals(configLoader.getApiConfig("unauthorizedExceptionMessage"), exceptionMesaj);
+        assertEquals(configLoader.getApiConfig("unauthorizedExceptionMessage"), exceptionMesaj);
 
     }
 
@@ -125,7 +126,7 @@ public class apiStepdefinitions extends BaseTest {
         }
 
         System.out.println("exceptionMesaj : " + exceptionMesaj);
-        Assert.assertEquals(configLoader.getApiConfig("unauthorizedExceptionMessage"), exceptionMesaj);
+        assertEquals(configLoader.getApiConfig("unauthorizedExceptionMessage"), exceptionMesaj);
     }
 
     @Given("The api user prepares a POST request containing {string} and {string} information to send to the api visitorsPurposeAdd endpoint.")
@@ -176,7 +177,7 @@ public class apiStepdefinitions extends BaseTest {
     public void the_api_user_verifies_that_the_updateid_information_in_the_response_body_is_the_same_as_the_id_information_in_the_patch_request_body() {
        repJP = response.jsonPath();
 
-       Assert.assertEquals(map.get("id"), repJP.getInt("updateId"));
+       assertEquals(map.get("id"), repJP.getInt("updateId"));
     }
 
     //expenseHead-Onur\\
@@ -232,11 +233,11 @@ public class apiStepdefinitions extends BaseTest {
                     public void theApiUserVerifiesTheInformationInTheResponseBodyForTheEntryWithTheSpecifiedIdIndexIncludingAnd(String id, String exp_category, String description, String is_active, String is_deleted, String created_at) {
                         repJP = response.jsonPath();
 
-                        Assert.assertEquals(exp_category, repJP.getString("lists[" + id + "].exp_category"));
-                        Assert.assertEquals(description, repJP.getString("lists[" + id + "].description"));
-                        Assert.assertEquals(is_active, repJP.getString("lists[" + id + "].is_active"));
-                        Assert.assertEquals(is_deleted, repJP.getString("lists[" + id + "].is_deleted"));
-                        Assert.assertEquals(created_at, repJP.getString("lists[" + id + "].created_at"));
+                        assertEquals(exp_category, repJP.getString("lists[" + id + "].exp_category"));
+                        assertEquals(description, repJP.getString("lists[" + id + "].description"));
+                        assertEquals(is_active, repJP.getString("lists[" + id + "].is_active"));
+                        assertEquals(is_deleted, repJP.getString("lists[" + id + "].is_deleted"));
+                        assertEquals(created_at, repJP.getString("lists[" + id + "].created_at"));
                     }
 
 
