@@ -36,6 +36,16 @@ public class TestData extends BaseTest {
 
         return requestBody;
     }
+    //gulnar
+    public HashMap noticeUpdateRequestBody(int id, String name, int isBloodGroup, int createdAt){
+        HashMap<String,Object> requestBody=new HashMap<>();
+        requestBody.put("id",id);
+        requestBody.put("name",name);
+        requestBody.put("isBloodGroup",isBloodGroup);
+        requestBody.put("time",createdAt);
 
+
+        return requestBody;
+    }
 
 }
