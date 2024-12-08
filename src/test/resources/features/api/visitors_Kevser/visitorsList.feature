@@ -16,32 +16,33 @@ Feature: As an administrator (admin) I should be able to access the Visitor List
                     # created_at) dogrulanmali.
 
 
-    * The api user sets "api/visitorsList" path parameters.
+    * The api user sets "api/visitorsList" path parameters..
     # Api kullanicisi "api/visitorsList" path parametrelerini olusturur
-    * The api user sends a GET request and saves the returned response.
+    * The api user sends a GET request and saves the returned response..
     # Api kullanicisi GET request gonderir ve donen responsei kaydeder
-    * The api user verifies that the status code is 200.
+    * The api user verifies that the status code is 200..
     # Api kullanicisi status codeun 200 oldugunu dogrular
-    * The api user verifies that the "message" information in the response body is "Success".
+    * The api user verifies that the "message" information in the response body is "Success"..
     # Api kullanicisi response bodydeki message bilgisinin "Success" oldugunu dogrular
-    * The api user verifies the information in the response body for the entry with the specified <id> index, including "<source>", "<purpose>", "<name>", "<email>", "<contact>", "<id_proof>", "<visit_to>", "<ipd_opd_staff_id>", "<related_to>", "<no_of_pepple>", "<date>", "<in_time>", "<out_time>", "<note>", "<image>", "<created_at>".
+    * The api user verifies the information in the response body for the entry with the specified "<index>" index, including "<source>", "<purpose>", "<name>", "<email>", "<contact>", "<id_proof>", "<visit_to>", "<ipd_opd_staff_id>", "<related_to>", "<no_of_pepple>", "<date>", "<in_time>", "<out_time>", "<note>", "<image>", "<created_at>".
     # Api kullanıcısı response body icindeki <dataIndex> indexe sahip olanin bilgilerini doğrular.
 
     Examples:
-      |id|1153|
-      |source|       |
-      |purpose|Inquiry|
-      |name|Bayram  son eklenen 1|
-      |email|deneme@deneme.com   |
-      |contact|9638521770        |
-      |id_proof|0125856          |
-      |visit_to|opd_patient      |
-      |ipd_opd_staff_id|2        |
-      |related_to|bayram ERGUVEN (4) (OPDN2)|
-      |no_of_pepple|1                       |
-      |date|2023-10-05                      |
-      |in_time|09:30 PM                     |
-      |out_time|10:30 PM                    |
-      |note|                                |
-      |image|                               |
-      |created_at|2024-12-05 09:39:05       |
+
+      |index|source|purpose|name                 |email            |contact   |id_proof|visit_to   |ipd_opd_staff_id|related_to                |no_of_pepple|date      |in_time |out_time|note|image|created_at         |
+      |1    |      |Inquiry|Bayram  son eklenen 1|deneme@deneme.com|9638521770|0125856 |opd_patient|2               |bayram ERGUVEN (4) (OPDN2)|1           |2023-10-05|09:30 PM|10:30 PM|    |     |2024-12-05 09:39:05|
+
+
+  Scenario: When a GET request is sent to the /api/visitorsList endpoint
+            with invalid authorization information,
+            it should be verified that the status code returned is 403
+            and the message in the response body is "You do not have authorization or token error.".
+            #/api/visitorsList endpoint'ine gecersiz authorization bilgileri ile
+            # bir GET request gönderildiginde dönen status code'un 403 oldugu
+            # ve response body'deki message bilgisinin
+            # "You do not have authorization or token error." oldugu dogrulanmali.
+
+    * The api user sets "api/visitorsList" path parameters.
+    # Api kullanicisi "api/visitorsPurposeList" path parametrelerini olusturur
+    * The api user sends a GET request, saves the returned response, and verifies that the status code is '403' with the reason phrase Forbidden.
+    # Api kullanicisi GET request gonderir, donen responsei kaydeder, status codeun '403' ve reason phrase bilgisinin Forbidden oldugunu dogrular

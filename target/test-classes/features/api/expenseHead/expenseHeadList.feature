@@ -16,6 +16,7 @@ Feature: As an administrator (admin) I should be able to access the Expense Head
     # Api kullanıcısı response body icindeki <id> indexe sahip olanin "<exp_category>", "<description>", "<is_active>", "<is_deleted>" ve "<created_at>" bilgilerini doğrular.
 
     Examples:
+
       | id   | exp_category  | description      | is_active | is_deleted | created_at          |
       | 585  | test category | test description | yes       | no         | 2023-05-18 20:57:12 |
 
