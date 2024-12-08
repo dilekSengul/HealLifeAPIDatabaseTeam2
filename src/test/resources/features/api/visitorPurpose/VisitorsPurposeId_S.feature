@@ -6,17 +6,12 @@ Feature: As an administrator I should be able to access the Visitor Purpose info
   information in the response body is “Success”.
 
     Given The api user sets "api/visitorsPurposeId" path parameters.
-    # Api kullanicisi "api/visitorsPurposeId" path parametrelerini olusturur
     When The api user prepares a GET request containing the <id> information to send to the api visitorsPurposeid endpoint.
-    # Api kullanicisi api visitorsPurposeId endpointine gondermek icin <id> bilgisini iceren bir get request hazirlar
     And  The api user sends a GET body and saves the returned response.
-    # Api kullanicisi GET body gonderir ve donen responsei kaydeder
     Then The api user verifies that the status code is 200.
-    # Api kullanicisi status codeun 200 oldugunu dogrular
     And The api user verifies that the "message" information in the response body is "Success".
-    # Api kullanicisi response bodydeki message bilgisinin "Success" oldugunu dogrular
     And The api user verifies that the data in the response body includes "<id>", "<visitors_purpose>", "<description>" and "<created_at>".
-    # Api kullanicisi response bodydeki data "<id>", "<visitors_purpose>", "<description>" ve "<created_at>" içeriklerini doğrular.
+
 
     Examples:
       | id | visitors_purpose              | description         | created_at          |
