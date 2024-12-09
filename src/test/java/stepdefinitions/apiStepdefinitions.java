@@ -311,6 +311,121 @@ public class apiStepdefinitions extends BaseTest {
 
 
     }
+    @Given("The api user prepares a DELETE {int} request to send to the api visitorsPurposeDelete add endpoint._")
+    public void the_api_user_prepares_a_delete_request_to_send_to_the_api_visitors_purpose_delete_add_endpoint_(int id) {
+        requestBody.put("id", id);
+
+        System.out.println("Delete Body : " + requestBody);
+    }
+
+    @Given("The api user sends a DELETE request and saves the returned response._")
+    public void the_api_user_sends_a_delete_request_and_saves_the_returned_response_() {
+        response = given()
+                .spec(spec)
+                .contentType(ContentType.JSON)
+                .when()
+                .body(requestBody.toString())
+                .delete(fullPath);
+
+        response.prettyPrint();
+    }
+
+    @Given("The api user verifies that the Deletedid information is the same as the id information in the request body_")
+    public void the_api_user_verifies_that_the_deletedid_information_is_the_same_as_the_id_information_in_the_request_body_() {
+        repJP = response.jsonPath();
+
+        Assert.assertEquals(requestBody.get("id"), repJP.getInt("DeletedId"));
+    }
+
+    @Given("The api user prepares a DELETE request that does not contain data_")
+    public void the_api_user_prepares_a_delete_request_that_does_not_contain_data_() {
+
+    }
+
+    @Given("The api user sends a DELETE request, saves the returned response, and verifies that the status code is '403' with the reason phrase Forbidden._")
+    public void the_api_user_sends_a_delete_request_saves_the_returned_response_and_verifies_that_the_status_code_is_with_the_reason_phrase_forbidden_() {
+        try {
+            response = given()
+                    .spec(spec)
+                    .contentType(ContentType.JSON)
+                    .when()
+                    .body(requestBody.toString())
+                    .delete(fullPath);
+        } catch (Exception e) {
+            exceptionMesaj = e.getMessage();
+        }
+
+        System.out.println("exceptionMesaj : " + exceptionMesaj);
+        Assert.assertEquals(configLoader.getApiConfig("unauthorizedExceptionMessage"),exceptionMesaj);
+    }
+
+    @Given("The api user prepares a DELETE request to send to the api visitorsPurposeDelete add endpoint.")
+    public void the_api_user_prepares_a_delete_request_to_send_to_the_api_visitors_purpose_delete_add_endpoint() {
+        requestBody.put("id", 848);
+
+        System.out.println("Delete Body : " + requestBody);
+    }
+    @Given("The api user sends a DELETE request and saves the returned response..")
+    public void the_api_user_sends_a_delete_request_and_saves_the_returned_response() {
+        response = given()
+            .spec(spec)
+            .contentType(ContentType.JSON)
+            .when()
+            .body(requestBody.toString())
+            .delete(fullPath);
+
+        response.prettyPrint();
+    }
+    @Given("The api user verifies that the Deletedid information is the same as the id information in the request body")
+    public void the_api_user_verifies_that_the_deletedid_information_is_the_same_as_the_id_information_in_the_request_body() {
+        repJP = response.jsonPath();
+        Assert.assertEquals(requestBody.get("id"), repJP.getInt("DeletedId"));
+    }
+
+    @Given("The api user prepares a DELETE request that does not contain data")
+    public void the_api_user_prepares_a_delete_request_that_does_not_contain_data() {
+
+    }
+
+
+    @When("The api user prepares a PATCH request that does not contain an id but includes {string} and {string} information to send to the api visitorsPurposeUpdate endpoint.")
+    public void the_api_user_prepares_a_patch_request_that_does_not_contain_an_id_but_includes_and_information_to_send_to_the_api_visitors_purpose_update_endpoint(String visitors_purpose, String description) {
+
+        requestBody.put("visitors_purpose", visitors_purpose);
+        requestBody.put("description", description);
+
+    }
+
+    @When("The api user prepares a GET request containing the {int} information to send to the api visitorsPurposeid endpoint and save returned response")
+    public void the_api_user_prepares_a_get_request_containing_the_information_to_send_to_the_api_visitors_purposeid_endpoint_and_save_returned_response(int id) {
+        requestBody.put("id", id);
+
+        response = given()
+            .spec(spec)
+            .when()
+            .body(requestBody.toString())
+            .get(fullPath);
+
+        response.prettyPrint();
+    }
+
+
+    @Given("The api user sends a DELETE request, saves the returned response, and verifies that the status code is {int} with the response body is {string}.")
+    public void the_api_user_sends_a_delete_request_saves_the_returned_response_and_verifies_that_the_status_code_is_with_the_response_body_is(int statusCode, String message) {
+        response = given()
+            .spec(spec)
+            .contentType(ContentType.JSON)
+            .when()
+            .body(requestBody.toString())
+            .delete(fullPath);
+
+        response.then()
+            .assertThat()
+            .statusCode(statusCode)
+           .body("message", Matchers.equalTo(message));
+
+
+    }
 
 }
 
