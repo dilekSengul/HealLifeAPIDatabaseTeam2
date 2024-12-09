@@ -1,4 +1,4 @@
-Feature: As an administrator (admin) I should be able to delete the visitor puspose record in the system via API connection.
+Feature: As an administrator (admin) I should be able to delete the visitor purpose record in the system via API connection.
 
   Scenario: A DELETE request to the "/api/visitorsPurposeDelete" endpoint with valid authorization
   and correct data (id) should return a 200 status code, a response body message of "Success," and the "DeletedId" in the

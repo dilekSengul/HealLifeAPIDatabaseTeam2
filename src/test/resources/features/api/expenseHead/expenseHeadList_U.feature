@@ -1,5 +1,5 @@
 Feature: As an administrator (admin) I should be able to access the Expense Head lists via API connection.
-@US24
+  @US24
   Scenario Outline: When a GET request is sent to the api/getExpenseHead endpoint with valid authorization
   information, it should be verified that the status code returned is 200 and the message information in the
   response body is “Success”.
@@ -17,8 +17,8 @@ Feature: As an administrator (admin) I should be able to access the Expense Head
 
     Examples:
 
-      | id   | exp_category  | description      | is_active | is_deleted | created_at          |
-      | 585  | test category | test description | yes       | no         | 2023-05-18 20:57:12 |
+      | id  | exp_category  | description        | is_active     | is_deleted   | created_at           |
+      | 0 | Building rent   |                   | yes           | no           | 2021-10-25 13:50:41   |
 
 
   Scenario: Invalid Token When a GET request is sent to the /api/visitorsPurposeList endpoint with invalid authorization
@@ -27,5 +27,5 @@ Feature: As an administrator (admin) I should be able to access the Expense Head
 
     * The api user sets "api/getExpenseHead" path parameters.
     # Api kullanicisi "api/getExpenseHead" path parametrelerini olusturur
-    * The api user sends a GET request, saves the returned response, and verifies that the status code is '403' with the reason phrase Forbidden.
+    * The api user sends a GET request, saves the returned response, and verifies that the status code is 403 with the "message" phrase "You do not have authorization or token error"
     # Api kullanicisi GET request gonderir, donen responsei kaydeder, status codeun '403' ve reason phrase bilgisinin Forbidden oldugunu dogrular

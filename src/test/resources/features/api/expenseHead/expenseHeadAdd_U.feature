@@ -1,7 +1,7 @@
 Feature: As an administrator (admin) I want to be able to create a new visitor purpose record via API connection.
 
-@ONUR
-  @US26
+  @UGUR
+    @US26
 
   Scenario Outline: A POST request to the "api/addExpenseHead" endpoint with valid authorization and correct data
   should return a 200 status code, a response body with the message "Success," and the creation of the new expense

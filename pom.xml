@@ -111,7 +111,6 @@
                         -Xms256m
                         -Xmx2048m
                         -XX:MaxMetaspaceSize=512m
-
                     </argLine>
                     <properties>
                         <property>
