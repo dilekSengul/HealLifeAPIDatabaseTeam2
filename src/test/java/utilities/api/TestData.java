@@ -47,5 +47,12 @@ public class TestData extends BaseTest {
 
         return requestBody;
     }
-
+    //dilek
+    public HashMap bloodUpdateRequestBody(Integer id, String name, String is_blood_group){
+        HashMap<String,Object> requestBody=new HashMap<>();
+        requestBody.put("id",id);
+        requestBody.put("name",name);
+        requestBody.put("is_blood_group",is_blood_group);
+        return requestBody;
+    }
 }

@@ -9,6 +9,7 @@ import io.restassured.http.ContentType;
 import org.hamcrest.Matchers;
 import org.json.JSONObject;
 import org.junit.Assert;
+import pojos.Pojo;
 import utilities.api.API_Methods;
 import utilities.api.TestData;
 
@@ -175,117 +176,117 @@ public class apiStepdefinitions extends BaseTest {
 
     @Given("The api user verifies that the updateid information in the Response body is the same as the id information in the patch request body")
     public void the_api_user_verifies_that_the_updateid_information_in_the_response_body_is_the_same_as_the_id_information_in_the_patch_request_body() {
-       repJP = response.jsonPath();
+        repJP = response.jsonPath();
 
-       assertEquals(map.get("id"), repJP.getInt("updateId"));
+        assertEquals(map.get("id"), repJP.getInt("updateId"));
     }
 
     //expenseHead-Onur\\
 
-                    @Given("The api user prepares a POST request containing {string} and {string} information to send to the api addExpenseHead endpoint.")
-                    public void the_api_user_prepares_a_post_request_containing_and_information_to_send_to_the_api_addExpenseHead_endpoint(String exp_category, String description) {
-                        map.put("exp_category", exp_category);
-                        map.put("description", description);
+    @Given("The api user prepares a POST request containing {string} and {string} information to send to the api addExpenseHead endpoint.")
+    public void the_api_user_prepares_a_post_request_containing_and_information_to_send_to_the_api_addExpenseHead_endpoint(String exp_category, String description) {
+        map.put("exp_category", exp_category);
+        map.put("description", description);
 
-                        System.out.println("Post Body : " + map);
-                    }
+        System.out.println("Post Body : " + map);
+    }
 
-                    @Given("The api user prepares a GET request containing the {int} information to send to the api getExpenseHeadById endpoint.")
-                    public void the_api_user_prepares_a_get_request_containing_the_information_to_send_to_the_api_getExpenseHeadById_endpoint(int id) {
-                        requestBody.put("id", id);
+    @Given("The api user prepares a GET request containing the {int} information to send to the api getExpenseHeadById endpoint.")
+    public void the_api_user_prepares_a_get_request_containing_the_information_to_send_to_the_api_getExpenseHeadById_endpoint(int id) {
+        requestBody.put("id", id);
 
-                        System.out.println("Get Body : " + requestBody);
-                    }
-
-
-                    @Given("The api user verifies that the data in the response body includes {string}, {string}, {string}, {string}, {string} and {string}.")
-                    public void the_api_user_verifies_that_the_data_in_the_response_body_includes_and(String id, String exp_category, String description, String is_active, String is_deleted, String created_at) {
-                        // Parametrelerin API'deki JSON yolunu ve değerlerini eşleştiren map
-                        Map<String, String> fields = Map.of(
-                                "details.exp_category", exp_category,
-                                "details.description", description,
-                                "details.is_active", is_active,
-                                "details.is_deleted", is_deleted,
-                                "details.created_at", created_at
-                        );
-                        // id kontrolü
-                        response.then()
-                                .assertThat()
-                                .body("details.id", Matchers.equalTo(id));
-
-                        // String içerisinde null sorununu önlemek için diğer tüm parametrelerin null kontrol döngüsü
-                        for (Map.Entry<String, String> entry : fields.entrySet()) {
-                            String jsonPath = entry.getKey();
-                            String expectedValue = entry.getValue();
-
-                            if ("null".equals(expectedValue)) {
-                                // null ise
-                                response.then().body(jsonPath, Matchers.nullValue());
-                            } else {
-                                // null değilse
-                                response.then().body(jsonPath, Matchers.equalTo(expectedValue));
-                            }
-                        }
-                    }
+        System.out.println("Get Body : " + requestBody);
+    }
 
 
-                    @Given("The api user verifies the information in the response body for the entry with the specified {string} index, including {string}, {string}, {string}, {string} and {string}.")
-                    public void theApiUserVerifiesTheInformationInTheResponseBodyForTheEntryWithTheSpecifiedIdIndexIncludingAnd(String id, String exp_category, String description, String is_active, String is_deleted, String created_at) {
-                        repJP = response.jsonPath();
+    @Given("The api user verifies that the data in the response body includes {string}, {string}, {string}, {string}, {string} and {string}.")
+    public void the_api_user_verifies_that_the_data_in_the_response_body_includes_and(String id, String exp_category, String description, String is_active, String is_deleted, String created_at) {
+        // Parametrelerin API'deki JSON yolunu ve değerlerini eşleştiren map
+        Map<String, String> fields = Map.of(
+                "details.exp_category", exp_category,
+                "details.description", description,
+                "details.is_active", is_active,
+                "details.is_deleted", is_deleted,
+                "details.created_at", created_at
+        );
+        // id kontrolü
+        response.then()
+                .assertThat()
+                .body("details.id", Matchers.equalTo(id));
 
-                        assertEquals(exp_category, repJP.getString("lists[" + id + "].exp_category"));
-                        assertEquals(description, repJP.getString("lists[" + id + "].description"));
-                        assertEquals(is_active, repJP.getString("lists[" + id + "].is_active"));
-                        assertEquals(is_deleted, repJP.getString("lists[" + id + "].is_deleted"));
-                        assertEquals(created_at, repJP.getString("lists[" + id + "].created_at"));
-                    }
+        // String içerisinde null sorununu önlemek için diğer tüm parametrelerin null kontrol döngüsü
+        for (Map.Entry<String, String> entry : fields.entrySet()) {
+            String jsonPath = entry.getKey();
+            String expectedValue = entry.getValue();
 
-
-                    @Given("The api user prepares a PATCH request containing {int}, {string} and {string} information to send to the api updateExpenseHead endpoint.")
-                    public void theApiUserPreparesAPATCHRequestContainingAndInformationToSendToTheApiupdateExpenseHeadEndpoint(int id, String exp_category, String description) {
-                        map = testData.expenseHeadUpdateRequestBody(id, exp_category, description);
-
-                        System.out.println("Patch Body : " + map);
-                    }
-
-                    @Given("The api user prepares a PATCH request that does not contain an id but includes {string} and {string} information to send to the api updateExpenseHead endpoint.")
-                    public void theApiUserPreparesAPATCHRequestThatDoesNotContainAnIdButIncludesAndInformationToSendToTheApiUpdateExpenseHeadEndpoint(String arg0, String arg1) {
-
-                    }
-                            //GET REQUEST WITH INVALID TOKEN BY ONUR
-                    @Given("The api user sends a GET request, saves the returned response, and verifies that the status code is {int} with the {string} phrase {string}")
-                    public void theApiUserSendsAGETRequestSavesTheReturnedResponseAndVerifiesThatTheStatusCodeIsWithThePhrase(int code, String key, String value) {
-
-                        response = given()
-                                .spec(spec)
-                                .when()
-                                .get(fullPath);
-
-                        response.prettyPrint();
-
-                        response.then()
-                                .assertThat()
-                                .statusCode(code)
-                                .body(key, Matchers.equalTo(value));
-                    }
-                            //PATCH REQUEST WITH INVALID TOKEN BY ONUR
-                    @Given("The api user sends a PATCH request, saves the returned response, and verifies that the status code is {int} with the {string} phrase {string}")
-                    public void theApiUserSendsAPATCHRequestSavesTheReturnedResponseAndVerifiesThatTheStatusCodeIsWithThePhrase(int code, String key, String value) {
-                        response = given()
-                                .spec(spec)
-                                .contentType(ContentType.JSON)
-                                .when()
-                                .body(map)
-                                .patch(fullPath);
-                        response.prettyPrint();
-
-                        response.then()
-                                .assertThat()
-                                .statusCode(code)
-                                .body(key, Matchers.equalTo(value));
-                    }
+            if ("null".equals(expectedValue)) {
+                // null ise
+                response.then().body(jsonPath, Matchers.nullValue());
+            } else {
+                // null değilse
+                response.then().body(jsonPath, Matchers.equalTo(expectedValue));
+            }
+        }
+    }
 
 
+    @Given("The api user verifies the information in the response body for the entry with the specified {string} index, including {string}, {string}, {string}, {string} and {string}.")
+    public void theApiUserVerifiesTheInformationInTheResponseBodyForTheEntryWithTheSpecifiedIdIndexIncludingAnd(String id, String exp_category, String description, String is_active, String is_deleted, String created_at) {
+        repJP = response.jsonPath();
+
+        assertEquals(exp_category, repJP.getString("lists[" + id + "].exp_category"));
+        assertEquals(description, repJP.getString("lists[" + id + "].description"));
+        assertEquals(is_active, repJP.getString("lists[" + id + "].is_active"));
+        assertEquals(is_deleted, repJP.getString("lists[" + id + "].is_deleted"));
+        assertEquals(created_at, repJP.getString("lists[" + id + "].created_at"));
+    }
+
+
+    @Given("The api user prepares a PATCH request containing {int}, {string} and {string} information to send to the api updateExpenseHead endpoint.")
+    public void theApiUserPreparesAPATCHRequestContainingAndInformationToSendToTheApiupdateExpenseHeadEndpoint(int id, String exp_category, String description) {
+        map = testData.expenseHeadUpdateRequestBody(id, exp_category, description);
+
+        System.out.println("Patch Body : " + map);
+    }
+
+    @Given("The api user prepares a PATCH request that does not contain an id but includes {string} and {string} information to send to the api updateExpenseHead endpoint.")
+    public void theApiUserPreparesAPATCHRequestThatDoesNotContainAnIdButIncludesAndInformationToSendToTheApiUpdateExpenseHeadEndpoint(String arg0, String arg1) {
+
+    }
+
+    //GET REQUEST WITH INVALID TOKEN BY ONUR
+    @Given("The api user sends a GET request, saves the returned response, and verifies that the status code is {int} with the {string} phrase {string}")
+    public void theApiUserSendsAGETRequestSavesTheReturnedResponseAndVerifiesThatTheStatusCodeIsWithThePhrase(int code, String key, String value) {
+
+        response = given()
+                .spec(spec)
+                .when()
+                .get(fullPath);
+
+        response.prettyPrint();
+
+        response.then()
+                .assertThat()
+                .statusCode(code)
+                .body(key, Matchers.equalTo(value));
+    }
+
+    //PATCH REQUEST WITH INVALID TOKEN BY ONUR
+    @Given("The api user sends a PATCH request, saves the returned response, and verifies that the status code is {int} with the {string} phrase {string}")
+    public void theApiUserSendsAPATCHRequestSavesTheReturnedResponseAndVerifiesThatTheStatusCodeIsWithThePhrase(int code, String key, String value) {
+        response = given()
+                .spec(spec)
+                .contentType(ContentType.JSON)
+                .when()
+                .body(map)
+                .patch(fullPath);
+        response.prettyPrint();
+
+        response.then()
+                .assertThat()
+                .statusCode(code)
+                .body(key, Matchers.equalTo(value));
+    }
 
 
 //Gulnar
@@ -311,6 +312,7 @@ public class apiStepdefinitions extends BaseTest {
 
 
     }
+
     @Given("The api user prepares a DELETE {int} request to send to the api visitorsPurposeDelete add endpoint._")
     public void the_api_user_prepares_a_delete_request_to_send_to_the_api_visitors_purpose_delete_add_endpoint_(int id) {
         requestBody.put("id", id);
@@ -356,7 +358,7 @@ public class apiStepdefinitions extends BaseTest {
         }
 
         System.out.println("exceptionMesaj : " + exceptionMesaj);
-        Assert.assertEquals(configLoader.getApiConfig("unauthorizedExceptionMessage"),exceptionMesaj);
+        Assert.assertEquals(configLoader.getApiConfig("unauthorizedExceptionMessage"), exceptionMesaj);
     }
 
     @Given("The api user prepares a DELETE request to send to the api visitorsPurposeDelete add endpoint.")
@@ -365,17 +367,19 @@ public class apiStepdefinitions extends BaseTest {
 
         System.out.println("Delete Body : " + requestBody);
     }
+
     @Given("The api user sends a DELETE request and saves the returned response..")
     public void the_api_user_sends_a_delete_request_and_saves_the_returned_response() {
         response = given()
-            .spec(spec)
-            .contentType(ContentType.JSON)
-            .when()
-            .body(requestBody.toString())
-            .delete(fullPath);
+                .spec(spec)
+                .contentType(ContentType.JSON)
+                .when()
+                .body(requestBody.toString())
+                .delete(fullPath);
 
         response.prettyPrint();
     }
+
     @Given("The api user verifies that the Deletedid information is the same as the id information in the request body")
     public void the_api_user_verifies_that_the_deletedid_information_is_the_same_as_the_id_information_in_the_request_body() {
         repJP = response.jsonPath();
@@ -401,10 +405,10 @@ public class apiStepdefinitions extends BaseTest {
         requestBody.put("id", id);
 
         response = given()
-            .spec(spec)
-            .when()
-            .body(requestBody.toString())
-            .get(fullPath);
+                .spec(spec)
+                .when()
+                .body(requestBody.toString())
+                .get(fullPath);
 
         response.prettyPrint();
     }
@@ -413,19 +417,41 @@ public class apiStepdefinitions extends BaseTest {
     @Given("The api user sends a DELETE request, saves the returned response, and verifies that the status code is {int} with the response body is {string}.")
     public void the_api_user_sends_a_delete_request_saves_the_returned_response_and_verifies_that_the_status_code_is_with_the_response_body_is(int statusCode, String message) {
         response = given()
-            .spec(spec)
-            .contentType(ContentType.JSON)
-            .when()
-            .body(requestBody.toString())
-            .delete(fullPath);
+                .spec(spec)
+                .contentType(ContentType.JSON)
+                .when()
+                .body(requestBody.toString())
+                .delete(fullPath);
 
         response.then()
-            .assertThat()
-            .statusCode(statusCode)
-           .body("message", Matchers.equalTo(message));
+                .assertThat()
+                .statusCode(statusCode)
+                .body("message", Matchers.equalTo(message));
 
 
     }
+    //bloodgrouppost
 
-}
+    @Given("The api user prepares a POST request containing {string} and {string} information to send to the api addBloodGroup endpoint.")
+    public void the_api_user_prepares_a_post_request_containing_and_information_to_send_to_the_api_add_blood_group_endpoint(String name, String isBloodGroup) {
+        map.put("name", name);
+        map.put("is_blood_group", isBloodGroup);
+
+        System.out.println("Post Body : " + map);
+    }
+
+    @Given("The api user prepares a Get request containing the {int} information to send to the api addBloodGroup endpoint.")
+    public void the_api_user_prepares_a_get_request_containing_the_information_to_send_to_the_api_add_blood_group_endpoint(Integer id) {
+        requestBody.put("id", id);
+
+        System.out.println("Get Body : " + requestBody);
+    }
+    @Given("The api user prepares a PATCH request containing {int}, {string} and {string} information to send to the api updateBloodGroup endpoint.")
+    public void the_api_user_prepares_a_patch_request_containing_and_information_to_send_to_the_api_update_blood_group_endpoint(int id, String name, String is_blood_group) {
+        map=testData.bloodUpdateRequestBody(id,name,is_blood_group);
+
+        System.out.println("Patch Body : " + map);
+    }
+
+    }
 
