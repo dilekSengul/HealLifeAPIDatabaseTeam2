@@ -13,7 +13,7 @@ Scenario Outline: When a GET request is sent to the /api/getNotice endpoint with
     | 1         | notice | noticehospital | page/         |notice hospital     |2024-11-24 |
 
 
-  Scenario: Invalid Token When a GET request is sent to the /api/visitorsPurposeList endpoint with invalid authorization
+  Scenario: Invalid Token When a GET request is sent to the /api/getNotice endpoint with invalid authorization
 information, it should be verified that the status code returned is 403 and the message in the response body is
 "You do not have authorization or token error.".
 

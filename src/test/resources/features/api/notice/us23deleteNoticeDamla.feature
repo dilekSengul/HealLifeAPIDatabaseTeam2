@@ -49,11 +49,11 @@ Feature: As an administrator (admin) I should be able to delete the announcement
     And The api user sends a DELETE request, saves the returned response, and verifies that the status code is '403' with the reason phrase Forbidden deleteNotice.
 
 
-  Scenario Outline: It must be verified via the API that the visitor purpose record that is requested to be deleted via
+  Scenario Outline: It must be verified via the API that the notice record that is requested to be deleted via
   the API has been deleted.
 
     Given The api user sets "api/getNoticeById" path parameters.
-    When The api user prepares a GET request containing the <id> information to send to the api visitorsPurposeid endpoint.
+    When The api user prepares a GET request containing the <id> information to send to the api getNoticeById endpoint.
     Then The api user sends a GET body and saves the returned response.
     And The api user verifies that the "message" information in the response body is "No id or wrong id. Please check your id number.".
 
