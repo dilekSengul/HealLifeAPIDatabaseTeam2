@@ -32,7 +32,7 @@ public class apiStepDefinitions_Arzu extends BaseTest {
     }
 
     @Given("Api user verifies Status Code {int}.")
-    public void api_user_verifies_status_code(Integer code) {
+    public void api_user_verifies_status_code(int code) {
         response.then()
                 .assertThat()
                 .statusCode(code);
@@ -128,8 +128,8 @@ public class apiStepDefinitions_Arzu extends BaseTest {
 
     @Given("Api user prepares a POST request containing {string} and {string} information to send to the api visitorsAdd endpoint.")
     public void api_user_prepares_a_post_request_containing_and_information_to_send_to_the_api_visitors_add_endpoint(String purpose, String name) {
-        map.put("purpose", purpose);
-        map.put("name", name);
+        map.put("purpose",purpose);
+        map.put("name",name);
 
         System.out.println("Post Body " + map);
 
@@ -144,6 +144,9 @@ public class apiStepDefinitions_Arzu extends BaseTest {
               .post(fullPath);
 
       response.prettyPrint();
+
+        System.out.println("Body " + response.getBody().asString());
+        System.out.println("Header " + response.getHeaders());
     }
 
 

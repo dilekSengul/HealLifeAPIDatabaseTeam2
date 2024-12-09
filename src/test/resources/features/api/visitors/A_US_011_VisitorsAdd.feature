@@ -12,8 +12,8 @@ Feature: As an administrator (admin) I want to be able to create a new visitor r
     * Api user verifies "message" information in the response body is "Success".
 
     Examples:
-      | purpose   |  name                  |
-      | Inquiry   |  Bayram  son eklenen 1 |
+      | purpose | name                  |
+      | Inquiry | Bayram  son eklenen 1 |
 
     Scenario: When a POST request that does not contain valid authorization information and data is sent to the
     api/visitorsAdd endpoint, the status code returned is 203 and the message information in the response
