@@ -27,3 +27,5 @@ Feature: As an administrator (admin) I want to be able to create a new visitor r
 
     Scenario Outline:
 
+
+    Examples:
