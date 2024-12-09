@@ -126,5 +126,25 @@ public class apiStepDefinitions_Arzu extends BaseTest {
 
     }
 
+    @Given("Api user prepares a POST request containing {string} and {string} information to send to the api visitorsAdd endpoint.")
+    public void api_user_prepares_a_post_request_containing_and_information_to_send_to_the_api_visitors_add_endpoint(String purpose, String name) {
+        map.put("purpose", purpose);
+        map.put("name", name);
+
+        System.out.println("Post Body " + map);
+
+    }
+    @Given("Api user sends a POST request and saves the returned response.")
+    public void api_user_sends_a_post_request_and_saves_the_returned_response() {
+      response = given()
+              .spec(spec)
+              .contentType(ContentType.JSON)
+              .when()
+              .body(map)
+              .post(fullPath);
+
+      response.prettyPrint();
+    }
+
 
 }
