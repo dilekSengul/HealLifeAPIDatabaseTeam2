@@ -16,7 +16,7 @@ Feature: As an administrator (admin), I should be able to access the
       | id   | id   | source | purpose | name    | email                   |
       | 1137 | 1137 | Online | Hello   | RoSlads | emilyjonesg89@gmail.com |
 
-@US
+
   Scenario Outline: When a GET body containing valid authorization information and invalid data (id) is sent to the
   /api/visitorsId endpoint, the status code returned is
   203 and the message information in the response body is
@@ -32,7 +32,7 @@ Feature: As an administrator (admin), I should be able to access the
       | id    |
       | 11222 |
 
-@US
+
   Scenario: When a GET request that does not contain valid authorization information and data (id) is sent to the
   /api/visitorsId endpoint, the status code returned is
   203 and the message information in the response body is
@@ -44,7 +44,7 @@ Feature: As an administrator (admin), I should be able to access the
     * Api user verifies Status Code 203.
     * Api user verifies "message" information in the response body is "No id or wrong id.".
 
-@US
+
   Scenario Outline:  Invalid Token When sending a GET body with invalid authorization information to the
   /api/visitorsPurposeId endpoint, it should be verified that the status code returned is
   403 and the message in the response body is

@@ -13,7 +13,6 @@ import static utilities.api.API_Methods.fullPath;
 
 public class apiStepDefinitions_Arzu extends BaseTest {
 
-    String exceptionMessage = null;
 
     @Given("Api user sets {string} path parameters.")
     public void api_user_sets_path_parameters(String pathParameter) {
