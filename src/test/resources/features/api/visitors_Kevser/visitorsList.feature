@@ -24,16 +24,16 @@ Feature: As an administrator (admin) I should be able to access the Visitor List
     # Api kullanicisi status codeun 200 oldugunu dogrular
     * The api user verifies that the "message" information in the response body is "Success"..
     # Api kullanicisi response bodydeki message bilgisinin "Success" oldugunu dogrular
-    * The api user verifies the information in the response body for the entry with the specified "<index>" index, including "<source>", "<purpose>", "<name>", "<email>", "<contact>", "<id_proof>", "<visit_to>", "<ipd_opd_staff_id>", "<related_to>", "<no_of_pepple>", "<date>", "<in_time>", "<out_time>", "<note>", "<image>", "<created_at>".
+    * The api user verifies the information in the response body for the entry with the specified <dataindex> index, including "<source>", "<purpose>", "<name>", "<email>", "<contact>", "<id_proof>", "<visit_to>", "<ipd_opd_staff_id>", "<related_to>", "<no_of_pepple>", "<date>", "<in_time>", "<out_time>", "<note>", "<image>", "<created_at>".
     # Api kullanıcısı response body icindeki <dataIndex> indexe sahip olanin bilgilerini doğrular.
 
     Examples:
 
-      |index|source|purpose|name                 |email            |contact   |id_proof|visit_to   |ipd_opd_staff_id|related_to                |no_of_pepple|date      |in_time |out_time|note|image|created_at         |
-      |1    |      |Inquiry|Bayram  son eklenen 1|deneme@deneme.com|9638521770|0125856 |opd_patient|2               |bayram ERGUVEN (4) (OPDN2)|1           |2023-10-05|09:30 PM|10:30 PM|    |     |2024-12-05 09:39:05|
+      |dataindex|source|purpose|name                 |email            |contact   |id_proof|visit_to   |ipd_opd_staff_id|related_to                |no_of_pepple|date      |in_time |out_time|note|image|created_at         |
+      |0        |null  |Inquiry|Bayram  son eklenen 1|deneme@deneme.com|9638521770|0125856 |opd_patient|2               |bayram ERGUVEN (4) (OPDN2)|1           |2023-10-05|09:30 PM|10:30 PM|    |     |2024-12-05 09:39:05|
 
 
-  Scenario: When a GET request is sent to the /api/visitorsList endpoint
+  Scenario: Invalid Token When a GET request is sent to the /api/visitorsList endpoint
             with invalid authorization information,
             it should be verified that the status code returned is 403
             and the message in the response body is "You do not have authorization or token error.".
