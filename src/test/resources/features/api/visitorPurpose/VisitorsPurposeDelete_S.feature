@@ -5,7 +5,7 @@ Feature: As an administrator (admin) I should be able to delete the visitor pusp
   "/api/visitorsPurposeId" endpoint using the "DeletedId" from the response.
 
     Given The api user sets "api/visitorsPurposeDelete" path parameters.
-    When The api user prepares a DELETE 833 request to send to the api visitorsPurposeDelete add endpoint._
+    When The api user prepares a DELETE 864 request to send to the api visitorsPurposeDelete add endpoint._
     And The api user sends a DELETE request and saves the returned response._
     Then The api user verifies that the status code is 200.
     And The api user verifies that the "message" information in the response body is "Success".
@@ -44,8 +44,9 @@ Feature: As an administrator (admin) I should be able to delete the visitor pusp
     And The api user sends a DELETE request, saves the returned response, and verifies that the status code is '403' with the reason phrase Forbidden._
 
 
-  Scenario Outline: It must be verified via the API that the visitor purpo000se record that is requested to be deleted via
+  Scenario Outline: It must be verified via the API that the visitor purpose record that is requested to be deleted via
   the API has been deleted.
+
 
     Given The api user sets "api/visitorsPurposeId" path parameters.
     When The api user prepares a GET request containing the <id> information to send to the api visitorsPurposeid endpoint.
@@ -55,4 +56,4 @@ Feature: As an administrator (admin) I should be able to delete the visitor pusp
 
     Examples:
       | id  |
-      | 828|
+      | 856|

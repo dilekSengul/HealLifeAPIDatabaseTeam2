@@ -15,7 +15,7 @@ Feature: As an administrator I should be able to access the Visitor Purpose info
 
     Examples:
       | id | visitors_purpose              | description         | created_at          |
-      | 34 |deneme visitors               | deneme description  | 2023-05-22 14:29:46 |
+      | 39 |deneme visitors_purpose        | deneme description  | 2023-05-23 01:03:21 |
 
 
   Scenario Outline: When a GET body containing valid authorization information and invalid data (id) is sent to the
