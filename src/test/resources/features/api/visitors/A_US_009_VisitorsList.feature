@@ -14,7 +14,7 @@ Feature: As an administrator (admin) I should be able to access the Visitor List
     | dataIndex | source   | purpose                                    | name      | email                    | note                             | created_at          |
     | 3         | Online   | Hi,   wrote about   the price for reseller | JohnWathe | somasesokiyo31@gmail.com | Hi, kam dashur të di çmimin tuaj | 2024-12-02 19:35:12 |
 
-@US
+
   Scenario: Invalid Token when a GET request is sent to the /api/visitorsList endpoint with invalid authorization information,
   it should be verified that the status code returned is 403 and
   the message in the response body is "You do not have authorization or token error.".
