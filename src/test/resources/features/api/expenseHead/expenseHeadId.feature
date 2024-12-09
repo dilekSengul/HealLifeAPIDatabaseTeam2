@@ -21,7 +21,7 @@ Feature: As an administrator (admin), I should be able to access the expense hea
 
     Examples:
       | id  | exp_category  | description      | is_active     | is_deleted   | created_at           |
-      | 585 | test category | test details     | null          | null         | 2024-12-06 02:23:26  |
+      | 585 | test category | test details     | null          | null         | 2024-12-06 03:44:31  |
 
 
   Scenario Outline: When a GET body containing valid authorization information and invalid data (id) is sent to the
