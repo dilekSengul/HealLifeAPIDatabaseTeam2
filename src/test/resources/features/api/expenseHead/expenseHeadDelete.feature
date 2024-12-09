@@ -7,7 +7,7 @@ Feature: As an administrator (admin) I should be able to delete the visitor purp
 
     * The api user sets "api/visitorsPurposeDelete" path parameters.
     # Api kullanicisi "api/visitorsPurposeDelete" path parametrelerini olusturur
-    * The api user prepares a DELETE request to send to the api visitorsPurposeDelete add endpoint.
+    Given The api user prepares a DELETE request with <id> to send to the api deleteExpenseHead add endpoint.
     # Api kullanıcısı api visitorsPurposeDelete endpointine gönderilmek üzere bir DELETE request hazırlar.
     * The api user sends a DELETE request and saves the returned response.
     # Api kullanicisi DELETE request gonderir ve donen responsei kaydeder
@@ -78,3 +78,4 @@ Feature: As an administrator (admin) I should be able to delete the visitor purp
     Examples:
       | id  |
       | 758 |
+
