@@ -287,6 +287,21 @@ public class apiStepdefinitions extends BaseTest {
                                 .body(key, Matchers.equalTo(value));
                     }
 
+                    @Given("The api user prepares a DELETE request with id {string} to send to the api deleteExpenseHead add endpoint.")
+                    public void the_api_user_prepares_a_delete_request_with_id_to_send_to_the_api_deleteExpenseHead_add_endpoint(int id) {
+
+                        requestBody=new JSONObject();
+                        requestBody.put("id",id);
+                        System.out.println("Delete Body : " + requestBody.toString());
+                    }
+
+                    @Given("The api user prepares a DELETE request to send to the api deleteExpenseHead add endpoint.")
+                    public void the_api_user_prepares_a_delete_request_to_send_to_the_api_deleteExpenseHead_add_endpoint() {
+                        requestBody.put("id", 848);
+
+                        System.out.println("Delete Body : " + requestBody);
+                    }
+
 
 
 
