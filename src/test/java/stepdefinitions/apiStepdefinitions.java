@@ -488,7 +488,7 @@ public class apiStepdefinitions extends BaseTest {
 
     }
 
-    @Given("The api user sends a DELETE request, saves the returned response, and verifies that the status code is {string} with the reason phrase Forbidden.")
+    @Given("The api user sends a DELETE request, saves the returned response, and verifies that the status code is {string} with the reason phrase Forbidden_")
     public void the_api_user_sends_a_delete_request_saves_the_returned_response_and_verifies_that_the_status_code_is_with_the_reason_phrase_forbidden(String id) {
         requestBody.put("id",558);
 

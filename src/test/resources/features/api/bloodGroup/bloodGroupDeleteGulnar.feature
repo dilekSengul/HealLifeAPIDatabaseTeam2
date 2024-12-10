@@ -1,4 +1,4 @@
-c
+Feature:
 @US
  # Scenario: A DELETE request to the "api/deleteBloodGroup" endpoint with valid authorization
  # and correct data (id) should return a 200 status code, a response body message of "Success," and the "DeletedId" in the

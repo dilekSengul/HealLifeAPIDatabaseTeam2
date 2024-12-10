@@ -1,4 +1,4 @@
-c
+Feature:
 @US
  # Scenario: A DELETE request to the "api/deleteBloodGroup" endpoint with valid authorization
  # and correct data (id) should return a 200 status code, a response body message of "Success," and the "DeletedId" in the
@@ -40,7 +40,7 @@ c
 
     * The api user sets "api/deleteBloodGroup" path parameters.
     * The api user prepares a DELETE request that does not contain data
-    * The api user sends a DELETE request, saves the returned response, and verifies that the status code is '403' with the reason phrase Forbidden.
+    * The api user sends a DELETE request, saves the returned response, and verifies that the status code is '403' with the reason phrase Forbidden_
 
 
   Scenario Outline: It must be verified via the API that the blood group record that is requested to be deleted via
