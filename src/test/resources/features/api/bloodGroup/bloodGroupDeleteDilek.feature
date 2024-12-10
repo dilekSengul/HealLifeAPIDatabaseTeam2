@@ -1,5 +1,4 @@
-Feature: As an administrator (admin) I should be able to delete the blood group record in the system via API connection.
-
+c
 @US
  # Scenario: A DELETE request to the "api/deleteBloodGroup" endpoint with valid authorization
  # and correct data (id) should return a 200 status code, a response body message of "Success," and the "DeletedId" in the
