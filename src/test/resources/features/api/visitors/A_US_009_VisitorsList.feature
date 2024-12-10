@@ -7,7 +7,7 @@ Feature: As an administrator (admin) I should be able to access the Visitor List
     * Api user sets "api/visitorsList" path parameters.
     * Api user sends a GET request so saves the returned response.
     * Api user verifies Status Code 200.
-    * Api user verifies "message" information in the response body is "Success".
+    * Api user verifies "message" information in the response body is "Success"
     * Api user verifies the information in response body for entry with specified <dataIndex> index, including "<source>", "<purpose>", "<name>", "<email>", "<note>", "<created_at>".
 
     Examples:

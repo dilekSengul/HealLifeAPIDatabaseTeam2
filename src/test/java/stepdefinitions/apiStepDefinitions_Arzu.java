@@ -3,15 +3,23 @@ package stepdefinitions;
 import base.BaseTest;
 import io.cucumber.java.en.Given;
 import io.restassured.http.ContentType;
+import org.checkerframework.checker.units.qual.C;
 import org.hamcrest.Matchers;
+import org.json.JSONObject;
 import org.junit.Assert;
+import pojos.Pojo;
 import utilities.api.API_Methods;
+import utilities.api.TestData;
 
 import static hooks.HooksAPI.spec;
 import static io.restassured.RestAssured.given;
 import static utilities.api.API_Methods.fullPath;
 
 public class apiStepDefinitions_Arzu extends BaseTest {
+
+    Pojo pojoRequest;
+
+    TestData testData = new TestData();
 
 
     @Given("Api user sets {string} path parameters.")
@@ -39,7 +47,7 @@ public class apiStepDefinitions_Arzu extends BaseTest {
 
     }
 
-    @Given("Api user verifies {string} information in the response body is {string}.")
+    @Given("Api user verifies {string} information in the response body is {string}")
     public void api_user_verifies_information_in_the_response_body_is(String key, String value) {
         response.then()
                 .assertThat()
@@ -126,28 +134,137 @@ public class apiStepDefinitions_Arzu extends BaseTest {
 
     }
 
-    @Given("Api user prepares a POST request containing {string} and {string} information to send to the api visitorsAdd endpoint.")
-    public void api_user_prepares_a_post_request_containing_and_information_to_send_to_the_api_visitors_add_endpoint(String purpose, String name) {
-        map.put("purpose",purpose);
-        map.put("name",name);
+    @Given("Api user prepares a POST request containing {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string} and {string} information to send to the api visitorsAdd endpoint.")
+    public void api_user_prepares_a_post_request_containing_and_information_to_send_to_the_api_visitors_add_endpoint(String purpose, String email, String contact, String id_proof, String visit_to, String ipd_opd_staff_id, String date, String in_time, String out_time) {
+        map.put("purpose", purpose);
+        map.put("email", email);
+        map.put("contact", contact);
+        map.put("id_proof", id_proof);
+        map.put("visit_to", visit_to);
+        map.put("ipd_opd_staff_id", ipd_opd_staff_id);
+        map.put("date", date);
+        map.put("in_time", in_time);
+        map.put("out_time", out_time);
 
-        System.out.println("Post Body " + map);
+        System.out.println("Post Body : " + map);
 
     }
     @Given("Api user sends a POST request and saves the returned response.")
     public void api_user_sends_a_post_request_and_saves_the_returned_response() {
-      response = given()
-              .spec(spec)
-              .contentType(ContentType.JSON)
-              .when()
-              .body(map)
-              .post(fullPath);
+        response = given()
+                .spec(spec)
+                .contentType(ContentType.JSON)
+                .when()
+                .body(map)
+                .patch(fullPath);
 
-      response.prettyPrint();
-
-        System.out.println("Body " + response.getBody().asString());
-        System.out.println("Header " + response.getHeaders());
+        response.prettyPrint();
     }
+
+    @Given("Api user prepares a POST request that does not contain data.")
+    public void api_user_prepares_a_post_request_that_does_not_contain_data() {
+
+    }
+
+    @Given("Api user prepares a PATCH request containing {int}, {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string} and {string} information to send to the api visitorsUpdate endpoint.")
+    public void api_user_prepares_a_patch_request_containing_and_information_to_send_to_the_api_visitors_update_endpoint(int id, String purpose, String email, String contact, String id_proof, String visit_to, String ipd_opd_staff_id, String date, String in_time, String out_time) {
+      map = testData.visitorsUpdateRequestBody(id,purpose,email,contact,id_proof,visit_to,ipd_opd_staff_id,date,in_time,out_time);
+
+        System.out.println("Patch body " + map);
+
+    }
+    @Given("Api user sends a PATCH request and saves the returned response.")
+    public void api_user_sends_a_patch_request_and_saves_the_returned_response() {
+        response = given()
+                .spec(spec)
+                .contentType(ContentType.JSON)
+                .when()
+                .body(map)
+                .patch(fullPath);
+
+        response.prettyPrint();
+    }
+    @Given("Api user verifies that the updateid information in the Response body is the same as the id information in the patch request body.")
+    public void api_user_verifies_that_the_updateid_information_in_the_response_body_is_the_same_as_the_id_information_in_the_patch_request_body() {
+        repJP = response.jsonPath();
+
+        Assert.assertEquals(map.get("id"), repJP.getInt("updatedId"));
+    }
+
+    @Given("Api user prepares a PATCH request that does not contain an id but includes {string}, {string}, {string}, {string} information to send to the api visitorsUpdate endpoint.")
+    public void api_user_prepares_a_patch_request_that_does_not_contain_an_id_but_includes_and_information_to_send_to_the_api_visitors_update_endpoint(String purpose, String email, String contact, String id_proof) {
+        pojoRequest = new Pojo(purpose, email, contact, id_proof);
+
+        System.out.println("Patch body " + pojoRequest);
+
+    }
+
+    @Given("Api user prepares a PATCH request that does not contain data")
+    public void api_user_prepares_a_patch_request_that_does_not_contain_data() {
+        requestBody = new JSONObject();
+
+    }
+
+    @Given("Api user sends a PATCH request, saves the returned response, and verifies that the status code is '403' with the reason phrase Forbidden.")
+    public void api_user_sends_a_patch_request_saves_the_returned_response_and_verifies_that_the_status_code_is_with_the_reason_phrase_forbidden() {
+        response = given()
+                .spec(spec)
+                .when()
+                .get(fullPath);
+
+        response.prettyPrint();
+
+        response.then()
+                .assertThat()
+                .statusCode(403)
+                .body(Matchers.containsString("You do not have authorization or token error"));
+
+    }
+
+    @Given("Api user prepares a DELETE request to send to api visitorsDelete add endpoint.")
+    public void api_user_prepares_a_delete_request_to_send_to_api_visitors_delete_add_endpoint() {
+      requestBody.put("id",1275);
+
+        System.out.println("Delete body " + requestBody);
+    }
+    @Given("Api user sends a DELETE request and saves response.")
+    public void api_user_sends_a_delete_request_and_saves_response() {
+       response = given()
+               .spec(spec)
+               .contentType(ContentType.JSON)
+               .when()
+               .body(requestBody.toString())
+               .delete(fullPath);
+
+       response.prettyPrint();
+    }
+    @Given("Api user verifies that the Deletedid information is the same as the id information in the request body.")
+    public void api_user_verifies_that_the_deletedid_information_is_the_same_as_the_id_information_in_the_request_body() {
+      repJP = response.jsonPath();
+
+      Assert.assertEquals(requestBody.get("id"),repJP.getInt("deletedId"));
+    }
+
+    @Given("Api user prepares a DELETE request that does not contain data.")
+    public void api_user_prepares_a_delete_request_that_does_not_contain_data() {
+
+    }
+
+    @Given("Api user sends a DELETE request body, saves the returned response, and verifies that the status code is '403' with the reason phrase Forbidden.")
+    public void api_user_sends_a_delete_request_body_saves_the_returned_response_and_verifies_that_the_status_code_is_with_the_reason_phrase_forbidden() {
+        response = given()
+                .spec(spec)
+                .when()
+                .get(fullPath);
+
+        response.prettyPrint();
+
+        response.then()
+                .assertThat()
+                .statusCode(403)
+                .body(Matchers.containsString("You do not have authorization or token error"));
+    }
+
 
 
 }
