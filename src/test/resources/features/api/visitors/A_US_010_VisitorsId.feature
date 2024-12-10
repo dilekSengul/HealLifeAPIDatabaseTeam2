@@ -9,7 +9,7 @@ Feature: As an administrator (admin), I should be able to access the
    * Api user prepares a GET request containing <id> info to send to api visitorsId endpoint.
    * Api user sends a GET body and saves response.
    * Api user verifies Status Code 200.
-   * Api user verifies "message" information in the response body is "Success".
+   * Api user verifies "message" information in the response body is "Success"
    * Api user verifies the data in response body includes "<id>", "<source>", "<purpose>", "<name>", "<email>".
 
     Examples:
@@ -26,7 +26,7 @@ Feature: As an administrator (admin), I should be able to access the
     * Api user prepares a GET request containing <id> info to send to api visitorsId endpoint.
     * Api user sends a GET body and saves response.
     * Api user verifies Status Code 203.
-    * Api user verifies "message" information in the response body is "No id or wrong id.".
+    * Api user verifies "message" information in the response body is "No id or wrong id."
 
     Examples:
       | id    |
@@ -42,7 +42,7 @@ Feature: As an administrator (admin), I should be able to access the
     * Api user prepares a GET request that does not contain data.
     * Api user sends a GET body and saves response.
     * Api user verifies Status Code 203.
-    * Api user verifies "message" information in the response body is "No id or wrong id.".
+    * Api user verifies "message" information in the response body is "No id or wrong id."
 
 
   Scenario Outline:  Invalid Token When sending a GET body with invalid authorization information to the

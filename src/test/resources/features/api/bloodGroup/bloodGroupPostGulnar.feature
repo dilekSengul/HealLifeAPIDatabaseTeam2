@@ -27,8 +27,10 @@ Feature: As an administrator (admin) I want to be able to create a new visitor p
     * The api user verifies that the "message" information in the response body is "No information or missing information. Please check your input data.".
 
 
-  Scenario Outline: Invalid Token /api/addBloodGroup When a POST request is sent to the endpoint
-  with correct data (name, is_blood_group) but invalid authorization information, the returned status code must be 403, and the message field in the response body should state: 'You do not have authorization or token error.' This should be verified."
+  Scenario Outline: Invalid Token /api/addBloodGroup endpoint'ine gecersiz authorization bilgileri ile dogru datalar
+  (name, is_blood_group) iceren bir  POST body gönderildiginde dönen status code'in 403 oldugu ve
+  response body'deki message bilgisinin "You do not have authorization or token error" oldugu dogrulanmali.
+
     * The api user sets "api/addBloodGroup" path parameters.
     * The api user prepares a POST request containing "<name>" and "<isBloodGroup>" information to send to the api visitorsPurposeAdd endpoint.
     * The api user sends a POST request and saves the returned response.
