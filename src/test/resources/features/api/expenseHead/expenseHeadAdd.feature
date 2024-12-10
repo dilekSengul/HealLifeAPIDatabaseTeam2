@@ -1,4 +1,4 @@
-Feature: As an administrator (admin) I want to be able to create a new visitor purpose record via API connection.
+Feature: As an administrator (admin) I want to be able to create a new expense head record via API connection.
 @ONUR
   @US26
   Scenario Outline: A POST request to the "api/addExpenseHead" endpoint with valid authorization and correct data
@@ -22,7 +22,7 @@ Feature: As an administrator (admin) I want to be able to create a new visitor p
       | test category     | test description   |
 
 
-  Scenario: When a POST request that does not contain valid authorization information and data is sent to the
+  Scenario: When a POST request that does not contain valid data is sent to the
   api/addExpenseHead endpoint, the status code returned is 203 and the message information in the response
   body is "No information or missing information. Please check your input data." It should be verified that it is.
 
@@ -62,7 +62,7 @@ Feature: As an administrator (admin) I want to be able to create a new visitor p
     * The api user sets "api/getExpenseHeadById" path parameters.
     # Api kullanicisi "api/getExpenseHeadById" path parametrelerini olusturur
     * The api user prepares a GET request containing the <id> information to send to the api getExpenseHeadById endpoint.
-    # Api kullanicisi api visitorsPurposeId endpointine gondermek icin <id> bilgisini iceren bir get request hazirlar
+    # Api kullanicisi api getExpenseHeadById endpointine gondermek icin <id> bilgisini iceren bir get request hazirlar
     * The api user sends a GET body and saves the returned response.
     # Api kullanicisi GET body gonderir ve donen responsei kaydeder
     * The api user verifies that the status code is 200.
