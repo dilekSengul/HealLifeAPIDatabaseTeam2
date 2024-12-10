@@ -13,7 +13,6 @@ import static utilities.api.API_Methods.fullPath;
 
 public class apiStepDefinitions_Arzu extends BaseTest {
 
-    String exceptionMessage = null;
 
     @Given("Api user sets {string} path parameters.")
     public void api_user_sets_path_parameters(String pathParameter) {
@@ -33,7 +32,7 @@ public class apiStepDefinitions_Arzu extends BaseTest {
     }
 
     @Given("Api user verifies Status Code {int}.")
-    public void api_user_verifies_status_code(Integer code) {
+    public void api_user_verifies_status_code(int code) {
         response.then()
                 .assertThat()
                 .statusCode(code);
@@ -109,6 +108,45 @@ public class apiStepDefinitions_Arzu extends BaseTest {
     @Given("Api user prepares a GET request that does not contain data.")
     public void api_user_prepares_a_get_request_that_does_not_contain_data() {
 
+    }
+
+    @Given("Api user sends a GET request body, saves the returned response, and verifies that the status code is '403' with the reason phrase Forbidden.")
+    public void the_api_user_sends_a_get_request_body_saves_the_returned_response_and_verifies_that_the_status_code_is_with_the_phrase() {
+        response = given()
+                .spec(spec)
+                .when()
+                .get(fullPath);
+
+        response.prettyPrint();
+
+        response.then()
+                .assertThat()
+                .statusCode(403)
+                .body(Matchers.containsString("You do not have authorization or token error"));
+
+    }
+
+    @Given("Api user prepares a POST request containing {string} and {string} information to send to the api visitorsAdd endpoint.")
+    public void api_user_prepares_a_post_request_containing_and_information_to_send_to_the_api_visitors_add_endpoint(String purpose, String name) {
+        map.put("purpose",purpose);
+        map.put("name",name);
+
+        System.out.println("Post Body " + map);
+
+    }
+    @Given("Api user sends a POST request and saves the returned response.")
+    public void api_user_sends_a_post_request_and_saves_the_returned_response() {
+      response = given()
+              .spec(spec)
+              .contentType(ContentType.JSON)
+              .when()
+              .body(map)
+              .post(fullPath);
+
+      response.prettyPrint();
+
+        System.out.println("Body " + response.getBody().asString());
+        System.out.println("Header " + response.getHeaders());
     }
 
 

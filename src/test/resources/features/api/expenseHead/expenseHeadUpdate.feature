@@ -1,7 +1,6 @@
 Feature: As an administrator (admin), I should be able to update the expense head information registered in the
   system via API connection.
-
-
+@ONUR
   @US27
   Scenario Outline: A PATCH request to the "api/updateExpenseHead" endpoint with valid authorization and correct
   data (id, exp_category, description) should return a 200 status code, a response body message of "Success," and
@@ -34,7 +33,7 @@ Feature: As an administrator (admin), I should be able to update the expense hea
     * The api user sets "api/updateExpenseHead" path parameters.
     # Api kullanicisi "api/updateExpenseHead" path parametrelerini olusturur
     * The api user prepares a PATCH request containing <id>, "<exp_category>" and "<description>" information to send to the api updateExpenseHead endpoint.
-    # Api kullanicisi api updateExpenseHead endpointine gondermek icin "<visitors_purpose>" ve "<description>" bilgilerini iceren bir patch request hazirlar
+    # Api kullanicisi api updateExpenseHead endpointine gondermek icin "<exp_category>" ve "<description>" bilgilerini iceren bir patch request hazirlar
     * The api user sends a PATCH request and saves the returned response.
     # Api kullanicisi PATCH request gonderir ve donen responsei kaydeder
     * The api user verifies that the status code is 203.
@@ -43,13 +42,12 @@ Feature: As an administrator (admin), I should be able to update the expense hea
     # Api kullanicisi response bodydeki message bilgisinin "Wrong information or missing information. Please check your input data and id number." oldugunu dogrular
 
     Examples:
-      | id    | exp_category | description            |
+      | id    | exp_category | description          |
       | 85692 | test update   | test update details |
 
 
-  Scenario Outline: When a PATCH body (exp_category, description) that does not contain valid authorization
-  information (id) is sent to the api/updateExpenseHead endpoint, the status code returned is 203 and the
-  message information in the response body is "Wrong information or missing information. Please check your input
+  Scenario Outline: When a PATCH body (exp_category, description) containing invalid information (id) is sent to the api/updateExpenseHead endpoint, the status code returned is 203 and the
+  message in the response body is "Wrong information or missing information. Please check your input
   data and id number." It should be verified that it is.
 
     * The api user sets "api/updateExpenseHead" path parameters.
@@ -68,10 +66,9 @@ Feature: As an administrator (admin), I should be able to update the expense hea
       | test update   | test update details |
 
 
-  Scenario: When a PATCH request that does not contain valid authorization information and data is sent to the
-  api/updateExpenseHead endpoint, the status code returned is 203 and the message information in the response
-  body is "Wrong information or missing information. Please check your input data and id number."
-  It should be verified that it is.
+  Scenario: When a PATCH body (exp_category, description) doesn't contaion any information data is sent to the api/updateExpenseHead endpoint, the status code returned is 203 and the
+  message in the response body is "Wrong information or missing information. Please check your input
+  data and id number." It should be verified that it is.
 
     * The api user sets "api/updateExpenseHead" path parameters.
     # Api kullanicisi "api/updateExpenseHead" path parametrelerini olusturur
@@ -85,8 +82,8 @@ Feature: As an administrator (admin), I should be able to update the expense hea
     # Api kullanicisi response bodydeki message bilgisinin "Wrong information or missing information. Please check your input data and id number." oldugunu dogrular
 
 
-  Scenario Outline: Invalid Token When sending a PATCH body (id, visitors_purpose, description) with invalid authorization information
-  to the /api/visitorsPurposeUpdate endpoint, it should be verified that the status code returned is 403 and the message
+  Scenario Outline: Invalid Token When sending a PATCH body (id, exp_category, description) with invalid authorization information
+  to the /api/updateExpenseHead endpoint, it should be verified that the status code returned is 403 and the message
   in the response body is "You do not have authorization or token error".
 
     * The api user sets "api/updateExpenseHead" path parameters.
@@ -98,7 +95,7 @@ Feature: As an administrator (admin), I should be able to update the expense hea
 
     Examples:
       | id  | exp_category     | description            |
-      | 585 | purpose update   | purpose update details |
+      | 585 | expense test     | expense update details |
 
 
   Scenario Outline: It must be verified via the API that the expense head record that you want to update via the API
@@ -111,7 +108,7 @@ Feature: As an administrator (admin), I should be able to update the expense hea
     * The api user sends a GET body and saves the returned response.
     # Api kullanicisi GET body gonderir ve donen responsei kaydeder
     * The api user verifies that the "details.exp_category" information in the response body is "test category".
-    # Api kullanicisi response bodydeki lists.visitors_purpose bilgisinin "purpose update" oldugunu dogrular
+    # Api kullanicisi response bodydeki lists.exp_category bilgisinin "purpose update" oldugunu dogrular
 
     Examples:
       | id  |
