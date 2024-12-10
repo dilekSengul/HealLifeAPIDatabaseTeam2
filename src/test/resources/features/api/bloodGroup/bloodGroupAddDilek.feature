@@ -7,20 +7,20 @@ Feature: As an administrator (admin) I should be able
   valid authorization information, it should be verified that the status code returned
   is 200 and the message information in the response body is “Success”.
 
-    When The api user sets "api/getBloodGroup" path parameters
-    When The api user sends a GET request and saves the returned response.
-    And The api user verifies that the status code is 200.
-    Then The api user verifies that the "message" information in the response body is "Success".
+    * The api user sets "api/getBloodGroup" path parameters
+    * The api user sends a GET request and saves the returned response.
+    * The api user verifies that the status code is 200.
+    * The api user verifies that the "message" information in the response body is "Success".
 
   Scenario Outline:  GET request is sent to the /api/getBloodGroup endpointwith
   invalid authorization information,it should be verified that the status code returnedis 403 and the message
   in the response body is "You do not have authorization or token error.".
 
-    Given The api user sets "api/getBloodGroup" path parameters.
-    And The api user prepares a GET request containing the <id> information to send to the api getExpenseHeadById endpoint.
-    And The api user sends a POST request and saves the returned response.
-    Then The api user verifies that the status code is 403.
-    And The api user verifies that the "message" information in the response body is "You do not have authorization or token error".
+    * The api user sets "api/getBloodGroup" path parameters.
+    * The api user prepares a GET request containing the <id> information to send to the api getExpenseHeadById endpoint.
+    * The api user sends a POST request and saves the returned response.
+    * The api user verifies that the status code is 403.
+    * The api user verifies that the "message" information in the response body is "You do not have authorization or token error".
 
     Examples:
 
