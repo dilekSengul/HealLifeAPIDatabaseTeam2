@@ -1,6 +1,5 @@
 Feature: As an administrator (admin), I should be able to access the expense head information of the user
   whose id is given through the API connection.
-
   @UGUR
     @US25
   Scenario Outline: When sending a GET body with valid authorization information and correct data (id) to the
@@ -21,10 +20,8 @@ Feature: As an administrator (admin), I should be able to access the expense hea
     # Api kullanicisi response bodydeki data "<id>", "<exp_category>", "<description>", <is_active>, <is_deleted> ve "<created_at>" içeriklerini doğrular.
 
     Examples:
-<<<<<<< HEAD:target/test-classes/features/api/expenseHead/expenseHeadId.feature
-
-      | id  | id  | exp_category  | description      | is_active     | is_deleted   | created_at           |
-      | 585 | 585 | test category | test description | null          | null         | 2024-12-04 02:34:42  |
+      | id  | exp_category  | description      | is_active     | is_deleted   | created_at           |
+      | 583 | test category | test description     | null          | null         | 2024-12-04 02:34:42  |
 
 
   Scenario Outline: When a GET body containing valid authorization information and invalid data (id) is sent to the
@@ -43,11 +40,11 @@ Feature: As an administrator (admin), I should be able to access the expense hea
     # Api kullanicisi response bodydeki message bilgisinin "No id or wrong id." oldugunu dogrular
 
     Examples:
-
       | id      |
       | 284669  |
 
-  Scenario: When a GET request that does not contain valid authorization information and data (id) is sent to the
+
+  Scenario: When a DELETE body containing valid authorization information and invalid data (id) is sent to the
   /api/getExpenseHeadById endpoint, the status code returned is 203 and the message information in the response body is
   "No id or wrong id." It should be verified that it is.
 

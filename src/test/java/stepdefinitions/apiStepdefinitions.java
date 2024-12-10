@@ -504,7 +504,7 @@ public class apiStepdefinitions extends BaseTest {
     public void the_api_user_prepares_a_delete_request_to_send_to_the_api_delete_blood_group_add_endpoint() {
         requestBody.put("id",603);
 
-
+    }
     @And("The API user validates the {string} and {string} information of the {string} index in the response body.")
     public void theAPIUserValidatesTheAndInformationOfTheIndexInTheResponseBody(String category, String created_at, String data) {
         repJP = response.jsonPath();
@@ -608,6 +608,3 @@ public class apiStepdefinitions extends BaseTest {
     }
 }
 
-        System.out.println("Delete Body: "+requestBody);
-    }
-}
