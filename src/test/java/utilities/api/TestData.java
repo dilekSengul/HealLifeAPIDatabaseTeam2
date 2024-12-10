@@ -47,6 +47,25 @@ public class TestData extends BaseTest {
 
         return requestBody;
     }
+    //dilek
+    public HashMap bloodUpdateRequestBody(Integer id, String name, String is_blood_group){
+        HashMap<String,Object> requestBody=new HashMap<>();
+        requestBody.put("id",id);
+        requestBody.put("name",name);
+        requestBody.put("is_blood_group",is_blood_group);
+        return requestBody;
+    }
+
+    public HashMap findingCategoryUpdateRequestBody (int id, String category, String created_at){
+
+        HashMap<String, Object> requestBody = new HashMap<>();
+
+        requestBody.put("id",id);
+        requestBody.put("category",category);
+        requestBody.put("created_at",created_at);
+
+        return requestBody;
+    }
 
     public HashMap visitorsUpdateRequestBody(int id, String purpose, String name, String email, String contact, String id_proof, String visit_to, String ipd_opd_staff_id, String related_to, String no_of_pepple, String date, String in_time, String out_time, String note) {
 
