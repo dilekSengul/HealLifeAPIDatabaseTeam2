@@ -179,7 +179,9 @@ public class apiStepdefinitions extends BaseTest {
     public void the_api_user_verifies_that_the_updateid_information_in_the_response_body_is_the_same_as_the_id_information_in_the_patch_request_body() {
        repJP = response.jsonPath();
 
+
        assertEquals(map.get("id"), repJP.getInt("updateId"));
+
     }
 
     //expenseHead-Onur\\
@@ -457,17 +459,50 @@ public class apiStepdefinitions extends BaseTest {
     }
 
     @Given("The api user prepares a Get request containing the {int} information to send to the api addBloodGroup endpoint.")
-    public void the_api_user_prepares_a_get_request_containing_the_information_to_send_to_the_api_add_blood_group_endpoint(Integer id) {
+    public void the_api_user_prepares_a_get_request_containing_the_information_to_send_to_the_api_add_blood_group_endpoint(int id) {
         requestBody.put("id", id);
 
         System.out.println("Get Body : " + requestBody);
-    }
-    @Given("The api user prepares a PATCH request containing {int}, {string} and {string} information to send to the api updateBloodGroup endpoint.")
-    public void the_api_user_prepares_a_patch_request_containing_and_information_to_send_to_the_api_update_blood_group_endpoint(int id, String name, String is_blood_group) {
-        map=testData.bloodUpdateRequestBody(id,name,is_blood_group);
 
-        System.out.println("Patch Body : " + map);
     }
+
+    @When("The api user prepares a PATCH request containing {int}, {string} and {string} information to send to the api addBloodGroup endpoint.")
+    public void the_api_user_prepares_a_patch_request_containing_and_information_to_send_to_the_api_add_blood_group_endpoint(int id, String name, String is_blood_group) {
+        map = testData.bloodUpdateRequestBody(id, name, is_blood_group);
+        System.out.println("Patch Body :" + map);
+
+    }
+    @Given("The api user prepares a PATCH request containing {int},{string} and {string} information to send to the api updateBloodGroup endpoint.")
+    public void the_api_user_prepares_a_patch_request_containing_and_information_to_send_to_the_api_update_blood_group_endpoint(int id, String name, String is_blood_group) {
+      map = testData.bloodUpdateRequestBody(id, name, is_blood_group);
+       System.out.println("Patch Body :" + map);
+
+
+    }
+
+
+    @Given("The api user prepares a GET request containing the {int} information to send to the api getBloodGroupById endpoint.")
+    public void the_api_user_prepares_a_get_request_containing_the_information_to_send_to_the_api_get_blood_group_by_ıd_endpoint(int id) {
+        requestBody.put("id", id);
+        System.out.println("Get Body: " + requestBody);
+
+    }
+
+    @Given("The api user sends a DELETE request, saves the returned response, and verifies that the status code is {string} with the reason phrase Forbidden.")
+    public void the_api_user_sends_a_delete_request_saves_the_returned_response_and_verifies_that_the_status_code_is_with_the_reason_phrase_forbidden(String id) {
+        requestBody.put("id",558);
+
+        System.out.println("Delete Body: "+requestBody);
+    }
+    @Given("The api user prepares a GET request containing the {int} information to send to the api bloodGroupId endpoint.")
+    public void the_api_user_prepares_a_get_request_containing_the_information_to_send_to_the_api_blood_group_ıd_endpoint(int id) {
+        requestBody.put("id",558);
+
+        System.out.println("Delete Body: "+requestBody);
+    }
+    @Given("The api user prepares a DELETE request to send to the api deleteBloodGroup add endpoint.")
+    public void the_api_user_prepares_a_delete_request_to_send_to_the_api_delete_blood_group_add_endpoint() {
+        requestBody.put("id",603);
 
 
     @And("The API user validates the {string} and {string} information of the {string} index in the response body.")
@@ -573,3 +608,6 @@ public class apiStepdefinitions extends BaseTest {
     }
 }
 
+        System.out.println("Delete Body: "+requestBody);
+    }
+}
