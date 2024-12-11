@@ -51,5 +51,12 @@ public class dbStepdefinitions extends Manage {
         }
     }
 
-    //
+    @Given("“US_{int}” is prepared and executed")
+    public void us_is_prepared_and_executed(int US) {
+
+    }
+    @Given("“US_{int}” results are tested.")
+    public void us_results_are_tested(int us) throws SQLException {
+
+    }
 }
