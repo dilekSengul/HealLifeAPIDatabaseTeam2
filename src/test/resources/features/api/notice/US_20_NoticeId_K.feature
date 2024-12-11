@@ -9,7 +9,7 @@ Feature:As an administrator (admin), I should be able to access the relevant ann
     Then The api user sends a GET body and saves the returned response.
     Then The api user verifies that the status code is 200.
     Then  The api user verifies that the "message" information in the response body is "Success".
-    Then The API user verifies the contents of the response body, including "<id>", "<type>"," <slug>", "<url>", "<title>", and "<date>".
+    Then The API user verifies the contents of the response body, including "<id>", "<type>","<slug>", "<url>", "<title>", and "<date>".
 
 
     Examples:

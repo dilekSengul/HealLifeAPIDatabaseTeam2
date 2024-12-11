@@ -76,7 +76,8 @@ public class apiStepdefinitonsDamla extends BaseTest {
 
 
     @Then("The API user verifies the contents of the response body, including {string}, {string},{string}, {string}, {string}, and {string}.")
-    public void the_apı_user_verifies_the_contents_of_the_response_body_including_and(String id, String type, String slug, String url, String title, String date) {
+    public void theAPIUserVerifiesTheContentsOfTheResponseBodyIncludingAnd(String id, String type, String slug, String url, String title, String date) {
+
         response.then()
                 .assertThat().body("lists.id", Matchers.equalTo(id))
                 .body("lists.type", Matchers.equalTo(type))
@@ -85,6 +86,7 @@ public class apiStepdefinitonsDamla extends BaseTest {
                 .body("lists.title", Matchers.equalTo(title))
                 .body("lists.date", Matchers.equalTo(date));
     }
+
 
 
     @Given("The api user prepares a PATCH request containing {int}, {string} ,{string}, {string} and {string} information to send to the api addNotice endpoint.")
