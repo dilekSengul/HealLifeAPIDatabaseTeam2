@@ -8,8 +8,10 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.HashMap;
 
 import static HelperDB.JDBC_Structure_Methods.*;
+import static org.junit.Assert.assertFalse;
 
 public class dbStepdefinitions extends Manage {
     CommonData data = new CommonData();
@@ -49,7 +51,33 @@ public class dbStepdefinitions extends Manage {
         while (resultSet.next()) {
             System.out.println(resultSet.getString("child_name"));
         }
+
+
     }
 
     //
-}
+    @Given("Query prepared into the patients table")
+    public void query_prepared_into_the_patients_table() throws SQLException {
+        query=getUS25();
+        resultSet=getStatement().executeQuery(query);
+    }
+    @Given("Verify result is returned")
+    public void verify_result_is_returned() throws SQLException {
+       CommonData.patientsEmailGender =new HashMap<>();
+        while (resultSet.next()) {
+            CommonData.patientsEmailGender.put(resultSet.getString("gender"),resultSet.getString("email"));
+
+        }
+        if(!CommonData.patientsEmailGender.isEmpty()){
+            for (int i = 0; i <CommonData.patientsEmailGender.size() ; i++) {
+                // buraya expected Liste karşılaşması yazılır.
+                System.err.println( CommonData.patientsEmailGender.get(i));
+            }
+        }else{
+            assertFalse("Resultset is EMPTY", resultSet.next());
+        }
+    }
+
+    }
+
+
