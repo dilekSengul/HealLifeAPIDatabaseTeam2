@@ -1,4 +1,4 @@
-Feature:
+Feature:This feature is a file created for Database User Stories 24, 25, 26
 
   Background: Database connectivity established
     * Database connection established
