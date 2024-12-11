@@ -20,3 +20,4 @@ information, it should be verified that the status code returned is 403 and the 
     Given The api user sets "api/getNotice" path parameters.
     Then The api user sends a GET request, saves the returned response, and verifies that the status code is '403' with the reason phrase Forbidden.
 
+
