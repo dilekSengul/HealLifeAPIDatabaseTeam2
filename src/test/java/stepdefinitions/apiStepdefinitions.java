@@ -452,7 +452,6 @@ public class apiStepdefinitions extends BaseTest {
     //bloodgrouppost
 
 
-
     @Given("The api user prepares a Get request containing the {int} information to send to the api addBloodGroup endpoint.")
     public void the_api_user_prepares_a_get_request_containing_the_information_to_send_to_the_api_add_blood_group_endpoint(int id) {
         requestBody.put("id", id);
@@ -589,6 +588,15 @@ public class apiStepdefinitions extends BaseTest {
                 requestBody.put("id", 99999);
 
                 System.out.println("Delete Body : " + requestBody);
+            }
+
+            @When("The api user prepares a GET request containing the <{int}> information to send to the api getFindingCategoryById endpoint.")
+            public void theApiUserPreparesAGETRequestContainingTheInformationToSendToTheApiGetFindingCategoryByIdEndpoint (
+                    int id){
+
+                requestBody.put("id", id);
+
+                System.out.println("Get Body : " + requestBody);
             }
 
             @Given("The api user sends a DELETE request, saves the returned response, and verifies that the status code is '403' with the reason phrase Forbidden.")
