@@ -63,4 +63,15 @@ public class Pojo {
     public void setSlug(String slug) {
         this.slug = slug;
     }
+
+
+    private String name;
+    private String isBloodGroup;
+
+    private String purpose;
+    private String email;
+    private String contact;
+    private String id_proof;
+
+
 }

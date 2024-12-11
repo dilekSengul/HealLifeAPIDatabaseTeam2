@@ -1,8 +1,8 @@
 Feature: As an administrator (admin), I want to be able to create a new announcement record via API connection.
 
   Scenario Outline: A POST request to the "/api/addNotice" endpoint with valid authorization and correct data
-  should return a 200 status code, a response body with the message "Success," and the creation of the new visitor
-  purpose record should be verified via a GET request to the "/api/addNotice" endpoint using the "addId"
+  should return a 200 status code, a response body with the message "Success," and the creation of the new
+  notice record should be verified via a GET request to the "/api/addNotice" endpoint using the "addId"
   from the response body.
 
     Given The api user sets "api/addNotice" path parameters.
