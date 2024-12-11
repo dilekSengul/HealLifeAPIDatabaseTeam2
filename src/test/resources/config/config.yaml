@@ -8,6 +8,6 @@ api:
 database:
   host: "localhost"
   port: 3306
-  URL:
-  USERNAME:
-  PASSWORD:
+  URL: jdbc:mysql://195.35.59.63/u201212290_heallifeqa
+  USERNAME: u201212290_heallifeuserqa
+  PASSWORD: V985C14!o

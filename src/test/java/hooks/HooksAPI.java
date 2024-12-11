@@ -12,6 +12,7 @@ public class HooksAPI extends BaseTest {
     public static RequestSpecification spec;
 
 
+
     @Before(order = 2)
     public void setUpScenario(Scenario scenario) {
         String token;
