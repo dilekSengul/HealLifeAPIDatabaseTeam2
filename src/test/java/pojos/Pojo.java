@@ -67,4 +67,11 @@ public class Pojo {
 
     private String name;
     private String isBloodGroup;
+
+    private String purpose;
+    private String email;
+    private String contact;
+    private String id_proof;
+
+
 }
