@@ -65,29 +65,7 @@ public class apistepdefinitions_Kevser extends BaseTest {
     public void the_api_user_prepares_a_get_request_containing_the_information_to_send_to_the_api_visitors_ıd_endpoint(Integer id) {
     }
 
-    @Given("The api user prepares a Get request containing the {int} information to send to the api addBloodGroup endpoint.")
-    public void the_api_user_prepares_a_get_request_containing_the_information_to_send_to_the_api_add_blood_group_endpoint
-            (Integer id){
-        requestBody.put("id", id);
 
-        System.out.println("Get Body : " + requestBody);
-    }
-    @Given("The api user prepares a PATCH request containing {int}, {string} and {string} information to send to the api updateBloodGroup endpoint.")
-    public void the_api_user_prepares_a_patch_request_containing_and_information_to_send_to_the_api_update_blood_group_endpoint
-            ( int id, String name, String is_blood_group){
-        map = testData.bloodUpdateRequestBody(id, name, is_blood_group);
-
-        System.out.println("Patch Body : " + map);
-    }
-
-    @When("The api user prepares a GET request containing the <{int}> information to send to the api getFindingCategoryById endpoint.")
-    public void theApiUserPreparesAGETRequestContainingTheInformationToSendToTheApiGetFindingCategoryByIdEndpoint (
-            int id){
-
-        requestBody.put("id", id);
-
-        System.out.println("Get Body : " + requestBody);
-    }
 
 
     @Given("The api user prepares a POST request containing {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string} and {string} information to send to the api visitorsAdd endpoint.")
