@@ -1,15 +1,16 @@
+@E2E
 Feature:This feature is a file created for Database User Stories 24, 25, 26
 
   Background: Database connectivity established
     Given Database connection established
 
-  @US25
+
   Scenario: Verifying gender and email information for patients with 'Jain' in their names
     When Query prepared into the patients table
     Then Verify result is returned
     And Database closed
 
-  @US24
+
   Scenario: Nurse can insert multiple notes into the nurse_note table
     Given the "nurse_note" table exists and is accessible
     When get the number of records in the nurse_note table and store it as the startingcount

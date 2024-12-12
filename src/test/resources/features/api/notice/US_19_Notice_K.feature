@@ -1,4 +1,4 @@
-@kubra
+@smoke
 Feature: As an administrator (admin), I should be able to access announcements via API connection.
         # Bir yönetici (admin) olarak API baglantisi üzerinden duyurulara erisebilmeliyim.
 
@@ -23,7 +23,7 @@ Feature: As an administrator (admin), I should be able to access announcements v
 
     Examples:
       |   dataindex  | type   | slug         |url   |title          |date      |
-      | 0            | notice |noticehospital|      |notice hospital|2024-12-09|
+      | 0            | notice |noticehospital|      |notice hospital|2024-12-12|
 
 
 

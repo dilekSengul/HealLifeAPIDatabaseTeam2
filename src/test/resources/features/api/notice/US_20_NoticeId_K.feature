@@ -1,4 +1,4 @@
-@kubra
+@smoke
 Feature:As an administrator (admin), I should be able to access the relevant announcement data by entering id through the API connection.
 
 

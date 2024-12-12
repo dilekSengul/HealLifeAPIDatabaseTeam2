@@ -227,6 +227,7 @@ public class dbStepdefinitions extends Manage {
     }
 
 
+
     //-------------------DB_US19--------------------------//
     @When("the result should contain working hours for staff_id {int} on Tuesday")
     public void the_result_should_contain_working_hours_for_staff_id_on_tuesday(Integer int1) throws SQLException {
@@ -240,6 +241,7 @@ public class dbStepdefinitions extends Manage {
         Assert.assertTrue("No working hours found for staff_id 2 on Tuesday", !workingHoursList.isEmpty());
 
     }
+
 
     //-------------------DB_US20_confirm_deletion--------------------------//
     @When("I execute query the database for {string} with data")
