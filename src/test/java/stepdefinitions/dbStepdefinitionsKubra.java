@@ -2,13 +2,14 @@ package stepdefinitions;
 
 import HelperDB.CommonData;
 import Manage.Manage;
+import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.junit.Assert;
 
 import java.sql.*;
 
-import static HelperDB.JDBC_Structure_Methods.connection;
-import static HelperDB.JDBC_Structure_Methods.preparedStatement;
+import static HelperDB.JDBC_Structure_Methods.*;
 import static org.junit.Assert.*;
 
 public class dbStepdefinitionsKubra extends Manage {
@@ -20,12 +21,12 @@ public class dbStepdefinitionsKubra extends Manage {
     public Manage manage=new Manage();
 
 
-    @When("User verifies that count babies with weight greater than or equal to {double} kg")
+    @Given("User verifies that count babies with weight greater than or equal to {double} kg")
     public void userVerifiesThatCountBabiesWithWeightGreaterThanOrEqualToKg(double weight) throws SQLException {
         babyCount = manage.getBabyCountByWeight(weight);
     }
 
-    @Then("the count of babies should be {int}")
+    @When("the count of babies should be {int}")
     public void theCountOfBabiesShouldBe(int expectedCount) throws SQLException {
         assertEquals(expectedCount, babyCount);
         System.out.println("Test passed: Baby count is " + babyCount);
@@ -36,26 +37,23 @@ public class dbStepdefinitionsKubra extends Manage {
     @Then("The bed record should be active")
     public void theBedRecordShouldBeActive() {
         try {
-            boolean recordExists = resultSet.next();
-            assertEquals("The bed record is not active!", true, recordExists);
-        } catch (Exception e) {
-            e.printStackTrace();
+            if (resultSet.next()) {
+                String isActive = resultSet.getString("is_active");
+                assertEquals("yes", isActive);
+            } else {
+                throw new RuntimeException("No active bed found with the specified created_at.");
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
 
     }
 
-    @When("User query the bed record with created_at {string}")
-    public void ıQueryTheBedRecordWithCreated_at(String createdAt) {
-        try {
-            PreparedStatement preparedStatement = connection.prepareStatement(manage.getUS07());
-            preparedStatement.setString(1, createdAt);
-            resultSet = preparedStatement.executeQuery();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    @When("User query the bed with created_at '2023-05-04 06:41:17'")
+    public void ıQueryTheBedRecordWithCreated_at() throws SQLException {
+      statement=connection.createStatement();
+      resultSet=statement.executeQuery(manage.getUS07());
     }
-
-
 
 
     @Then("Verify the name is null")
@@ -71,4 +69,7 @@ public class dbStepdefinitionsKubra extends Manage {
             e.printStackTrace();
         }
     }
+
+
+
 }
