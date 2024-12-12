@@ -223,8 +223,6 @@ public class dbStepdefinitions extends Manage {
 
         while (resultSet.next()) {
             Timestamp createdAt = resultSet.getTimestamp("created_at");
-            // created_at alanının geçerliliğini kontrol et
-            // Örneğin: null olmaması, güncel tarihte olması gibi
             if (createdAt == null) {
                 throw new AssertionError("created_at field is null");
             }
