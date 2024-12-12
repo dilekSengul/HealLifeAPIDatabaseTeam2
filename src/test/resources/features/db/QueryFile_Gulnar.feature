@@ -1,3 +1,4 @@
+@E2E
 Feature: This feature is a file created for Database User Stories 4,5 ,6.
 
   Background: Database connectivity established
