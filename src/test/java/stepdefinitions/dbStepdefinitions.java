@@ -32,31 +32,12 @@ public class dbStepdefinitions extends Manage {
     }
 
 
-        @Given("Database connection established")
-        public void database_connection_established() {
-            createConnection();
-        }
+
 
         @Given("Database closed")
         public void database_closed() {
             closeConnection();
         }
-
-        @When("User creates Query for {string}")
-        public void user_creates_query_for(String us) {
-            try {
-                switch (us) {
-                    case "DB_US10":
-                        query = getDB_US10();
-                        statement = getStatement();
-                        resultSet = statement.executeQuery(query);
-                        break;
-
-                }
-            } catch (Exception e) {
-                System.out.println("You entered the US name incorrectly or not at all");
-            }
-
 
     @When("User creates Query for {string}")
     public void user_creates_query_for(String us) {
@@ -68,24 +49,26 @@ public class dbStepdefinitions extends Manage {
                     resultSet = statement.executeQuery(query);
                     break;
                 case "DB_US07":
-                    query=getUS07();
-                    statement=getStatement();
-                    resultSet=statement.executeQuery(query);
+                    query = getUS07();
+                    statement = getStatement();
+                    resultSet = statement.executeQuery(query);
                     break;
                 case "DB_US08":
-                    query=getUS08();
-                    statement=getStatement();
-                    resultSet=statement.executeQuery(query);
+                    query = getUS08();
+                    statement = getStatement();
+                    resultSet = statement.executeQuery(query);
                     break;
                 case "DB_US09":
-                    query=getUS09();
-                    statement=getStatement();
-                    resultSet=statement.executeQuery(query);
+                    query = getUS09();
+                    statement = getStatement();
+                    resultSet = statement.executeQuery(query);
                     break;
 
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
-
-
+    }
         @Then("User prints the ‘DB_US10’ query response returned")
         public void user_prints_the_db_us10_query_response_returned() throws SQLException {
             while (resultSet.next()) {
@@ -248,10 +231,6 @@ public class dbStepdefinitions extends Manage {
         }
     }
 
-
-
-    @Then("User prints the ‘DB_US10’ query response returned")
-    public void user_prints_the_db_us10_query_response_returned() throws SQLException {
 
     //-------------------DB_US19--------------------------//
     @When("the result should contain working hours for staff_id {int} on Tuesday")
