@@ -7,7 +7,7 @@ import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import org.json.JSONObject;
 
-import static hooks.HooksAPI.spec;
+import static hooks.api.HooksAPI.spec;
 import static io.restassured.RestAssured.given;
 
 public class Authentication extends BaseTest {

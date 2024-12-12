@@ -3,7 +3,6 @@ package stepdefinitions;
 import base.BaseTest;
 import io.cucumber.java.en.Given;
 import io.restassured.http.ContentType;
-import org.checkerframework.checker.units.qual.C;
 import org.hamcrest.Matchers;
 import org.json.JSONObject;
 import org.junit.Assert;
@@ -11,7 +10,7 @@ import pojos.Pojo;
 import utilities.api.API_Methods;
 import utilities.api.TestData;
 
-import static hooks.HooksAPI.spec;
+import static hooks.api.HooksAPI.spec;
 import static io.restassured.RestAssured.given;
 import static utilities.api.API_Methods.fullPath;
 

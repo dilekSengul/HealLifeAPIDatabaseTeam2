@@ -1,4 +1,4 @@
-package hooks;
+package hooks.api;
 
 import base.BaseTest;
 import io.cucumber.java.After;

@@ -1,27 +1,13 @@
 package stepdefinitions;
 
 import base.BaseTest;
-import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
-import io.restassured.http.ContentType;
 import org.hamcrest.Matchers;
-import org.json.JSONObject;
 import org.junit.Assert;
-import pojos.Pojo;
-import utilities.api.API_Methods;
 import utilities.api.TestData;
 
-import java.util.Map;
-
-import static hooks.HooksAPI.spec;
 import static io.restassured.RestAssured.given;
 import static org.junit.Assert.assertEquals;
-import static utilities.api.API_Methods.fullPath;
-
-import base.BaseTest;
-import utilities.api.TestData;
 
 public class apistepdefinitions_Kevser extends BaseTest {
     TestData testData = new TestData();
