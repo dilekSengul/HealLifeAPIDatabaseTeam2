@@ -231,35 +231,18 @@ public class JDBCMethods {
     }
 
 
-    /*******************ONUR*******************/
-    public static ResultSet executeSelectQueryOnur(String queryKey, Object... params) throws Exception {
+
+    public static ResultSet executeSelectQueryOnur(String queryKey) throws Exception {
         String query = getQueryOnur(queryKey);
         if (query.equals("QUERY_NOT_FOUND")) {
             throw new IllegalArgumentException("Query key not found: " + queryKey);
         }
 
         PreparedStatement preparedStatement = connection.prepareStatement(query, ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
-        setPreparedStatementParamsOnur(preparedStatement, params);
+
         return preparedStatement.executeQuery();
     }
 
-    public static int executeUpdateQueryOnur(String queryKey, Object... params) throws Exception {
-        String query = getQueryOnur(queryKey);
-        if (query.equals("QUERY_NOT_FOUND")) {
-            throw new IllegalArgumentException("Query key not found: " + queryKey);
-        }
-
-        PreparedStatement preparedStatement = connection.prepareStatement(query);
-        setPreparedStatementParamsOnur(preparedStatement, params);
-        return preparedStatement.executeUpdate();
-    }
-
-    private static void setPreparedStatementParamsOnur(PreparedStatement preparedStatement, Object... params) throws Exception {
-        for (int i = 0; i < params.length; i++) {
-            preparedStatement.setObject(i + 1, params[i]);
-        }
-    }
-    /* *************************************** */
 
     public void birthRecordAccess(ResultSet resultSet) throws SQLException {
         Map<String, Integer> siblings = new HashMap<>();

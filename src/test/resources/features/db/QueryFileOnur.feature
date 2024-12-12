@@ -13,5 +13,5 @@ Scenario: DB_US28 Verify that the oldest vehicle in the vehicles table has drive
 Scenario: When the vehicles in the vehicles table are listed from oldest to newest according to
     the manufacture_year information and when they are listed from oldest to newest according to
     the created_at information, verify that there is a vehicle in the same index in both lists.
-    * the user executes the "us29" query
+    * the user executes the "US29" query
     * verifies that the table is not empty.
