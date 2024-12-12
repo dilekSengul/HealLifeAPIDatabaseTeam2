@@ -1,6 +1,7 @@
+@E2E
 Feature: This feature is a file created for Database User Stories 33, 34, 35
 
-  @select @US33 @ugur
+ # @select @US33 @ugur
   Scenario: Combining consultant_register with ipd_details and staff tables, list the IPD records and doctor names of the instructions.(consultant_register)
 
     * Database connection established
@@ -10,7 +11,7 @@ Feature: This feature is a file created for Database User Stories 33, 34, 35
     * return IPD records with doctor names
     * Database closed
 
-  @US34 @ugur
+  #@US34 @ugur
   Scenario: List the names (or names of relatives) and dates of death of people who have died in the last week according to the date of death in the death_report table.
 
     * Database connection established
@@ -20,7 +21,7 @@ Feature: This feature is a file created for Database User Stories 33, 34, 35
     * return names (or relatives) and dates of death
     * Database closed
 
-  @US35 @ugur
+  #@US35 @ugur
   Scenario: Add 1 data to the email_config table whose passcode is protected with sha2 method.
 
     * Database connection established

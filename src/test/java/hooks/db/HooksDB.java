@@ -11,12 +11,12 @@ public class HooksDB extends BaseTest {
 
     static { configLoader = new ConfigLoader();}
 
-    @Before("@onur")
+    @Before()
     public static void createConnection() {
     JDBC_Structure_Methods.createConnection();
     }
 
-    @After("@onur")
+    @After()
     public static void closeConnection() {
     JDBC_Structure_Methods.closeConnection();
     }
