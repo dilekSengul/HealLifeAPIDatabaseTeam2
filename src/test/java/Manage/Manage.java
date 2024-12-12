@@ -2,7 +2,12 @@ package Manage;
 
 import lombok.Getter;
 
-import java.util.Map;
+
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import static HelperDB.JDBC_Structure_Methods.connection;
+
 
 @Getter
 public class Manage {
@@ -21,6 +26,16 @@ public class Manage {
         "DB_US20_confirm_deletion", "SELECT * FROM events WHERE event_title = 'Insert Ayse Event';"
     );
 
+    String US07="SELECT * FROM u201212290_heallifeqa.bed WHERE created_at = '2023-05-04 06:41:17'  AND is_active = 'yes';";
+     String US08="SELECT name FROM u201212290_heallifeqa.bed WHERE bed_group_id = 4  AND is_active = 'no';";
+
+   // String US09="SELECT COUNT(*) AS baby_count FROM birth_report WHERE weight >= 2.5 ; " ;
+   String US09="SELECT COUNT(*) AS baby_count FROM  u201212290_heallifeqa.birth_report WHERE weight >= ?; " ;
+
+
+
+
+
     //***************Getter***************\\
 
 
@@ -38,4 +53,29 @@ public class Manage {
     public String getQuery(String queryId) {
         return queryMap.get(queryId);
     }
+    public String getUS07() {
+        return US07;
+    }
+    public String getUS08() {
+        return US08;
+    }
+
+    public String getUS09() {
+        return US09;
+    }
+
+    public int getBabyCountByWeight(double weight) throws SQLException {
+        PreparedStatement preparedStatement = connection.prepareStatement(US09);
+        preparedStatement.setDouble(1, weight);
+
+        ResultSet resultSet = preparedStatement.executeQuery();
+        int babyCount = 0;
+
+        if (resultSet.next()) {
+            babyCount = resultSet.getInt("baby_count");
+        }
+
+        return babyCount;
+    }
+
 }
