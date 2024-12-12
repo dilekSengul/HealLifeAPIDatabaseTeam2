@@ -180,7 +180,6 @@ public class apiStepdefinitions extends BaseTest {
         repJP = response.jsonPath();
 
 
-
         assertEquals(map.get("id"), repJP.getInt("updateId"));
 
     }
@@ -466,6 +465,7 @@ public class apiStepdefinitions extends BaseTest {
         System.out.println("Patch Body :" + map);
 
     }
+
     @Given("The api user prepares a PATCH request containing {int},{string} and {string} information to send to the api updateBloodGroup endpoint.")
     public void the_api_user_prepares_a_patch_request_containing_and_information_to_send_to_the_api_update_blood_group_endpoint(int id, String name, String is_blood_group) {
         map = testData.bloodUpdateRequestBody(id, name, is_blood_group);
@@ -484,27 +484,28 @@ public class apiStepdefinitions extends BaseTest {
 
     @Given("The api user sends a DELETE request, saves the returned response, and verifies that the status code is {string} with the reason phrase Forbidden_")
     public void the_api_user_sends_a_delete_request_saves_the_returned_response_and_verifies_that_the_status_code_is_with_the_reason_phrase_forbidden(String id) {
-        requestBody.put("id",558);
+        requestBody.put("id", 558);
 
-        System.out.println("Delete Body: "+requestBody);
+        System.out.println("Delete Body: " + requestBody);
     }
+
     @Given("The api user prepares a GET request containing the {int} information to send to the api bloodGroupId endpoint.")
     public void the_api_user_prepares_a_get_request_containing_the_information_to_send_to_the_api_blood_group_ıd_endpoint(int id) {
-        requestBody.put("id",558);
+        requestBody.put("id", 558);
 
-        System.out.println("Delete Body: "+requestBody);
+        System.out.println("Delete Body: " + requestBody);
     }
+
     @Given("The api user prepares a DELETE request to send to the api deleteBloodGroup add endpoint.")
     public void the_api_user_prepares_a_delete_request_to_send_to_the_api_delete_blood_group_add_endpoint() {
-        requestBody.put("id",603);
+        requestBody.put("id", 603);
 
     }
-
 
 
     @Given("The api user prepares a POST request containing {string} and {string} information to send to the api addBloodGroup endpoint.")
     public void the_api_user_prepares_a_post_request_containing_and_information_to_send_to_the_api_add_blood_group_endpoint
-            (String name, String isBloodGroup){
+            (String name, String isBloodGroup) {
         map.put("name", name);
         map.put("is_blood_group", isBloodGroup);
 
@@ -512,11 +513,9 @@ public class apiStepdefinitions extends BaseTest {
     }
 
 
-
-
     @And("The API user validates the {string} and {string} information of the {string} index in the response body.")
-    public void theAPIUserValidatesTheAndInformationOfTheIndexInTheResponseBody (String category, String
-            created_at, String data){
+    public void theAPIUserValidatesTheAndInformationOfTheIndexInTheResponseBody(String category, String
+            created_at, String data) {
         repJP = response.jsonPath();
 
         Assert.assertEquals(category, repJP.getString("lists[" + data + "].category"));
@@ -524,12 +523,9 @@ public class apiStepdefinitions extends BaseTest {
     }
 
 
-
-
-
     @And("The API user validates the data {string}, {string} and {string} contents in the response body..")
-    public void theAPIUserValidatesTheDataAndContentsInTheResponseBODY (String id, String category, String
-            created_at){
+    public void theAPIUserValidatesTheDataAndContentsInTheResponseBODY(String id, String category, String
+            created_at) {
         response.then()
                 .assertThat()
                 .body("details.id", Matchers.equalTo(id),
@@ -539,7 +535,7 @@ public class apiStepdefinitions extends BaseTest {
 
     @When("The api user prepares a POST request containing {string} and {string} information to send to the api addFindingCategory endpoint.")
     public void theApiUserPreparesAPOSTRequestContainingAndInformationToSendToTheApiAddFindingCategoryEndpoint
-            (String category, String created_at){
+            (String category, String created_at) {
         map.put("category", category);
         map.put("created_at", created_at);
 
@@ -548,17 +544,14 @@ public class apiStepdefinitions extends BaseTest {
     }
 
 
-
     @When("The api user prepares a PATCH request containing {int}, {string} and {string} information to send to the api updateFindingCategory endpoint.")
     public void theApiUserPreparesAPATCHRequestContainingAndInformationToSendToTheApiUpdateFindingCategoryEndpoint
-            ( int id, String category, String created_at){
+            (int id, String category, String created_at) {
         map = testData.findingCategoryUpdateRequestBody(id, category, created_at);
 
 
         System.out.println("Patch Body : " + map);
     }
-
-
 
 
     @When("The api user prepares a GET request containing the <id> information to send to the api updateFindingCategory endpoint.")
@@ -568,7 +561,7 @@ public class apiStepdefinitions extends BaseTest {
 
     @Given("The api user prepares a GET request containing the {int} information to send to the api updateFindingCategory endpoint.")
     public void the_api_user_prepares_a_get_request_containing_the_information_to_send_to_the_api_update_finding_category_endpoint
-            ( int id){
+            (int id) {
         requestBody.put("id", id);
 
         System.out.println("Get Body : " + requestBody);
@@ -591,8 +584,8 @@ public class apiStepdefinitions extends BaseTest {
     }
 
     @When("The api user prepares a GET request containing the <{int}> information to send to the api getFindingCategoryById endpoint.")
-    public void theApiUserPreparesAGETRequestContainingTheInformationToSendToTheApiGetFindingCategoryByIdEndpoint (
-            int id){
+    public void theApiUserPreparesAGETRequestContainingTheInformationToSendToTheApiGetFindingCategoryByIdEndpoint(
+            int id) {
 
         requestBody.put("id", id);
 
@@ -618,7 +611,7 @@ public class apiStepdefinitions extends BaseTest {
     }
 
     @Then("The api user sends a DELETE request and saves the returned responsee.")
-    public void the_api_user_sends_a_delete_request_and_saves_the_returned_responsee () {
+    public void the_api_user_sends_a_delete_request_and_saves_the_returned_responsee() {
         response = given()
                 .spec(spec)
                 .contentType(ContentType.JSON)
@@ -638,6 +631,5 @@ public class apiStepdefinitions extends BaseTest {
     }
 
 }
-
 
 
