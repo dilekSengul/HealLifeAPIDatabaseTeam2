@@ -3,10 +3,14 @@ package Manage;
 import lombok.Getter;
 
 
+import java.util.HashMap;
+import java.util.Map;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import static HelperDB.JDBC_Structure_Methods.connection;
+
 
 
 @Getter
@@ -77,5 +81,24 @@ public class Manage {
 
         return babyCount;
     }
+
+
+
+
+
+    /*****************ONUR - Ortak step içinde string ile query çağırma*****************/
+        private static final Map<String, String> queries = new HashMap<>();
+
+        static {
+                queries.put("US27", "SELECT account_title FROM staff WHERE qualification='MS' AND specialization='Neurology' ORDER BY account_title ASC;");
+                queries.put("US28", "SELECT * FROM vehicles WHERE driver_name = 'bayram erguven' AND driver_licence = 'b' ORDER BY manufacture_year ASC LIMIT 1;");
+        }
+
+        public static String getQueryOnur(String key) {
+            return queries.getOrDefault(key, "QUERY_NOT_FOUND");
+        }
+    /* ************************************************************************* */
+
+
 
 }
