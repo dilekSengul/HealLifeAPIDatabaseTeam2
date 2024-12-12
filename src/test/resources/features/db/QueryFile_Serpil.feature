@@ -25,3 +25,9 @@ Feature:This feature is a file created for Database User Stories 24, 25, 26
       | 2024-12-11 16:34:13 | 35     | 961      | Tansiyon ölçüldü | Sabah kontrolü | 2024-12-11 16:34:13 |
 
     And Database closed
+
+  @US26
+  Scenario: Validate the known allergies of the oldest patient in the database
+    When Query the "patients" table for the patient with the earliest "dob"
+    Then The "known_allergies" field of the patient should be "Fast food"
+

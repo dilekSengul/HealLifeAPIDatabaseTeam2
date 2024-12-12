@@ -19,7 +19,7 @@ Feature: As an administrator, I should be able to update the visitor purpose inf
       | id  | visitors_purpose | description     |
       | 792 | purpose update   | serpil kaydı    |
 
-  @serpil
+
 
   Scenario Outline: When a PATCH body (id, visitors_purpose, description) containing valid authorization information
   and invalid (id) is sent to the /api/visitorsPurposeUpdate endpoint, the status code returned is 203 and the message
