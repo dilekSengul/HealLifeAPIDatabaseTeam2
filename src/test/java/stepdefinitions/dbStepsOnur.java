@@ -2,6 +2,8 @@ package stepdefinitions;
 
 import Manage.Manage;
 import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 
 import java.sql.*;
 
@@ -48,6 +50,49 @@ public class dbStepsOnur extends Manage {
 
     }
 
+    @Given("consultant_register, ipd_details, and staff tables")
+    public void consultant_registerIpd_detailsAndStaffTables() {
+        
+    }
+
+    @When("the user queries combined data")
+    public void theUserQueriesCombinedData() {
+        
+    }
+
+    @Then("return IPD records with doctor names")
+    public void returnIPDRecordsWithDoctorNames() {
+        
+    }
+
+    @Given("the death_report table contains names and dates of death")
+    public void theDeath_reportTableContainsNamesAndDatesOfDeath() {
+        
+    }
+
+    @When("the user queries deaths from the last {int} days")
+    public void theUserQueriesDeathsFromTheLastDays(int arg0) {
+        
+    }
+
+    @Then("return names \\(or relatives) and dates of death")
+    public void returnNamesOrRelativesAndDatesOfDeath() {
+        
+    }
+
+    @Given("the email_config table exists")
+    public void theEmail_configTableExists() {
+        
+    }
+
+    @When("the user adds a new entry with a passcode encrypted using the SHA{int} method")
+    public void theUserAddsANewEntryWithAPasscodeEncryptedUsingTheSHAMethod(int arg0) {
+        
+    }
+
+    @Then("the table should store the passcode securely")
+    public void theTableShouldStoreThePasscodeSecurely() {
+    }
 }
 
 
