@@ -27,7 +27,7 @@ public class apiStepdefinitonsDamla extends BaseTest {
 
         Assert.assertEquals(type,repJP.getString("lists[" + dataIndex + "].type"));
         Assert.assertEquals(slug,repJP.getString("lists[" + dataIndex + "].slug"));
-        Assert.assertEquals(url,repJP.getString("lists[" + dataIndex + "].url"));
+        Assert.assertNull(url,repJP.getString("lists[" + dataIndex + "].url"));
         Assert.assertEquals(title,repJP.getString("lists[" + dataIndex + "].title"));
         Assert.assertEquals(date,repJP.getString("lists[" + dataIndex + "].date"));
     }
@@ -73,11 +73,6 @@ public class apiStepdefinitonsDamla extends BaseTest {
                         "lists[" + dataIndex + "].date", Matchers.equalTo(date));
 
     }
-
-
-
-
-
 
     @Given("The api user prepares a PATCH request containing {int}, {string} ,{string}, {string} and {string} information to send to the api addNotice endpoint.")
     public void the_api_user_prepares_a_patch_request_containing_and_information_to_send_to_the_api_add_notice_endpoint(int id, String type, String title, String description, String slug) {

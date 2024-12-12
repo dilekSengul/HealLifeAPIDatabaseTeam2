@@ -22,6 +22,7 @@ public class CommonData {
     private String smtp_auth;
     private String is_active;
     private Timestamp created_at;
+
     public CommonData(){
         this.email_type =faker.internet().domainName();
         this.stmp_server="smtp.gmail.com";

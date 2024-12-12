@@ -21,7 +21,7 @@ Feature: As an administrator (admin) I should be able to delete the announcement
 
     Examples:
       | endpoint         | id  |
-      | api/deleteNotice | 615 |
+      | api/deleteNotice | 616 |
 
 
   Scenario Outline: When a DELETE body containing valid authorization information and invalid data (id) is sent to the

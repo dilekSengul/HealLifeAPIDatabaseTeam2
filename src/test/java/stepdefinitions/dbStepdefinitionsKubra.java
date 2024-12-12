@@ -18,7 +18,7 @@ public class dbStepdefinitionsKubra extends Manage {
     ResultSetMetaData metaData;
     public int babyCount;
     public Manage manage=new Manage();
-    String bedName;
+
 
     @When("User verifies that count babies with weight greater than or equal to {double} kg")
     public void userVerifiesThatCountBabiesWithWeightGreaterThanOrEqualToKg(double weight) throws SQLException {
