@@ -11,7 +11,7 @@ import org.json.JSONObject;
 import org.junit.Assert;
 import utilities.api.TestData;
 
-import static hooks.HooksAPI.spec;
+import static hooks.api.HooksAPI.spec;
 import static io.restassured.RestAssured.given;
 import static utilities.api.API_Methods.fullPath;
 

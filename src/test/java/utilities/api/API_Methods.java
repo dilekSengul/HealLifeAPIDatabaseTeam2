@@ -5,9 +5,8 @@ import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 
 import java.util.Arrays;
-import java.util.HashMap;
 
-import static hooks.HooksAPI.spec;
+import static hooks.api.HooksAPI.spec;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 
