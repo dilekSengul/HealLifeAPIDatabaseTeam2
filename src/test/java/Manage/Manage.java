@@ -21,6 +21,14 @@ public class Manage {
             "Values (?,?,?,?,SHA2(?,256),?,?,?,?)";
     String US25 = "Select gender,email From  u201212290_heallifeqa.patients Where patient_name LIKE '%Jain%';";
 
+
+    String US07="SELECT * FROM u201212290_heallifeqa.bed WHERE created_at = '2023-05-04 06:41:17' AND is_active = 'yes';";
+    String US08="SELECT name FROM u201212290_heallifeqa.bed WHERE bed_group_id = 4  AND is_active = 'no';";
+  //  String US09="SELECT child_name  FROM u201212290_heallifeqa.birth_report WHERE weight >= 2.5;";
+    String US09="SELECT COUNT(*) AS baby_count FROM u201212290_heallifeqa.birth_report WHERE weight >= ?";
+
+
+
     Map<String, String> queryMap = Map.of(
         "DB_US18", "SELECT created_at FROM u201212290_heallifeqa.discharge_card WHERE opd_details_id > 11 AND opd_details_id < 31;",
         "DB_US19", "SELECT TIMESTAMPDIFF(HOUR, start_time, end_time) AS working_hours FROM doctor_shift WHERE staff_id = 2 AND day = 'Tuesday';",
@@ -32,16 +40,6 @@ public class Manage {
         "DB_US20_confirm_deletion", "SELECT * FROM events WHERE event_title = 'Hurrem Event';"
 
     );
-
-    String US07="SELECT * FROM u201212290_heallifeqa.bed WHERE created_at = '2023-05-04 06:41:17'  AND is_active = 'yes';";
-     String US08="SELECT name FROM u201212290_heallifeqa.bed WHERE bed_group_id = 4  AND is_active = 'no';";
-
-   // String US09="SELECT COUNT(*) AS baby_count FROM birth_report WHERE weight >= 2.5 ; " ;
-   String US09="SELECT COUNT(*) AS baby_count FROM  u201212290_heallifeqa.birth_report WHERE weight >= ?; " ;
-
-
-
-
 
     //***************Getter***************\\
 
@@ -93,6 +91,10 @@ public class Manage {
                 queries.put("US27", "SELECT account_title FROM staff WHERE qualification='MS' AND specialization='Neurology' ORDER BY account_title ASC;");
                 queries.put("US28", "SELECT * FROM vehicles WHERE driver_name = 'bayram erguven' AND driver_licence = 'b' ORDER BY manufacture_year ASC LIMIT 1;");
                 queries.put("US29", "SELECT *FROM (SELECT *,ROW_NUMBER() OVER (ORDER BY manufacture_year) AS year_row_num,ROW_NUMBER() OVER (ORDER BY created_at) AS created_row_num FROM vehicles) AS subquery WHERE year_row_num = created_row_num;");
+                queries.put("US33", "SELECT account_title FROM staff WHERE qualification='MS' AND specialization='Neurology' ORDER BY account_title ASC;");
+                queries.put("US34", "SELECT account_title FROM staff WHERE qualification='MS' AND specialization='Neurology' ORDER BY account_title ASC;");
+                queries.put("US35", "SELECT account_title FROM staff WHERE qualification='MS' AND specialization='Neurology' ORDER BY account_title ASC;");
+
         }
 
         public static String getQueryOnur(String key) {

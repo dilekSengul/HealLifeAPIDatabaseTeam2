@@ -1,3 +1,4 @@
+@kubra
 Feature: As an administrator (admin), I want to be able to create a new announcement record via API connection
   #Bir yönetici (admin) olarak API baglantisi üzerinden sisteme kayitli duyuru bilgilerini guncelleyebilmeliyim.
 
