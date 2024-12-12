@@ -15,17 +15,12 @@ import org.junit.runner.RunWith;
 
 
         },
-        features = {"src/test/resources/features/api", "src/test/resources/features/db"},
-        glue = {"stepdefinitions","hooks","utilities"},
-        tags = "@US20",
+        features = {"src/test/resources/features/db"},
+        glue = {"stepdefinitions","hooks/db"},
+        tags = "@onur",
         dryRun =false
 
 
-
-
-
-
-
 )
-public class runner {
+public class dbRunner {
 }

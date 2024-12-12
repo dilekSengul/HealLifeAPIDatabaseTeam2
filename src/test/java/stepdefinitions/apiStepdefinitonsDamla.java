@@ -27,7 +27,7 @@ public class apiStepdefinitonsDamla extends BaseTest {
 
         Assert.assertEquals(type,repJP.getString("lists[" + dataIndex + "].type"));
         Assert.assertEquals(slug,repJP.getString("lists[" + dataIndex + "].slug"));
-        Assert.assertEquals(url,repJP.getString("lists[" + dataIndex + "].url"));
+        Assert.assertNull(url,repJP.getString("lists[" + dataIndex + "].url"));
         Assert.assertEquals(title,repJP.getString("lists[" + dataIndex + "].title"));
         Assert.assertEquals(date,repJP.getString("lists[" + dataIndex + "].date"));
     }
@@ -68,7 +68,7 @@ public class apiStepdefinitonsDamla extends BaseTest {
                 .assertThat()
                 .body("lists[" + dataIndex + "].type", Matchers.equalTo(type),
                         "lists[" + dataIndex + "].slug", Matchers.equalTo(slug),
-                        "lists[" + dataIndex + "].url", Matchers.nullValue(),//.body("lists.url", Matchers.nullValue())
+                        "lists[" + dataIndex + "].url", Matchers.nullValue(),
                         "lists[" + dataIndex + "].title", Matchers.equalTo(title),
                         "lists[" + dataIndex + "].date", Matchers.equalTo(date));
 
@@ -76,15 +76,19 @@ public class apiStepdefinitonsDamla extends BaseTest {
 
 
     @Then("The API user verifies the contents of the response body, including {string}, {string},{string}, {string}, {string}, and {string}.")
-    public void the_apı_user_verifies_the_contents_of_the_response_body_including_and(String id, String type, String slug, String url, String title, String date) {
+    public void theAPIUserVerifiesTheContentsOfTheResponseBodyIncludingAnd(String id, String type, String slug, String url, String title, String date) {
+
         response.then()
+
                 .assertThat().body("lists.id", Matchers.equalTo(id))
                 .body("lists.type", Matchers.equalTo(type))
                 .body("lists.slug", Matchers.equalTo(slug))
                 .body("lists.url", Matchers.nullValue())
                 .body("lists.title", Matchers.equalTo(title))
                 .body("lists.date", Matchers.equalTo(date));
+
     }
+
 
 
     @Given("The api user prepares a PATCH request containing {int}, {string} ,{string}, {string} and {string} information to send to the api addNotice endpoint.")
