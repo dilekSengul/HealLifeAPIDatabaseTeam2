@@ -8,7 +8,7 @@ Feature: This feature is a file created for Database User Stories 4,5 ,6.
 @us_04
   Scenario: Verify that the number of appointments taken before noon is fewer than those
  taken in the afternoon in the appointment table.
-
+.
 
 
 
