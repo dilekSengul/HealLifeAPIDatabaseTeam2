@@ -259,6 +259,7 @@ public class JDBCMethods {
             preparedStatement.setObject(i + 1, params[i]);
         }
     }
+    /* *************************************** */
 
     public void birthRecordAccess(ResultSet resultSet) throws SQLException {
         Map<String, Integer> siblings = new HashMap<>();

@@ -2,6 +2,8 @@ package stepdefinitions;
 
 import Manage.Manage;
 import io.cucumber.java.en.Given;
+import junit.framework.TestCase;
+import org.junit.jupiter.api.Assertions;
 
 import java.sql.*;
 
@@ -11,7 +13,6 @@ import static utilities.db.JDBCMethods.executeSelectQueryOnur;
 public class dbStepsOnur extends Manage {
 
     ResultSet resultSet;
-
     @Given("the user executes the {string} query")
     public void runQuery(String queryKey) throws Exception {
 
@@ -48,6 +49,26 @@ public class dbStepsOnur extends Manage {
 
     }
 
-}
+    @Given("the user executes the query")
+    public void theUserExecutesTheQuery() {
+    }
+
+    @Given("verifies that the table is not empty.")
+    public void verifiesThatTheTableIsNotEmpty() throws SQLException {
+
+            // ResultSet boş mu değil mi kontrol et
+
+        if (resultSet.next()) {
+                System.out.println("The query returned results.");
+                Assertions.assertTrue(true, "The result set is not empty.");
+            } else {
+                System.out.println("The query returned no results.");
+                Assertions.fail("The result set is empty.");
+            }
+
+        }
+    }
+
+
 
 

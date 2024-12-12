@@ -92,6 +92,7 @@ public class Manage {
         static {
                 queries.put("US27", "SELECT account_title FROM staff WHERE qualification='MS' AND specialization='Neurology' ORDER BY account_title ASC;");
                 queries.put("US28", "SELECT * FROM vehicles WHERE driver_name = 'bayram erguven' AND driver_licence = 'b' ORDER BY manufacture_year ASC LIMIT 1;");
+                queries.put("US29", "SELECT *FROM (SELECT *,ROW_NUMBER() OVER (ORDER BY manufacture_year) AS year_row_num,ROW_NUMBER() OVER (ORDER BY created_at) AS created_row_num FROM vehicles) AS subquery WHERE year_row_num = created_row_num;");
         }
 
         public static String getQueryOnur(String key) {
