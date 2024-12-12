@@ -13,7 +13,7 @@ public class Manage {
             "Values (?,?,?,?,SHA2(?,256),?,?,?,?)";
     String US25 = "Select gender,email From  u201212290_heallifeqa.patients Where patient_name LIKE '%Jain%';";
 
-    Map<String, String> db_map_hurrem = Map.of(
+    Map<String, String> queryMap = Map.of(
         "DB_US18", "SELECT created_at FROM u201212290_heallifeqa.discharge_card WHERE opd_details_id > 11 AND opd_details_id < 31;",
         "DB_US19", "SELECT TIMESTAMPDIFF(HOUR, start_time, end_time) AS working_hours FROM doctor_shift WHERE staff_id = 2 AND day = 'Tuesday';",
         "DB_US20_insert", "INSERT INTO u201212290_heallifeqa.events (event_title, event_description, start_date, end_date, event_type, event_color, event_for, role_id, is_active) VALUES (?,?,?,?,?,?,?,?,?);",
@@ -36,6 +36,6 @@ public class Manage {
         return US25; }
 
     public String getQuery(String queryId) {
-        return db_map_hurrem.get(queryId);
+        return queryMap.get(queryId);
     }
 }
