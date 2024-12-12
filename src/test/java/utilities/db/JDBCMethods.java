@@ -1,13 +1,12 @@
 package utilities.db;
 
-import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.time.Instant;
 import java.util.*;
 
 import static HelperDB.JDBC_Structure_Methods.*;
+import static Manage.Manage.getQueryOnur;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 public class JDBCMethods {
@@ -231,6 +230,30 @@ public class JDBCMethods {
 
     }
 
+    public static ResultSet executeSelectQueryOnur(String queryKey) throws Exception {
+        String query = getQueryOnur(queryKey);
+        if (query.equals("QUERY_NOT_FOUND")) {
+            throw new IllegalArgumentException("Query key not found: " + queryKey);
+        }
+
+        PreparedStatement preparedStatement = connection.prepareStatement(query, ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
+
+        return preparedStatement.executeQuery();
+    }
+
+
+    public void birthRecordAccess(ResultSet resultSet) throws SQLException {
+        Map<String, Integer> siblings = new HashMap<>();
+        while (resultSet.next()) {
+            String childName = resultSet.getString("child_name");
+            int caseReferenceId = resultSet.getInt("case_reference_id");
+            if (siblings.containsKey(childName)) {
+                assertEquals(siblings.get(childName), caseReferenceId, "Kardeşler aynı vaka referans numarasına sahip olmalıdır.");
+            } else {
+                siblings.put(childName, caseReferenceId);
+            }
+        }
+    }
 
 
 }

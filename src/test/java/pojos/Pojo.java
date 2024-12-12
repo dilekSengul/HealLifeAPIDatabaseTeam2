@@ -63,8 +63,6 @@ public class Pojo {
     public void setSlug(String slug) {
         this.slug = slug;
     }
-
-
     private String name;
     private String isBloodGroup;
 
