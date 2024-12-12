@@ -26,10 +26,11 @@ public class Manage {
         "DB_US19", "SELECT TIMESTAMPDIFF(HOUR, start_time, end_time) AS working_hours FROM doctor_shift WHERE staff_id = 2 AND day = 'Tuesday';",
         "DB_US20_insert", "INSERT INTO u201212290_heallifeqa.events (event_title, event_description, start_date, end_date, event_type, event_color, event_for, role_id, is_active) VALUES (?,?,?,?,?,?,?,?,?);",
         "DB_US20_delete", "DELETE FROM events WHERE id = (SELECT MAX(id) FROM events);",
-        "DB_US20_confirm_deletion", "SELECT * FROM events WHERE event_title = 'Insert Ayse Event'",
         "DB_US10","SELECT child_name, case_reference_id FROM birth_report WHERE case_reference_id IN (SELECT case_reference_id FROM birth_report GROUP BY case_reference_id HAVING COUNT(*) > 1);",
         "DB_US11","SELECT id, donor_name, date_of_birth, gender, father_name, address FROM blood_donor WHERE id = 7;",
-        "DB_US12","SELECT * FROM blood_donor_cycle WHERE institution IS NOT NULL AND id = 17;"
+        "DB_US12","SELECT * FROM blood_donor_cycle WHERE institution IS NOT NULL AND id = 17;",
+        "DB_US20_confirm_deletion", "SELECT * FROM events WHERE event_title = 'Hurrem Event';"
+
     );
 
     String US07="SELECT * FROM u201212290_heallifeqa.bed WHERE created_at = '2023-05-04 06:41:17'  AND is_active = 'yes';";
