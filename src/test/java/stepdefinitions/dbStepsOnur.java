@@ -2,8 +2,11 @@ package stepdefinitions;
 
 import Manage.Manage;
 import io.cucumber.java.en.Given;
+import org.junit.jupiter.api.Assertions;
+
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+
 
 import java.sql.*;
 
@@ -14,21 +17,28 @@ public class dbStepsOnur extends Manage {
 
     ResultSet resultSet;
 
+
+
     @Given("the user executes the {string} query")
     public void runQuery(String queryKey) throws Exception {
 
         resultSet = executeSelectQueryOnur(queryKey);
 
+        //ilk sütun bilgisini döner
         while (resultSet.next()) {
             System.out.println("Result: " + resultSet.getString(1));
         }
-        resultSet.beforeFirst();
+        resultSet.beforeFirst(); //sonraki step için resultseti resetler
 
     }
 
+    //column-row veri test expected/actual veri doğrulama
     @Given("Verifies that datas : {string} values : {string}")
     public void verifiesThatDatasValues(String columns, String expectedValues) {
         try {
+            // resultSet boş ya da null değilse,
+            // column ve expectedValue'lar için birer adet String.split ile ayrılmış array oluşturur.
+            // for içerisinde her bir elemanı String olarak tek tek test eder.
             if (resultSet != null && resultSet.next()) {
                 String[] columnArray = columns.split(",");
                 String[] valueArray = expectedValues.split(",");
@@ -41,7 +51,7 @@ public class dbStepsOnur extends Manage {
                 }
             } else {
                 System.out.println("ResultSet is empty or null.");
-                // ResultSet boş veya null ise bilgi ver
+                // resultSet boş ya da null ise bilgi verir
 
             }
         } catch (SQLException e) {
@@ -49,6 +59,46 @@ public class dbStepsOnur extends Manage {
         }
 
     }
+
+
+    @Given("verifies that the table is not empty.")
+    public void verifiesThatTheTableIsNotEmpty() throws SQLException {
+
+            // ResultSet dolu mu değil mi kontrol eder
+        if (resultSet.next()) {
+                System.out.println("The query returned results.");
+                Assertions.assertTrue(true, "The result set is not empty.");
+            } else {
+                System.out.println("The query returned no results.");
+                Assertions.fail("The result set is empty.");
+            }
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     @Given("consultant_register, ipd_details, and staff tables")
     public void consultant_registerIpd_detailsAndStaffTables() {
@@ -93,6 +143,9 @@ public class dbStepsOnur extends Manage {
     @Then("the table should store the passcode securely")
     public void theTableShouldStoreThePasscodeSecurely() {
     }
+
+
+
 }
 
 
