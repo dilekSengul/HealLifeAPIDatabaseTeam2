@@ -1,6 +1,7 @@
+@kubra
 Feature:As an administrator (admin), I should be able to access the relevant announcement data by entering id through the API connection.
 
-  @kubra
+
   Scenario Outline: When a GET body with valid authorization information and correct data (id) is sent to the /api/getNoticeById endpoint,
                          it should be verified that the status code returned is 200 and the message information in the response body is “Success”
                          correct data (id) is sent to /api/getNoticeById endpoint, the data (id, type, slug, url, title, date) in the response body should be validated.
