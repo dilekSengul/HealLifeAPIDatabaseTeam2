@@ -1,13 +1,11 @@
 package utilities.db;
 
-import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.time.Instant;
 import java.util.*;
 
 import static HelperDB.JDBC_Structure_Methods.*;
+import static Manage.Manage.getQueryOnur;
 
 
 public class JDBCMethods {
@@ -229,6 +227,36 @@ public class JDBCMethods {
     }
     public static void bulk_device_token() throws SQLException {
 
+    }
+
+
+    /*******************ONUR*******************/
+    public static ResultSet executeSelectQueryOnur(String queryKey, Object... params) throws Exception {
+        String query = getQueryOnur(queryKey);
+        if (query.equals("QUERY_NOT_FOUND")) {
+            throw new IllegalArgumentException("Query key not found: " + queryKey);
+        }
+
+        PreparedStatement preparedStatement = connection.prepareStatement(query, ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
+        setPreparedStatementParamsOnur(preparedStatement, params);
+        return preparedStatement.executeQuery();
+    }
+
+    public static int executeUpdateQueryOnur(String queryKey, Object... params) throws Exception {
+        String query = getQueryOnur(queryKey);
+        if (query.equals("QUERY_NOT_FOUND")) {
+            throw new IllegalArgumentException("Query key not found: " + queryKey);
+        }
+
+        PreparedStatement preparedStatement = connection.prepareStatement(query);
+        setPreparedStatementParamsOnur(preparedStatement, params);
+        return preparedStatement.executeUpdate();
+    }
+
+    private static void setPreparedStatementParamsOnur(PreparedStatement preparedStatement, Object... params) throws Exception {
+        for (int i = 0; i < params.length; i++) {
+            preparedStatement.setObject(i + 1, params[i]);
+        }
     }
 
 }
