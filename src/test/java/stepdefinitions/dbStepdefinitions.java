@@ -4,6 +4,7 @@ import HelperDB.CommonData;
 import Manage.Manage;
 import io.cucumber.java.en.*;
 import org.junit.Assert;
+import utilities.db.JDBCMethods;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -25,6 +26,7 @@ public class dbStepdefinitions extends Manage {
     public int babyCount;
     public Manage manage=new Manage();
     private int startingcount;
+    JDBCMethods jdbcMethods = new JDBCMethods();
   
     @Given("Database connection established")
     public void database_connection_established() {
@@ -43,11 +45,6 @@ public class dbStepdefinitions extends Manage {
     public void user_creates_query_for(String us) {
         try {
             switch (us) {
-                case "DB_US10":
-                    query = getDB_US10();
-                    statement = getStatement();
-                    resultSet = statement.executeQuery(query);
-                    break;
                 case "DB_US07":
                     query = getUS07();
                     statement = getStatement();
@@ -318,6 +315,33 @@ public class dbStepdefinitions extends Manage {
         if (resultSet.next()) {
             throw new AssertionError("Record was not deleted.");
         }
+    }
+
+    //-------------------DB_US10-------------------\\
+
+    @Then("The user verifies children who are siblings")
+    public void the_user_verifies_children_who_are_siblings() throws SQLException {
+        jdbcMethods.birthRecordAccess(resultSet);
+    }
+
+    //-------------------DB_US11-------------------\\
+
+    @Then("The user validates donor data")
+    public void the_user_validates_donor_data() throws SQLException {
+        resultSet.next();
+        assertEquals(resultSet.getInt("id"),7);
+        assertEquals(resultSet.getString("donor_name"), "Maria");
+        assertEquals(resultSet.getString("date_of_birth"), "2001-03-02");
+        assertEquals(resultSet.getString("gender"), "Female");
+        assertEquals(resultSet.getString("father_name"), "Jhonson");
+    }
+
+    //-------------------DB_US12-------------------\\
+
+    @Then("The user finds id 17 in the listed blood_donor_cycle table information")
+    public void the_user_finds_id_in_the_listed_blood_donor_cycle_table_information() throws SQLException {
+        resultSet.next();
+        assertEquals(resultSet.getInt("id"),17);
     }
 
 }
