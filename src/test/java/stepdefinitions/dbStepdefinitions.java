@@ -263,41 +263,6 @@ public class dbStepdefinitions extends Manage {
 
     //
 
-    @When("User verifies that the data with created_at {string} is active {string}")
-    public void userVerifiesThatTheDataWithCreated_atIsActive(String expectedCreatedAt, String expectedIsActive) throws SQLException {
-        if (resultSet.next()) {
-            String createdAt = resultSet.getString("created_at");
-            String isActive = resultSet.getString("is_active");
-
-            assertEquals(expectedCreatedAt, createdAt);
-            assertEquals(expectedIsActive, isActive);
-        } else {
-            throw new AssertionError("Query kriteriyle eslesen bir veri bulunamadi");
-        }
-    }
-
-    @When("User verifies that no patient name is returned")
-    public void userVerifiesThatNoPatientNameIsReturned() {
-        try {
-            assertFalse("Veri döndü, ancak boş olması gerekiyordu.", resultSet.next());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-    
-
-    @When("User verifies that count babies with weight greater than or equal to {double} kg")
-    public void userVerifiesThatCountBabiesWithWeightGreaterThanOrEqualToKg(double weight) throws SQLException {
-        babyCount = manage.getBabyCountByWeight(weight);
-    }
-
-    @Then("the count of babies should be {int}")
-    public void theCountOfBabiesShouldBe(int expectedCount) throws SQLException {
-        assertEquals(expectedCount, babyCount);
-        System.out.println("Test passed: Baby count is " + babyCount);
-
-
-    }
 
     @When("I delete query the database for {string}")
     public void i_delete_query_the_database_for(String queryId) throws SQLException {
@@ -343,6 +308,7 @@ public class dbStepdefinitions extends Manage {
         resultSet.next();
         assertEquals(resultSet.getInt("id"),17);
     }
+
 
 }
 

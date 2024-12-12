@@ -1,3 +1,4 @@
+@kubra
 Feature: As an administrator (admin) I should be able to delete the announcement record in the system via API connection.
 
   Scenario Outline: A DELETE request to the "/api/deleteNotice" endpoint with valid authorization
@@ -20,7 +21,7 @@ Feature: As an administrator (admin) I should be able to delete the announcement
 
     Examples:
       | endpoint         | id  |
-      | api/deleteNotice | 423 |
+      | api/deleteNotice | 616 |
 
 
   Scenario Outline: When a DELETE body containing valid authorization information and invalid data (id) is sent to the

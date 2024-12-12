@@ -74,23 +74,6 @@ public class apiStepdefinitonsDamla extends BaseTest {
 
     }
 
-
-    @Then("The API user verifies the contents of the response body, including {string}, {string},{string}, {string}, {string}, and {string}.")
-    public void theAPIUserVerifiesTheContentsOfTheResponseBodyIncludingAnd(String id, String type, String slug, String url, String title, String date) {
-
-        response.then()
-
-                .assertThat().body("lists.id", Matchers.equalTo(id))
-                .body("lists.type", Matchers.equalTo(type))
-                .body("lists.slug", Matchers.equalTo(slug))
-                .body("lists.url", Matchers.nullValue())
-                .body("lists.title", Matchers.equalTo(title))
-                .body("lists.date", Matchers.equalTo(date));
-
-    }
-
-
-
     @Given("The api user prepares a PATCH request containing {int}, {string} ,{string}, {string} and {string} information to send to the api addNotice endpoint.")
     public void the_api_user_prepares_a_patch_request_containing_and_information_to_send_to_the_api_add_notice_endpoint(int id, String type, String title, String description, String slug) {
         map=testData.noticeUpdateRequestBody(id,type,title,description,slug);
@@ -186,5 +169,15 @@ public class apiStepdefinitonsDamla extends BaseTest {
     }
 
 
+    @Then("The API user verifies the contents of the response body, including {string}, {string}, {string}, {string}, {string}, and {string}.")
+    public void theAPIUserVerifiesTheContentsOfTheResponseBodyIncludingAnd(String id, String type, String slug, String url, String title, String date) {
+        response.then()
+                .assertThat().body("lists.id", Matchers.equalTo(id))
+                .body("lists.type", Matchers.equalTo(type))
+                .body("lists.slug", Matchers.equalTo(slug))
+                .body("lists.url", Matchers.nullValue())
+                .body("lists.title", Matchers.equalTo(title))
+                .body("lists.date", Matchers.equalTo(date));
 
+    }
 }
