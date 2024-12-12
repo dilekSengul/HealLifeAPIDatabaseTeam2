@@ -27,7 +27,7 @@ public class apiStepdefinitonsDamla extends BaseTest {
 
         Assert.assertEquals(type,repJP.getString("lists[" + dataIndex + "].type"));
         Assert.assertEquals(slug,repJP.getString("lists[" + dataIndex + "].slug"));
-        Assert.assertEquals(url,repJP.getString("lists[" + dataIndex + "].url"));
+        Assert.assertNull(url,repJP.getString("lists[" + dataIndex + "].url"));
         Assert.assertEquals(title,repJP.getString("lists[" + dataIndex + "].title"));
         Assert.assertEquals(date,repJP.getString("lists[" + dataIndex + "].date"));
     }
