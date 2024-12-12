@@ -5,7 +5,7 @@ Feature: This feature is a file created for Database User Stories 07,08 ,09
 @db
   Scenario: DB_US07 Verify that the bed with created_at =  '2023-05-04 06:41:17' is active in the bed table.
     Given User creates Query for "DB_US07"
-    When User query the bed record with created_at "2023-05-04 06:41:17"
+    When User query the bed with created_at '2023-05-04 06:41:17'
     Then The bed record should be active
     Then Database closed
 
@@ -17,10 +17,9 @@ Feature: This feature is a file created for Database User Stories 07,08 ,09
 
 
   @db
-  Scenario: Verify the number of babies with a weight of 2.5 kg or higher in the birth_report table.
-    Given User creates Query for "DB_US09"
-    When User verifies that count babies with weight greater than or equal to 2.5 kg
-    Then the count of babies should be 3
+  Scenario: DB_US09 Verify the number of babies with a weight of 2.5 kg or higher in the birth_report table.
+    Given User verifies that count babies with weight greater than or equal to 2.5 kg
+    When the count of babies should be 3
     Then Database closed
 
 
