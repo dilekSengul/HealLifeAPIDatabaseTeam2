@@ -23,5 +23,5 @@ import org.junit.runner.RunWith;
 
 
 )
-public class runner {
+public class apiRunner {
 }
