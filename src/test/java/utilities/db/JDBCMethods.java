@@ -6,6 +6,7 @@ import java.util.*;
 
 import static HelperDB.JDBC_Structure_Methods.*;
 import static Manage.Manage.getQueryOnur;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 public class JDBCMethods {
@@ -256,6 +257,19 @@ public class JDBCMethods {
     private static void setPreparedStatementParamsOnur(PreparedStatement preparedStatement, Object... params) throws Exception {
         for (int i = 0; i < params.length; i++) {
             preparedStatement.setObject(i + 1, params[i]);
+        }
+    }
+
+    public void birthRecordAccess(ResultSet resultSet) throws SQLException {
+        Map<String, Integer> siblings = new HashMap<>();
+        while (resultSet.next()) {
+            String childName = resultSet.getString("child_name");
+            int caseReferenceId = resultSet.getInt("case_reference_id");
+            if (siblings.containsKey(childName)) {
+                assertEquals(siblings.get(childName), caseReferenceId, "Kardeşler aynı vaka referans numarasına sahip olmalıdır.");
+            } else {
+                siblings.put(childName, caseReferenceId);
+            }
         }
     }
 
